@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://infor.com/pcm/v2" elementFormDefault="qualified" targetNamespace="http://infor.com/pcm/v2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="InitializeConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="instanceName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="applicationName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="headerId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="configurationId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InitializeConfigurationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InitializeConfigurationResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Configure">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="selections" nillable="true" type="tns:ArrayOfOptionSelection" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfOptionSelection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OptionSelection" nillable="true" type="tns:OptionSelection" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOptionSelection" nillable="true" type="tns:ArrayOfOptionSelection" />
+  <xs:complexType name="OptionSelection">
+    <xs:sequence>
+      <xs:element name="ID" nillable="true" type="xs:string" />
+      <xs:element name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OptionSelection" nillable="true" type="tns:OptionSelection" />
+  <xs:element name="ConfigureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConfigureResult" nillable="true" type="tns:UIData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="UIData">
+    <xs:sequence>
+      <xs:element name="ConfiguredPrice" type="xs:decimal" />
+      <xs:element name="CultureName" nillable="true" type="xs:string" />
+      <xs:element name="Details" nillable="true" type="tns:ArrayOfDetail" />
+      <xs:element name="ImageUrl" nillable="true" type="xs:string" />
+      <xs:element name="IsExecutionComplete" type="xs:boolean" />
+      <xs:element name="IsPartialSaveEnabled" type="xs:boolean" />
+      <xs:element name="Messages" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element name="OptionToFocus" nillable="true" type="xs:string" />
+      <xs:element name="Pages" nillable="true" type="tns:ArrayOfPage" />
+      <xs:element name="SelectionSummary" nillable="true" type="tns:ArrayOfDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UIData" nillable="true" type="tns:UIData" />
+  <xs:complexType name="ArrayOfDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Detail" nillable="true" type="tns:Detail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDetail" nillable="true" type="tns:ArrayOfDetail" />
+  <xs:complexType name="Detail">
+    <xs:sequence>
+      <xs:element name="Caption" nillable="true" type="xs:string" />
+      <xs:element name="IsHighlighted" type="xs:boolean" />
+      <xs:element name="Type" type="tns:DetailElementType" />
+      <xs:element name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Detail" nillable="true" type="tns:Detail" />
+  <xs:simpleType name="DetailElementType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Page" />
+      <xs:enumeration value="Screen" />
+      <xs:enumeration value="ScreenOption" />
+      <xs:enumeration value="DetailTitle" />
+      <xs:enumeration value="OrderDetail" />
+      <xs:enumeration value="PricingDetail" />
+      <xs:enumeration value="DetailBreak" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DetailElementType" nillable="true" type="tns:DetailElementType" />
+  <xs:complexType name="ArrayOfMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessage" nillable="true" type="tns:ArrayOfMessage" />
+  <xs:complexType name="Message">
+    <xs:sequence>
+      <xs:element name="Type" type="tns:MessageType" />
+      <xs:element name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Message" nillable="true" type="tns:Message" />
+  <xs:simpleType name="MessageType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Message" />
+      <xs:enumeration value="Critical" />
+      <xs:enumeration value="Warning" />
+      <xs:enumeration value="Error" />
+      <xs:enumeration value="Information" />
+      <xs:enumeration value="Pause" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MessageType" nillable="true" type="tns:MessageType" />
+  <xs:complexType name="ArrayOfPage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Page" nillable="true" type="tns:Page" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPage" nillable="true" type="tns:ArrayOfPage" />
+  <xs:complexType name="Page">
+    <xs:sequence>
+      <xs:element name="Caption" nillable="true" type="xs:string" />
+      <xs:element name="IsVisible" type="xs:boolean" />
+      <xs:element name="Screens" nillable="true" type="tns:ArrayOfScreen" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Page" nillable="true" type="tns:Page" />
+  <xs:complexType name="ArrayOfScreen">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Screen" nillable="true" type="tns:Screen" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfScreen" nillable="true" type="tns:ArrayOfScreen" />
+  <xs:complexType name="Screen">
+    <xs:sequence>
+      <xs:element name="ApplicationLink" nillable="true" type="xs:string" />
+      <xs:element name="Caption" nillable="true" type="xs:string" />
+      <xs:element name="Description" nillable="true" type="xs:string" />
+      <xs:element name="ImageLink" nillable="true" type="xs:string" />
+      <xs:element name="InformationLink" nillable="true" type="xs:string" />
+      <xs:element name="IsVisible" type="xs:boolean" />
+      <xs:element name="ScreenOptions" nillable="true" type="tns:ArrayOfScreenOption" />
+      <xs:element name="ShowCaption" type="xs:boolean" />
+      <xs:element name="ShowDescription" type="xs:boolean" />
+      <xs:element name="ShowSeparator" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Screen" nillable="true" type="tns:Screen" />
+  <xs:complexType name="ArrayOfScreenOption">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ScreenOption" nillable="true" type="tns:ScreenOption" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfScreenOption" nillable="true" type="tns:ArrayOfScreenOption" />
+  <xs:complexType name="ScreenOption">
+    <xs:sequence>
+      <xs:element name="ApplicationLink" nillable="true" type="xs:string" />
+      <xs:element name="AutoContinueMode" type="tns:AutoContinueMode" />
+      <xs:element name="Caption" nillable="true" type="xs:string" />
+      <xs:element name="DisplayFormat" nillable="true" type="xs:string" />
+      <xs:element name="DisplayPrecision" nillable="true" type="xs:string" />
+      <xs:element name="DisplayType" nillable="true" type="xs:string" />
+      <xs:element name="DisplayValue" nillable="true" type="xs:string" />
+      <xs:element name="ID" nillable="true" type="xs:string" />
+      <xs:element name="InformationLink" nillable="true" type="xs:string" />
+      <xs:element name="InformationMessage" nillable="true" type="xs:string" />
+      <xs:element name="IsDisplayableInRapidEntry" type="xs:boolean" />
+      <xs:element name="IsEnabled" type="xs:boolean" />
+      <xs:element name="IsGlobalPinned" type="xs:boolean" />
+      <xs:element name="IsHighlighted" type="xs:boolean" />
+      <xs:element name="IsOverridden" type="xs:boolean" />
+      <xs:element name="IsPinnable" type="xs:boolean" />
+      <xs:element name="IsPinnableAcross" type="xs:boolean" />
+      <xs:element name="IsPinned" type="xs:boolean" />
+      <xs:element name="IsRequired" type="xs:boolean" />
+      <xs:element name="IsVisible" type="xs:boolean" />
+      <xs:element name="Name" nillable="true" type="xs:string" />
+      <xs:element name="Ranges" nillable="true" type="tns:ArrayOfRange" />
+      <xs:element name="SelectableValues" nillable="true" type="tns:ArrayOfScreenOptionValue" />
+      <xs:element name="Tooltip" nillable="true" type="xs:string" />
+      <xs:element name="Type" type="tns:DataType" />
+      <xs:element name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScreenOption" nillable="true" type="tns:ScreenOption" />
+  <xs:simpleType name="AutoContinueMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="AutoContinueAndStay" />
+      <xs:enumeration value="AutoContinueAndMove" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AutoContinueMode" nillable="true" type="tns:AutoContinueMode" />
+  <xs:complexType name="ArrayOfRange">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Range" nillable="true" type="tns:Range" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRange" nillable="true" type="tns:ArrayOfRange" />
+  <xs:complexType name="Range">
+    <xs:sequence>
+      <xs:element name="Increment" type="xs:decimal" />
+      <xs:element name="Max" type="xs:decimal" />
+      <xs:element name="Min" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Range" nillable="true" type="tns:Range" />
+  <xs:complexType name="ArrayOfScreenOptionValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ScreenOptionValue" nillable="true" type="tns:ScreenOptionValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfScreenOptionValue" nillable="true" type="tns:ArrayOfScreenOptionValue" />
+  <xs:complexType name="ScreenOptionValue">
+    <xs:sequence>
+      <xs:element name="Caption" nillable="true" type="xs:string" />
+      <xs:element name="ImageLink" nillable="true" type="xs:string" />
+      <xs:element name="IsEnabled" type="xs:boolean" />
+      <xs:element name="IsVisible" type="xs:boolean" />
+      <xs:element name="Value" nillable="true" type="xs:string" />
+      <xs:element name="CustomProperties" nillable="true" type="tns:ArrayOfCustomProperty" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScreenOptionValue" nillable="true" type="tns:ScreenOptionValue" />
+  <xs:complexType name="ArrayOfCustomProperty">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomProperty" nillable="true" type="tns:CustomProperty" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomProperty" nillable="true" type="tns:ArrayOfCustomProperty" />
+  <xs:complexType name="CustomProperty">
+    <xs:sequence>
+      <xs:element name="Name" nillable="true" type="xs:string" />
+      <xs:element name="Type" type="tns:DataType" />
+      <xs:element name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomProperty" nillable="true" type="tns:CustomProperty" />
+  <xs:simpleType name="DataType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="String" />
+      <xs:enumeration value="Number" />
+      <xs:enumeration value="Boolean" />
+      <xs:enumeration value="DateTime" />
+      <xs:enumeration value="StringArray" />
+      <xs:enumeration value="NumberArray" />
+      <xs:enumeration value="BooleanArray" />
+      <xs:enumeration value="Collection" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DataType" nillable="true" type="tns:DataType" />
+  <xs:element name="FinalizeConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FinalizeConfigurationResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SavePartialConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SavePartialConfigurationResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveFullConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveFullConfigurationResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelConfigurationResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

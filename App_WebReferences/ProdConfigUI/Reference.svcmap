@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a4dbb826-12b6-46ae-aec1-dde3999b9d77" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://216.162.180.77/PCMDEV/ConfiguratorService/v2/ProductConfiguratorUI.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ProductConfiguratorUI.wsdl" MetadataType="Wsdl" ID="924862a8-aea2-4d0e-8e2b-cbd001bacd6d" SourceId="1" SourceUrl="http://216.162.180.77/PCMDEV/ConfiguratorService/v2/ProductConfiguratorUI.svc?wsdl" />
+    <MetadataFile FileName="ProductConfiguratorUI.xsd" MetadataType="Schema" ID="8ddb457e-a180-46e9-8fac-20da69686c06" SourceId="1" SourceUrl="http://216.162.180.77/PCMDEV/ConfiguratorService/v2/ProductConfiguratorUI.svc?xsd=xsd1" />
+    <MetadataFile FileName="ProductConfiguratorUI1.xsd" MetadataType="Schema" ID="c7894bbc-cc97-41cf-bab0-d4dc4d81933d" SourceId="1" SourceUrl="http://216.162.180.77/PCMDEV/ConfiguratorService/v2/ProductConfiguratorUI.svc?xsd=xsd0" />
+    <MetadataFile FileName="ProductConfiguratorUI.disco" MetadataType="Disco" ID="b4dc9985-2875-4757-943b-e545ede27dd1" SourceId="1" SourceUrl="http://216.162.180.77/PCMDEV/ConfiguratorService/v2/ProductConfiguratorUI.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

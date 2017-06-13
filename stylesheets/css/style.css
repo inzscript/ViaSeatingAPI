@@ -1,0 +1,40 @@
+.content_block_background{text-align:center}.content_block_background .box.three{padding:1.25rem 0.625rem;background:#f3f3f3}.content_block_background .box.three h2{margin:1.25rem 0 0;font-size:16px;font-weight:400;}.content_block_background .box.three h3{margin:1.25rem 0 0.625rem;}.featured_image{background-color: #FFF;max-width:25rem;margin:0 auto;border-radius:50%;overflow:hidden;border:2px solid transparent;-webkit-transform:translateZ(0);transform:translateZ(0);transition:border .3s ease}.featured_image:hover{border:2px solid #FF9F37}.featured_image:hover img{-webkit-transform:scale(1.1);-ms-transform:scale(1.1);transform:scale(1.1)}.featured_image img{display:inline-block;vertical-align:middle;-webkit-transform-origin:center;-ms-transform-origin:center;transform-origin:center;transition:-webkit-transform .5s ease;transition:transform .5s ease;transition:transform .5s ease, -webkit-transform .5s ease}.button{display:inline-block;padding:0.375rem 2.25rem;color:#FFF;border:0;background:#c2c2c2;font-size:.875rem;transition:background .3s ease;text-decoration:none;}.button:focus{background:#c2c2c2}.button:hover,.button:active{background:#FF9F37}.box.three .button{margin-top:20px;}
+
+.ui-widget .ui-widget-content {
+    border: none !important;
+}
+.ui-widget-content {
+    border:none !important;
+}
+
+.ui-tabs {
+    padding: 0 0 !important;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+    border: 1px solid #ff6a00 !important;
+    background: #FF9F37 !important;
+    font-weight: normal !important;
+    color: #333 !important;
+}
+.ui-tabs .ui-tabs-panel {
+    padding: 10px 8px !important;
+}
+
+ul.order {
+	margin:20px 70px;
+    text-align:left;
+	overflow:hidden;
+	border-top:1px solid #ccc;
+}
+.order li {
+	line-height:3.5em;
+	border-bottom:1px solid #ccc;
+	float:left;
+	display:inline;
+}
+.double li	{ width:50%;}
+.triple li	{ width:33.333%; }
+.quad li		{ width:25%; }
+.six li		{ width:16.666%; }
+
+/*# sourceMappingURL=style.css.map */

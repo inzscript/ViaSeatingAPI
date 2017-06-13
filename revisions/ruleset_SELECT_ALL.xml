@@ -1,0 +1,372 @@
+﻿<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <ConfigureResponse xmlns="http://infor.com/pcm/v2">
+      <ConfigureResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+        <ConfiguredPrice>0</ConfiguredPrice>
+        <CultureName>en-US</CultureName>
+        <Details/>
+        <ImageUrl/>
+        <IsExecutionComplete>false</IsExecutionComplete>
+        <IsPartialSaveEnabled>false</IsPartialSaveEnabled>
+        <Messages/>
+        <OptionToFocus>e77dca28-5182-4eca-8c9e-654d80aaf0e2</OptionToFocus>
+        <Pages>
+          <Page>
+            <Caption>ALL_CHAIRS</Caption>
+            <IsVisible>true</IsVisible>
+            <Screens>
+              <Screen>
+                <ApplicationLink i:nil="true"/>
+                <Caption/>
+                <Description/>
+                <ImageLink i:nil="true"/>
+                <InformationLink i:nil="true"/>
+                <IsVisible>true</IsVisible>
+                <ScreenOptions>
+                  <ScreenOption>
+                    <ApplicationLink i:nil="true"/>
+                    <AutoContinueMode>AutoContinueAndStay</AutoContinueMode>
+                    <Caption>SELECT CHAIR CATEGORY:</Caption>
+                    <DisplayFormat i:nil="true"/>
+                    <DisplayPrecision i:nil="true"/>
+                    <DisplayType>RadioButtonHorizontal</DisplayType>
+                    <DisplayValue i:nil="true"/>
+                    <ID>d51b2f2a-09d9-4b2d-96dc-8d833669bd77</ID>
+                    <InformationLink i:nil="true"/>
+                    <InformationMessage/>
+                    <IsDisplayableInRapidEntry>true</IsDisplayableInRapidEntry>
+                    <IsEnabled>true</IsEnabled>
+                    <IsGlobalPinned>false</IsGlobalPinned>
+                    <IsHighlighted>false</IsHighlighted>
+                    <IsOverridden>false</IsOverridden>
+                    <IsPinnable>false</IsPinnable>
+                    <IsPinnableAcross>false</IsPinnableAcross>
+                    <IsPinned>false</IsPinned>
+                    <IsRequired>true</IsRequired>
+                    <IsVisible>true</IsVisible>
+                    <Name>CHAIR_CATEGORY</Name>
+                    <Ranges/>
+                    <SelectableValues>
+                      <ScreenOptionValue>
+                        <Caption>ALL CHAIRS</Caption>
+                        <ImageLink/>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>ALL CHAIRS</Value>
+                        <CustomProperties/>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>CONFERENCE</Caption>
+                        <ImageLink/>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>CONFERENCE</Value>
+                        <CustomProperties/>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>EXECUTIVE</Caption>
+                        <ImageLink/>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>EXECUTIVE</Value>
+                        <CustomProperties/>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>LOUNGE</Caption>
+                        <ImageLink/>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>LOUNGE</Value>
+                        <CustomProperties/>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>MOTION</Caption>
+                        <ImageLink/>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>MOTION</Value>
+                        <CustomProperties/>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>MULTIPURPOSE</Caption>
+                        <ImageLink/>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>MULTIPURPOSE</Value>
+                        <CustomProperties/>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>OUTDOOR</Caption>
+                        <ImageLink/>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>OUTDOOR</Value>
+                        <CustomProperties/>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>TASK</Caption>
+                        <ImageLink/>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>TASK</Value>
+                        <CustomProperties/>
+                      </ScreenOptionValue>
+                    </SelectableValues>
+                    <Tooltip/>
+                    <Type>String</Type>
+                    <Value>TASK</Value>
+                  </ScreenOption>
+                </ScreenOptions>
+                <ShowCaption>false</ShowCaption>
+                <ShowDescription>false</ShowDescription>
+                <ShowSeparator>false</ShowSeparator>
+              </Screen>
+              <Screen>
+                <ApplicationLink i:nil="true"/>
+                <Caption/>
+                <Description/>
+                <ImageLink i:nil="true"/>
+                <InformationLink i:nil="true"/>
+                <IsVisible>true</IsVisible>
+                <ScreenOptions>
+                  <ScreenOption>
+                    <ApplicationLink i:nil="true"/>
+                    <AutoContinueMode>AutoContinueAndStay</AutoContinueMode>
+                    <Caption>SELECT CHAIR FAMILY</Caption>
+                    <DisplayFormat i:nil="true"/>
+                    <DisplayPrecision i:nil="true"/>
+                    <DisplayType>ImageHorizontal</DisplayType>
+                    <DisplayValue i:nil="true"/>
+                    <ID>e77dca28-5182-4eca-8c9e-654d80aaf0e2</ID>
+                    <InformationLink i:nil="true"/>
+                    <InformationMessage/>
+                    <IsDisplayableInRapidEntry>true</IsDisplayableInRapidEntry>
+                    <IsEnabled>true</IsEnabled>
+                    <IsGlobalPinned>false</IsGlobalPinned>
+                    <IsHighlighted>false</IsHighlighted>
+                    <IsOverridden>false</IsOverridden>
+                    <IsPinnable>false</IsPinnable>
+                    <IsPinnableAcross>false</IsPinnableAcross>
+                    <IsPinned>false</IsPinned>
+                    <IsRequired>true</IsRequired>
+                    <IsVisible>true</IsVisible>
+                    <Name>CHAIR_FAMILIES</Name>
+                    <Ranges/>
+                    <SelectableValues>
+                      <ScreenOptionValue>
+                        <Caption>FIRST EVER COPPER ANTIMICROBIAL MESH BACK FOR CLINICAL 24/7 USE</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/GENIECOPPER.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>GENIE COPPER</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>FLEXIBLE IN DESIGN, COMFORTABLE IN SIT AND SUITABLE TO ANY BUDGET</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/RUN2.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>RUN II</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>VERSATILE TASK SERIES THAT EMBODIES SOPHISTICATED ITALIAN DESIGN</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/4UMESH.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>4U MESH</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>VERSATILE TASK SERIES THAT EMBODIES SOPHISTICATED ITALIAN DESIGN</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/4UUPH.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>4U UPHOLSTERED</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>HIGH PERFORMANCE MULTI-SHIFT 24/7 TASK SERIES</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/GENIE.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>GENIE</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value>TASK</Value>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>PROFORM PROVIDES A COMPREHENSIVE AND CONSISTENT LOOK THROUGHOUT A FLOOR PLAN</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/PROFORMMESH.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>PROFORM MESH</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>SOPHISTICATED AND VERSATILE - THIS SEATING SYSTEM LENDS ITSELF TO BOTH COMFORT AND APPEARANCE</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/PROFROMUPH.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>PROFORM UPH</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>FROM HEAVY DUTY TO BIG AND TALL WITH 24/7 REQUIREMENTS - THIS BRISBANE COVERS MULTIPLE APPLICATIONS</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/BRISBANEHD.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>BRISBANE HD</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>PROVEN PERFORMER OF ERGONOMIC STANDARDS</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/BRISBANE.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>BRISBANE</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value>TASK</Value>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>INTENSIVE HARD WORKING TASK SERIES</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/RIVAUPH.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>RIVA ACT II UPHOLSTERED</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value>TASK</Value>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>INTENSIVE HARD WORKING TASK SERIES</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/RIVAMESH.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>RIVA ACT II MESH</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>STRIKINGLY GOOD LOOKING TO PROVIDE SUITABILITY WITHIN A PRIVATE OFFICE OR CONFERENCE ROOM</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/VOSSMESH.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>VOSS MESH</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                    </SelectableValues>
+                    <Tooltip/>
+                    <Type>String</Type>
+                    <Value/>
+                  </ScreenOption>
+                </ScreenOptions>
+                <ShowCaption>false</ShowCaption>
+                <ShowDescription>false</ShowDescription>
+                <ShowSeparator>false</ShowSeparator>
+              </Screen>
+            </Screens>
+          </Page>
+        </Pages>
+        <SelectionSummary>
+          <Detail>
+            <Caption>ALL_CHAIRS</Caption>
+            <IsHighlighted>false</IsHighlighted>
+            <Type>Page</Type>
+            <Value i:nil="true"/>
+          </Detail>
+          <Detail>
+            <Caption/>
+            <IsHighlighted>false</IsHighlighted>
+            <Type>Screen</Type>
+            <Value i:nil="true"/>
+          </Detail>
+          <Detail>
+            <Caption>SELECT CHAIR CATEGORY:</Caption>
+            <IsHighlighted>false</IsHighlighted>
+            <Type>ScreenOption</Type>
+            <Value>TASK</Value>
+          </Detail>
+          <Detail>
+            <Caption/>
+            <IsHighlighted>false</IsHighlighted>
+            <Type>Screen</Type>
+            <Value i:nil="true"/>
+          </Detail>
+          <Detail>
+            <Caption>SELECT CHAIR FAMILY</Caption>
+            <IsHighlighted>false</IsHighlighted>
+            <Type>ScreenOption</Type>
+            <Value/>
+          </Detail>
+        </SelectionSummary>
+      </ConfigureResult>
+    </ConfigureResponse>
+  </s:Body>
+</s:Envelope>

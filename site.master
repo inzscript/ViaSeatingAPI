@@ -1,0 +1,89 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="site.master.cs" Inherits="site" %>
+
+<%@ Register Src="~/Control/NavigationTop.ascx" TagPrefix="uc1" TagName="NavigationTop" %>
+<%@ Register Src="~/Control/Header.ascx" TagPrefix="uc1" TagName="Header" %>
+<%@ Register Src="~/Control/NavigationMain.ascx" TagPrefix="uc1" TagName="NavigationMain" %>
+<%@ Register Src="~/Control/Footer.ascx" TagPrefix="uc1" TagName="Footer" %>
+
+<!DOCTYPE html>
+
+<html lang="en-US" prefix="og: http://ogp.me/ns#" class="no-js">
+<head runat="server">
+    <title>seating - Via Seating, Inc.</title>
+    <meta charset="UTF-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/png" href="/images/icons/favicon.ico">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/images/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/icons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/images/icons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/images/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="msapplication-TileImage" content="/images/icons/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel='stylesheet' href='stylesheets/css/normalize.css?ver=4.7' type='text/css' media='all' />
+    <link rel='stylesheet' href='stylesheets/css/rt-css-framework.css?ver=4.7' type='text/css' media='all' />
+    <link rel='stylesheet' href='stylesheets/css/style-rttheme18.css?ver=4.7' type='text/css' media='all' />
+    <link rel='stylesheet' href='stylesheets/css/animate.css?ver=4.7' type='text/css' media='all' />
+    <!--[if IE 7]>
+    <link rel='stylesheet' href='http://www.viaseating.com/wp-content/themes/rttheme18/css/ie7.css?ver=4.7' type='text/css' media='all' />
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <link rel='stylesheet' href='http://www.viaseating.com/wp-content/themes/rttheme18/css/before_ie9.css?ver=4.7' type='text/css' media='all' />
+    <![endif]-->
+
+    <link href="stylesheets/css/theme_skin_inline.css" rel="stylesheet" type="text/css" />
+    <script type='text/javascript' src='http://www.viaseating.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+    <script type='text/javascript' src='http://www.viaseating.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+    <script type='text/javascript' src='http://www.viaseating.com/wp-content/themes/rttheme18/js/modernizr.min.js?ver=4.7'></script>
+
+    <link href="stylesheets/css/typography.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/css/style.css" rel="stylesheet" type="text/css" />
+    
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="page-template-default page page-id-38 page-parent  responsive menu-style-one templateid_664892 template-builder half-boxed rt_content_animations header-design1">
+    <form id="form1" runat="server">
+    <div id="container">
+        <uc1:NavigationTop runat="server" ID="NavigationTop" />
+
+        <!-- header -->
+        <header id="header">
+            <uc1:Header runat="server" ID="Header" />
+            <uc1:NavigationMain ID="NavigatinoMain" runat="server" />
+        </header><!-- end tag #header -->
+
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+
+    </div><!-- end div #container -->
+
+    <uc1:Footer ID="Footer" runat="server" />
+    </form>
+
+    <script type='text/javascript' src='http://www.viaseating.com/wp-content/themes/rttheme18/js/jquery.easing.1.3.js?ver=4.7'></script>
+    <script type='text/javascript' src='http://www.viaseating.com/wp-content/themes/rttheme18/js/jquery.tools.min.js?ver=4.7'></script>
+
+    <script type='text/javascript'>
+    /* <![CDATA[ */
+    var rt_theme_params = {"sticky_logo":"","content_animations":"on","page_loading":""};
+    /* ]]> */
+    </script>
+
+    <script type='text/javascript' src='http://www.viaseating.com/wp-content/themes/rttheme18/js/waypoints.min.js?ver=4.7'></script>
+    <script type="text/javascript" src="/Scripts/script-mobile.js"></script>
+
+</body>
+</html>

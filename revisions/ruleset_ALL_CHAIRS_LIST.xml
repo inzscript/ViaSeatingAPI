@@ -1,0 +1,736 @@
+﻿<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <ConfigureResponse xmlns="http://infor.com/pcm/v2">
+      <ConfigureResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+        <ConfiguredPrice>0</ConfiguredPrice>
+        <CultureName>en-US</CultureName>
+        <Details/>
+        <ImageUrl/>
+        <IsExecutionComplete>false</IsExecutionComplete>
+        <IsPartialSaveEnabled>false</IsPartialSaveEnabled>
+        <Messages/>
+        <OptionToFocus>272c414f-a23a-4118-93f9-511dded4f4cf</OptionToFocus>
+        <Pages>
+          <Page>
+            <Caption>ALL_CHAIRS</Caption>
+            <IsVisible>true</IsVisible>
+            <Screens>
+              <Screen>
+                <ApplicationLink i:nil="true"/>
+                <Caption/>
+                <Description/>
+                <ImageLink i:nil="true"/>
+                <InformationLink i:nil="true"/>
+                <IsVisible>true</IsVisible>
+                <ScreenOptions>
+                  <ScreenOption>
+                    <ApplicationLink i:nil="true"/>
+                    <AutoContinueMode>AutoContinueAndStay</AutoContinueMode>
+                    <Caption>SELECT CHAIR CATEGORY:</Caption>
+                    <DisplayFormat i:nil="true"/>
+                    <DisplayPrecision i:nil="true"/>
+                    <DisplayType>RadioButtonHorizontal</DisplayType>
+                    <DisplayValue i:nil="true"/>
+                    <ID>a4aae73c-9fb3-403f-b0b1-64267343e239</ID>
+                    <InformationLink i:nil="true"/>
+                    <InformationMessage/>
+                    <IsDisplayableInRapidEntry>true</IsDisplayableInRapidEntry>
+                    <IsEnabled>true</IsEnabled>
+                    <IsGlobalPinned>false</IsGlobalPinned>
+                    <IsHighlighted>false</IsHighlighted>
+                    <IsOverridden>false</IsOverridden>
+                    <IsPinnable>false</IsPinnable>
+                    <IsPinnableAcross>false</IsPinnableAcross>
+                    <IsPinned>false</IsPinned>
+                    <IsRequired>true</IsRequired>
+                    <IsVisible>true</IsVisible>
+                    <Name>CHAIR_CATEGORY</Name>
+                    <Ranges/>
+                    <SelectableValues>
+                      <ScreenOptionValue>
+                        <Caption>ALL CHAIRS</Caption>
+                        <ImageLink/>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>ALL CHAIRS</Value>
+                        <CustomProperties/>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>CONFERENCE</Caption>
+                        <ImageLink/>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>CONFERENCE</Value>
+                        <CustomProperties/>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>EXECUTIVE</Caption>
+                        <ImageLink/>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>EXECUTIVE</Value>
+                        <CustomProperties/>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>LOUNGE</Caption>
+                        <ImageLink/>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>LOUNGE</Value>
+                        <CustomProperties/>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>MOTION</Caption>
+                        <ImageLink/>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>MOTION</Value>
+                        <CustomProperties/>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>MULTIPURPOSE</Caption>
+                        <ImageLink/>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>MULTIPURPOSE</Value>
+                        <CustomProperties/>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>OUTDOOR</Caption>
+                        <ImageLink/>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>OUTDOOR</Value>
+                        <CustomProperties/>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>TASK</Caption>
+                        <ImageLink/>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>TASK</Value>
+                        <CustomProperties/>
+                      </ScreenOptionValue>
+                    </SelectableValues>
+                    <Tooltip/>
+                    <Type>String</Type>
+                    <Value>ALL CHAIRS</Value>
+                  </ScreenOption>
+                </ScreenOptions>
+                <ShowCaption>false</ShowCaption>
+                <ShowDescription>false</ShowDescription>
+                <ShowSeparator>false</ShowSeparator>
+              </Screen>
+              <Screen>
+                <ApplicationLink i:nil="true"/>
+                <Caption/>
+                <Description/>
+                <ImageLink i:nil="true"/>
+                <InformationLink i:nil="true"/>
+                <IsVisible>true</IsVisible>
+                <ScreenOptions>
+                  <ScreenOption>
+                    <ApplicationLink i:nil="true"/>
+                    <AutoContinueMode>AutoContinueAndStay</AutoContinueMode>
+                    <Caption>SELECT CHAIR FAMILY</Caption>
+                    <DisplayFormat i:nil="true"/>
+                    <DisplayPrecision i:nil="true"/>
+                    <DisplayType>ImageHorizontal</DisplayType>
+                    <DisplayValue i:nil="true"/>
+                    <ID>272c414f-a23a-4118-93f9-511dded4f4cf</ID>
+                    <InformationLink i:nil="true"/>
+                    <InformationMessage/>
+                    <IsDisplayableInRapidEntry>true</IsDisplayableInRapidEntry>
+                    <IsEnabled>true</IsEnabled>
+                    <IsGlobalPinned>false</IsGlobalPinned>
+                    <IsHighlighted>false</IsHighlighted>
+                    <IsOverridden>false</IsOverridden>
+                    <IsPinnable>false</IsPinnable>
+                    <IsPinnableAcross>false</IsPinnableAcross>
+                    <IsPinned>false</IsPinned>
+                    <IsRequired>true</IsRequired>
+                    <IsVisible>true</IsVisible>
+                    <Name>CHAIR_FAMILIES</Name>
+                    <Ranges/>
+                    <SelectableValues>
+                      <ScreenOptionValue>
+                        <Caption>FIRST EVER COPPER ANTIMICROBIAL MESH BACK FOR CLINICAL 24/7 USE</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/GENIECOPPER.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>GENIE COPPER</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>A UNIQUE MODULAR, FLEXIBLE PRODUCT EASILY TRANSFORMING MULTIPLE CONFIGURATIONS INTO PRODUCTIVE SPACES TO FIT YOUR NEEDS</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/LEGOLA.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>LEGOLA</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>FLEXIBLE IN DESIGN, COMFORTABLE IN SIT AND SUITABLE TO ANY BUDGET</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/RUN2.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>RUN II</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>SLEEK, SMOOTH AND AESTHETICALLY PLEASING - VIA SEATING'S NEWEST OUTDOOR COLLECTION</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/TAHOE.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>TAHOE OUTDOOR COLLECTION</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>VERO MEANING 'TRUTH' EMBODIES ALL THAT VIA SEATING IS - TRUE TO ITS ROOTS OF ERGONOMICS, AESTHETICS AND PRICE POINT</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/VERO.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>VERO</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>VERSATILE TASK SERIES THAT EMBODIES SOPHISTICATED ITALIAN DESIGN</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/4UMESH.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>4U MESH</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>VERSATILE TASK SERIES THAT EMBODIES SOPHISTICATED ITALIAN DESIGN</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/4UUPH.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>4U UPHOLSTERED</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>OUTDOOR FURNITURE LINE - DURABLE FOR EXTREME ENVIRONMENTS</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/SIERRA.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>SIERRA OUTDOOR COLLECTION</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>A CLEVER CONTEMPORARY DESIGN WITH EUROPEAN STYLE</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/CHICO.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>CHICO</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>COMFORTABLE AND TRANSITIONAL SEATING SOLUTION WITH VERSATILE DESIGN</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/EDGE.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>EDGE</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>DESIGNED FOR GLOVE-LIKE COMFORT AND UNIQUE MANAGEMENT FOR BOTH MANAGEMENT AND CONFERENCE SOLUTIONS</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/DYCE.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>DYCE</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>HIGH PERFORMANCE MULTI-SHIFT 24/7 TASK SERIES</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/GENIE.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>GENIE</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value>TASK</Value>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>MADE TO MOVE WITH YOU - A SIT TO STAND OPTION</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/MUVMAN.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>MUVMAN</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>ORIGINAL SIGNATURE PRODUCT FROM VIA SEATING - CLASSIC STYLE FROM CONTEMPORARY TO TRADITIONAL</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/LINATE.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>LINATE</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>PROFORM PROVIDES A COMPREHENSIVE AND CONSISTENT LOOK THROUGHOUT A FLOOR PLAN</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/PROFORMMESH.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>PROFORM MESH</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>SOPHISTICATED AND VERSATILE - THIS SEATING SYSTEM LENDS ITSELF TO BOTH COMFORT AND APPEARANCE</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/PROFROMUPH.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>PROFORM UPH</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>VERSATILE AND STYLISH HIGH DENSITY STACKER - SPLASH IS PERFECT FOR COLLABORATION</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/SPLASH.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>SPLASH</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>VISTA II IS STOUT, WELL-BUILT AND MADE TO FIT YOUR PRICE POINT</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/VISTAII.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>VISTA II</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>A REAL SIT TO STAND OPTION WITH THE ABILITY TO CONFORM TO YOUR NEEDS WHILE BEING ERGONOMICALLY CORRECT</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/3DEE.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>3DEE</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>BEAUTIFULLY UNIQUE AND PERFECTLY SCALED MULTIPURPOSE SEATING SERIES</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/ZEE.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>ZEE</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>CURVES THAT ACHIEVE INCREDIBLE COMFORT COMBINED WITH CLASSIC TUXEDO STYLING - MAKE THIS WELL DESIGNED SERIES UNIQUE</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/CARMEL.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>CARMEL</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>EMBODYING THE TRADITIONAL ASPECTS OF AN EXECUTIVE CHAIR WHILE MAINTAINING TAINING THE COMFORT AND UNIQUE FIT OF VIA SEATING</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/ESSEX.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>ESSEX</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>FROM HEAVY DUTY TO BIG AND TALL WITH 24/7 REQUIREMENTS - THIS BRISBANE COVERS MULTIPLE APPLICATIONS</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/BRISBANEHD.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>BRISBANE HD</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>GET FIT WHILE YOU SIT - SWOPPER MOVES WITH YOU WHILE PROVIDING THE ERGONOMICS YOUR BODY NEEDS</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/SWOPPER.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>SWOPPER</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>PROVEN PERFORMER OF ERGONOMIC STANDARDS</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/BRISBANE.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>BRISBANE</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value>TASK</Value>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>SOPHISTICATION MEETS COMFORT WITH THIS TRADITIONAL, YET FULLY FUNCTIONAL EXECUTIVE CHAIR</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/BERGEN.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>BERGEN</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>VISTA EMBODIES THE VIA SEATING QUALITY AND COMFORT WITH A DISTINCTIVE LOOK SUITABLE FOR A WIDE VARIETY OF ENVIRONMENTS</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/VISTA.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>VISTA CLASSIC</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>CAREFULLY TAILORED, EXECUTIVE CLASS STYLING WITH HEAVY DUTY APPLICATION</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/HEATHROW.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>HEATHROW</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>COMPLETELY MODULAR - A PROVEN ERGONOMIC STANDARD SOLUTION</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/TERRA.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>TERRA</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>INTENSIVE HARD WORKING TASK SERIES</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/RIVAUPH.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>RIVA ACT II UPHOLSTERED</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value>TASK</Value>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>INTENSIVE HARD WORKING TASK SERIES</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/RIVAMESH.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>RIVA ACT II MESH</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>MODULAR LOUNGE SEATING THAT'S COMFORTABLE FUNCTIONAL - SHIPS WITHIN 48 HOURS</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/SIEANNA.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>SIENNA</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>NO REASON TO SACRIFICE ERGONOMIC FUNCTION FOR LUXURIOUS EXECUTIVE COMFORT - OSLO OFFERS BOTH</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/OSLO.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>OSLO</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>SIT HOW YOU SEE FIT - OYO ISN'T JUST A CONVERSATION PIECE, IT'S A PIECE TO START CONVERSATIONS IN</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/OYO.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>OYO</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>SPEC CAN FIT ANYWHERE AND CAN MEET APPLICATIONS FOR COMPACT GUEST SEATING</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/SPEC.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>SPEC STOOL</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>STRIKINGLY GOOD LOOKING TO PROVIDE SUITABILITY WITHIN A PRIVATE OFFICE OR CONFERENCE ROOM</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/VOSSUPH.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>VOSS UPH</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>STRIKINGLY GOOD LOOKING TO PROVIDE SUITABILITY WITHIN A PRIVATE OFFICE OR CONFERENCE ROOM</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/VOSSMESH.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>VOSS MESH</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                      <ScreenOptionValue>
+                        <Caption>SUTRO IS A VERSATILE MULTIPURPOSE SEATING SERIES</Caption>
+                        <ImageLink>http://app02.viaseating.com/pcm/configuratorcontent/IMAGES/STEP1/SUTRO.PNG</ImageLink>
+                        <IsEnabled>true</IsEnabled>
+                        <IsVisible>true</IsVisible>
+                        <Value>SUTRO</Value>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>CHAIR_CATEGORY</Name>
+                            <Type>String</Type>
+                            <Value/>
+                          </CustomProperty>
+                        </CustomProperties>
+                      </ScreenOptionValue>
+                    </SelectableValues>
+                    <Tooltip/>
+                    <Type>String</Type>
+                    <Value/>
+                  </ScreenOption>
+                </ScreenOptions>
+                <ShowCaption>false</ShowCaption>
+                <ShowDescription>false</ShowDescription>
+                <ShowSeparator>false</ShowSeparator>
+              </Screen>
+            </Screens>
+          </Page>
+        </Pages>
+        <SelectionSummary>
+          <Detail>
+            <Caption>ALL_CHAIRS</Caption>
+            <IsHighlighted>false</IsHighlighted>
+            <Type>Page</Type>
+            <Value i:nil="true"/>
+          </Detail>
+          <Detail>
+            <Caption/>
+            <IsHighlighted>false</IsHighlighted>
+            <Type>Screen</Type>
+            <Value i:nil="true"/>
+          </Detail>
+          <Detail>
+            <Caption>SELECT CHAIR CATEGORY:</Caption>
+            <IsHighlighted>false</IsHighlighted>
+            <Type>ScreenOption</Type>
+            <Value>ALL CHAIRS</Value>
+          </Detail>
+          <Detail>
+            <Caption/>
+            <IsHighlighted>false</IsHighlighted>
+            <Type>Screen</Type>
+            <Value i:nil="true"/>
+          </Detail>
+          <Detail>
+            <Caption>SELECT CHAIR FAMILY</Caption>
+            <IsHighlighted>false</IsHighlighted>
+            <Type>ScreenOption</Type>
+            <Value/>
+          </Detail>
+        </SelectionSummary>
+      </ConfigureResult>
+    </ConfigureResponse>
+  </s:Body>
+</s:Envelope>
