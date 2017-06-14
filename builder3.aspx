@@ -14,9 +14,9 @@
 
         //ToDo: Used to call button on which we fire server.transfer
         function onFinalizePostBack() {
-            var btnName = $get("<%=btnFinalize.ClientID%>").name;
+            var btn1Name = $get("<%=btnFinalize.ClientID%>").name;
             jQuery('body').removeClass('loaded');
-          __doPostBack(btnName, "");
+            __doPostBack(btn1Name, "");
         }
 
         function onDropDownChange(dropdownValue) {
@@ -78,7 +78,9 @@
         }
 
         function updateChairImage(chairImg, backgroundImg) {
-            document.getElementById('preview-wrap').style.backgroundImage = 'url(' + chairImg + '), url(/images/background_1.jpg)';
+            //document.getElementById('preview-wrap').style.backgroundImage = 'url(/images/brisbane720_720.png), url(/images/background_1.jpg)';
+            var number = 1 + Math.floor(Math.random() * 200);
+            document.getElementById('preview-wrap').style.backgroundImage = 'url(' + chairImg + '?v=' + number + '), url(/images/background_1.jpg)';
             jQuery('body').addClass('loaded');
             jQuery('.ssticky').sticky({ topSpacing: 0 });
             jQuery('.ssticky').sticky('update');
@@ -113,52 +115,51 @@
             <div class="content_area clearfix">
 
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
-                <section id="row-content" class="content right">
-                    
-                    <!-- Image Area -->
-                    <div class="apply ssticky">
-                        <div class="preview-wrap" id="preview-wrap" style="background-color: #ffffff; background-image: url('/images/brisbane720_720.png'), url('/images/background_1.jpg');">
-                            
-                            <div id="overlay" style="display: none;">
-                                <div class="loading dots">
-                                    <span class="fa fa-circle"></span>
-                                    <span class="fa fa-circle"></span>
-                                    <span class="fa fa-circle"></span>
+                    <ContentTemplate>
+                        <section id="row-content" class="content right">
+
+                            <!-- Image Area -->
+                            <div class="apply ssticky">
+                                <div class="preview-wrap" id="preview-wrap" style="background-color: #ffffff; background-image: url('/images/brisbane720_720.png'), url('/images/background_1.jpg');">
+
+                                    <div id="overlay" style="display: none;">
+                                        <div class="loading dots">
+                                            <span class="fa fa-circle"></span>
+                                            <span class="fa fa-circle"></span>
+                                            <span class="fa fa-circle"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="image-options">
+                                        <div class="utility-bar">
+                                            <ul class="unstyled">
+                                                <li>
+                                                    <label>
+                                                        <input type="radio" value="Front" name="view" id="front" class="view" checked="checked">
+                                                        <span>FRONT</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" value="Back" name="view" id="back" class="view">
+                                                        <span>BACK</span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <button class="small" id="view-spec">SPEC</button></li>
+                                                <li class="border" id="change-event">
+                                                    <button class="small"><span class="icon-download"></span>PDF</button></li>
+                                                <li>
+                                                    <button class="final">FINALIZE SPEC</button></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
 
-                            <div class="image-options">
-                                <div class="utility-bar">
-                                    <ul class="unstyled">
-                                        <li>
-                                            <label>
-                                                <input type="radio" value="Front" name="view" id="front" class="view" checked="checked">
-                                                <span>FRONT</span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" value="Back" name="view" id="back" class="view">
-                                                <span>BACK</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <button class="small" id="view-spec">SPEC</button></li>
-                                        <li class="border" id="change-event">
-                                            <button class="small"><span class="icon-download"></span> PDF</button></li>
-                                        <li><button class="final">FINALIZE SPEC</button></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <asp:Literal ID="Literal2" runat="server"></asp:Literal>
 
-                        </div>
-                    </div>
-
-                    <asp:Literal ID="Literal2" runat="server"></asp:Literal>
-                </section>
-
-                    
-
-                </ContentTemplate>
+                        </section>
+                    </ContentTemplate>
                 </asp:UpdatePanel>
 
                 
@@ -176,26 +177,31 @@
 
                             <div class="finish">
                                 <hr>
-                                <asp:Button runat="server" ID="btnFinalizePostBack" OnClick="btnPostFinal_Click" Text="Finalize" CssClass="button" />
+                                
                                 <div style="display: none">
                                     <asp:Button runat="server" ID="btnPostBack" OnClick="btnPostBack_Click" Text="PostBack" />
                                 </div>
+                                <asp:Button runat="server" ID="btnFinalizePostBack" OnClick="btnPostFinal_Click" Text="Finalize" CssClass="button" />
                             </div>
 
-                            <script>
-                                (function () {
-                                    [].slice.call(document.querySelectorAll('select.cs-select')).forEach(function (el) {
-                                        new SelectFx(el, { stickyPlaceholder: true, onChange: function (selectedValue) { onDropDownChange(selectedValue); } });
-                                    });
-                                })();
-                            </script>
-                        </ContentTemplate>
+                        
+
+                    
+                    </ContentTemplate>
                     </asp:UpdatePanel>
-                    <div style="display: none">
-                        <asp:Button runat="server" ID="btnFinalize" OnClick="btnFinalize_Click" Text="Finalize PostBack" />
-                    </div>
                 </section>
                 
+                <div style="display: none">
+                        <asp:Button runat="server" ID="btnFinalize" OnClick="btnFinalize_Click" Text="Finalize PostBack" />
+                    </div>
+                
+                <script>
+                    (function () {
+                        [].slice.call(document.querySelectorAll('select.cs-select')).forEach(function (el) {
+                            new SelectFx(el, { stickyPlaceholder: true, onChange: function (selectedValue) { onDropDownChange(selectedValue); } });
+                        });
+                    })();
+                </script>
 
             </div>
 

@@ -40,7 +40,7 @@ public partial class builder3 : System.Web.UI.Page
             Regex rgx = new Regex(pattern);
             string result = rgx.Replace(UpdatedChairSelect.Value, replacement);
             UpdatedChairSelect.Value = result;
-
+            Literal1.Text += UpdatedChairSelect.Value;
             // Store the JSON data from PostBack HiddenFields into Global DataSet
             dataset = JsonConvert.DeserializeObject<DataSet>(UpdatedChairSelect.Value);
             dataTable = dataset.Tables["Options"];
@@ -333,6 +333,7 @@ public partial class builder3 : System.Web.UI.Page
             }
             // Set Global Variable ImageURL with the current ScreenOption image link
             ImageURL = UiData.ImageUrl.ToString();
+            Literal2.Text += UiData.ImageUrl.ToString() + "<br />";
         }
         
         if (selectionFound)
@@ -765,7 +766,7 @@ public partial class builder3 : System.Web.UI.Page
     {
         // Call server.transfer on ajax enabled postback click and saved code from page request Manager exception
         //ViaImageURL.Text += "Time(" + DateTime.Now.ToLongTimeString() + ") : " + SelectedOptionValue.Value;
-        
+
         //string pattern = "\"name\" : \"" + SelectedOptionName.Value + "\", \"value\" : \"[^\"]+\"";
         //string replacement = "\"name\" : \"" + SelectedOptionName.Value + "\", \"value\" : \"" + SelectedOptionValue.Value + "\"";
         //Regex rgx = new Regex(pattern);
@@ -776,6 +777,7 @@ public partial class builder3 : System.Web.UI.Page
     protected void btnPostFinal_Click(object send, EventArgs e)
     {
         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "displayNone", "<script language='JavaScript'>onFinalizePostBack();</script>", false);
+        //ScriptManager.RegisterStartupScript(UpdatePanel2, GetType(), "Javascript", "javascript: onFinalizePostBack();", true);
     }
 
     protected void btnFinalize_Click(object sender, EventArgs e)

@@ -47,7 +47,7 @@
 
     <link href="stylesheets/css/theme_skin_inline.css" rel="stylesheet" type="text/css" />
     <script type='text/javascript' src='http://www.viaseating.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
-    <script type='text/javascript' src='http://www.viaseating.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+    <%--<script type='text/javascript' src='http://www.viaseating.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>--%>
     <script type='text/javascript' src='http://www.viaseating.com/wp-content/themes/rttheme18/js/modernizr.min.js?ver=4.7'></script>
     <script type='text/javascript' src='/Scripts/jquery.sticky.js?ver=4.7'></script>
     <script type='text/javascript' src='/Scripts/script.js?ver=1.0'></script>
