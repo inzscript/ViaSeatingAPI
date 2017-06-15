@@ -78,7 +78,6 @@
         }
 
         function updateChairImage(chairImg, backgroundImg) {
-            //document.getElementById('preview-wrap').style.backgroundImage = 'url(/images/brisbane720_720.png), url(/images/background_1.jpg)';
             var number = 1 + Math.floor(Math.random() * 200);
             document.getElementById('preview-wrap').style.backgroundImage = 'url(' + chairImg + '?v=' + number + '), url(/images/background_1.jpg)';
             jQuery('body').addClass('loaded');
@@ -94,7 +93,7 @@
         function initializeChairImage(chairImg, backgroundImg) {
             document.getElementById('preview-wrap').style.backgroundImage = 'url(' + chairImg + '), url(/images/background_1.jpg)';
             jQuery('body').addClass('loaded');
-            jQuery('.ssticky').sticky({ topSpacing: 0, bottomSpacing: 0 });
+            jQuery('.ssticky').sticky({ topSpacing: 0 });
             jQuery('.ssticky').sticky('update');
         }
 
@@ -110,25 +109,19 @@
 
         </section>
         </section>
-
+        
         <div class="content_second_background">
-            <div class="content_area clearfix">
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                <ContentTemplate>
 
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>
+                    <div class="content_area clearfix">
+
+
                         <section id="row-content" class="content right">
 
                             <!-- Image Area -->
                             <div class="apply ssticky">
                                 <div class="preview-wrap" id="preview-wrap" style="background-color: #ffffff; background-image: url('/images/brisbane720_720.png'), url('/images/background_1.jpg');">
-
-                                    <div id="overlay" style="display: none;">
-                                        <div class="loading dots">
-                                            <span class="fa fa-circle"></span>
-                                            <span class="fa fa-circle"></span>
-                                            <span class="fa fa-circle"></span>
-                                        </div>
-                                    </div>
 
                                     <div class="image-options">
                                         <div class="utility-bar">
@@ -159,13 +152,9 @@
                             <asp:Literal ID="Literal2" runat="server"></asp:Literal>
 
                         </section>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
 
-                
-                <section id="row-sidebar" class="sidebar left">
-                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                        <ContentTemplate>
+                        <section id="row-sidebar" class="sidebar left">
+
                             <asp:Literal ID="Literal1" runat="server"></asp:Literal>
                             <asp:Literal ID="ViaImageURL" runat="server"></asp:Literal>
                             <asp:Literal ID="SectionOptions" runat="server"></asp:Literal>
@@ -177,35 +166,34 @@
 
                             <div class="finish">
                                 <hr>
-                                
+
                                 <div style="display: none">
                                     <asp:Button runat="server" ID="btnPostBack" OnClick="btnPostBack_Click" Text="PostBack" />
                                 </div>
                                 <asp:Button runat="server" ID="btnFinalizePostBack" OnClick="btnPostFinal_Click" Text="Finalize" CssClass="button" />
                             </div>
 
-                        
+                        </section>
 
-                    
-                    </ContentTemplate>
-                    </asp:UpdatePanel>
-                </section>
-                
-                <div style="display: none">
-                        <asp:Button runat="server" ID="btnFinalize" OnClick="btnFinalize_Click" Text="Finalize PostBack" />
                     </div>
-                
-                <script>
-                    (function () {
-                        [].slice.call(document.querySelectorAll('select.cs-select')).forEach(function (el) {
-                            new SelectFx(el, { stickyPlaceholder: true, onChange: function (selectedValue) { onDropDownChange(selectedValue); } });
-                        });
-                    })();
-                </script>
 
+                    <uc1:FooterContent runat="server" ID="FooterContent" />
+
+                </ContentTemplate>
+            </asp:UpdatePanel>
+            
+
+            <div style="display: none">
+                <asp:Button runat="server" ID="btnFinalize" OnClick="btnFinalize_Click" Text="Finalize PostBack" />
             </div>
 
-            <uc1:FooterContent runat="server" ID="FooterContent" />
+            <script>
+                (function () {
+                    [].slice.call(document.querySelectorAll('select.cs-select')).forEach(function (el) {
+                        new SelectFx(el, { stickyPlaceholder: true, onChange: function (selectedValue) { onDropDownChange(selectedValue); } });
+                    });
+                })();
+            </script>
 
         </div>
     </div>

@@ -40,7 +40,7 @@ public partial class builder3 : System.Web.UI.Page
             Regex rgx = new Regex(pattern);
             string result = rgx.Replace(UpdatedChairSelect.Value, replacement);
             UpdatedChairSelect.Value = result;
-            Literal1.Text += UpdatedChairSelect.Value;
+            //Literal1.Text += UpdatedChairSelect.Value;
             // Store the JSON data from PostBack HiddenFields into Global DataSet
             dataset = JsonConvert.DeserializeObject<DataSet>(UpdatedChairSelect.Value);
             dataTable = dataset.Tables["Options"];
@@ -319,7 +319,7 @@ public partial class builder3 : System.Web.UI.Page
                             if (select.Value == SearchValue)
                             {
                                 screenOptionID = screenoption.ID;
-                                Literal2.Text += SessionID + " : " + screenOptionID + " : " + SearchValue + "<br />";
+                                //Literal2.Text += SessionID + " : " + screenOptionID + " : " + SearchValue + "<br />";
 
                                 selectionFound = true;
                                 exitloop = true;
@@ -333,7 +333,7 @@ public partial class builder3 : System.Web.UI.Page
             }
             // Set Global Variable ImageURL with the current ScreenOption image link
             ImageURL = UiData.ImageUrl.ToString();
-            Literal2.Text += UiData.ImageUrl.ToString() + "<br />";
+            //Literal2.Text += UiData.ImageUrl.ToString() + "<br />";
         }
         
         if (selectionFound)
