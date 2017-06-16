@@ -475,13 +475,14 @@ public partial class builder3 : System.Web.UI.Page
 
         if (foundOption)
         {
-            // Could be selected if foundOption is the first selection.
+            // Could be selected if found Option is the first selection.
             SectionOptions.Text += sListOption1 + sFirstOptionNotSelected + sListOption2;
         } else
         {
             // Set Default DropDown to First Selection because NOT set.
-            list_properties += setDefault_list_properties;
-            SectionOptions.Text += sListOption1 + sFirstOptionSelected + sListOption2;
+            //list_properties += setDefault_list_properties;
+            //SectionOptions.Text += sListOption1 + sFirstOptionSelected + sListOption2;
+            SectionOptions.Text += sListOption1 + sFirstOptionNotSelected + sListOption2;
         }
         
         if (screenIndex == 0)
@@ -515,26 +516,29 @@ public partial class builder3 : System.Web.UI.Page
         }
 
         // Reset Section Option List
-        var sListOption1 = ""; var sListOption2 = ""; var sListOption3 = ""; var sListOption4 = ""; var sListOption5 = ""; var sListOption6 = "";
+        var sListOption1 = ""; var sListOption2 = ""; var sListOption3 = "";
         var selectIDX = 0;
         var inputcheck = "";
-        var checkboxvalue = defaultValue;
+        //var checkboxvalue = defaultValue;
+        var checkboxvalue = "";
         var found = false;
         foreach (var select in screenoption.SelectableValues)
         {
             // Dynamically create Literal for Screen Option Selectable Values
-            
             if (IsInChairOption(screenoption.Name, select.Value))
             {
-                //list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\"}";
+                list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\"}";
                 checkboxvalue = select.Value;
                 found = true;
             }
         }
 
-        list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + checkboxvalue + "\"}";
+        // Auto select
+        //list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + checkboxvalue + "\"}";
+        //if (checkboxvalue == "True")
+        //    inputcheck = " checked='checked'";
 
-        if (checkboxvalue == "True")
+        if (found)
             inputcheck = " checked='checked'";
 
         sListOption1 = "";
@@ -632,8 +636,9 @@ public partial class builder3 : System.Web.UI.Page
         else
         {
             // Set Default DropDown to First Selection because NOT set.
-            list_properties += setDefault_list_properties;
-            SectionOptions.Text += sFirstOptionSelected + sListOptions;
+            //list_properties += setDefault_list_properties;
+            //SectionOptions.Text += sFirstOptionSelected + sListOptions;
+            SectionOptions.Text += sFirstOptionNotSelected + sListOptions;
         }
 
         //SectionOptions.Text += sListOption1 + sListOption2 + sListOption3 + sListOption4;
