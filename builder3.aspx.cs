@@ -682,7 +682,32 @@ public partial class builder3 : System.Web.UI.Page
         }
         // Return boolean option if found
         return selectionFound;
+    }
 
+    // Function: IsInChairOptionByName
+    // Parameters: OptionName, OptionValue
+    // Decription: Checks if OptionName exist in the default parameters passed in the JSON data.
+    public bool IsInChairOptionByName(string OptionName, string OptionValue)
+    {
+        bool selectionFound = false;
+
+        if (dataTable.Rows.Count > 0)
+        {
+            // Check each parameter to see if found
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string parmkey = row["name"].ToString();
+                
+
+                if (parmkey == OptionName)
+                {
+                    selectionFound = true;
+                    break;
+                }
+            }
+        }
+        // Return boolean option if found
+        return selectionFound;
     }
 
     // Function: getScreenSelection

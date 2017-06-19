@@ -191,7 +191,7 @@ public partial class selector : System.Web.UI.Page
                                 //Literal2.Text += "Name=" + screenoption.Name + " Value=" + select.Value + "<br />";
                                 // Build the url parameters for the chair builder page
                                 // Set first parameter to the Chair Servies value
-                                var list_properties = "{\"Options\" : [{\"name\" : \"RULE\", \"value\" : \"" + OptSelectValue + "\"}";
+                                var list_properties = "{\"Options\" : [{\"name\" : \"RULE\", \"value\" : \"" + OptSelectValue + "\", \"visible\" : \"true\"}";
                                 var btn_name = "";
                                 var selectTop = "";
                                 var selectBottom = "";
@@ -208,7 +208,7 @@ public partial class selector : System.Web.UI.Page
                                         }
                                         else
                                         {
-                                            list_properties += ", {\"name\" : \"" + property.Name + "\", \"value\" : \"" + property.Value + "\"}";
+                                            list_properties += ", {\"name\" : \"" + property.Name + "\", \"value\" : \"" + property.Value + "\", \"visible\" : \"true\"}";
                                         }
                                     }
                                 }
