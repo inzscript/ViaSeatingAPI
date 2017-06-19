@@ -35,8 +35,9 @@ public partial class builder3 : System.Web.UI.Page
         {
             // Update the previous Chair Options stored as JSON data in HiddenField UPdatedChairSelect. 
             // Selected options name and value are stored in HiddenFields SelectedOptionName and SelectedOptionValue
-            string pattern = "\"name\" : \"" + SelectedOptionName.Value + "\", \"value\" : \"[^\"]+\"";
-            string replacement = "\"name\" : \"" + SelectedOptionName.Value + "\", \"value\" : \"" + SelectedOptionValue.Value + "\"";
+            //string pattern = "\"name\" : \"" + SelectedOptionName.Value + "\", \"value\" : \"[^\"]+\"";
+            string pattern = "\"name\" : \"" + SelectedOptionName.Value + "\", \"value\" : \"[^\"]+\", \"visible\" : \"[^\"]+\"";
+            string replacement = "\"name\" : \"" + SelectedOptionName.Value + "\", \"value\" : \"" + SelectedOptionValue.Value + "\", \"visible\" : \"true\"";
             Regex rgx = new Regex(pattern);
             string result = rgx.Replace(UpdatedChairSelect.Value, replacement);
             UpdatedChairSelect.Value = result;
@@ -465,8 +466,10 @@ public partial class builder3 : System.Web.UI.Page
             if (selectIDX == 0)
             {
                 sFirstOptionSelected = "<option value='" + select.Value + ":" + screenoption.Name + "' selected >" + select.Caption + sListOption3 + "</option>";
+
+                // Prepare to add first option as selected both on the form and DataSet. (disabled - set visible to false)
                 sFirstOptionNotSelected = "<option value='" + select.Value + ":" + screenoption.Name + "' " + inputSelected + ">" + select.Caption + sListOption3 + "</option>";
-                setDefault_list_properties = ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"true\"}";
+                setDefault_list_properties = ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"false\"}";
             } else { 
                 sListOption2 += "<option value='" + select.Value + ":" + screenoption.Name + "' " + inputSelected + ">" + select.Caption + sListOption3 + "</option>";
             }
@@ -479,8 +482,10 @@ public partial class builder3 : System.Web.UI.Page
             SectionOptions.Text += sListOption1 + sFirstOptionNotSelected + sListOption2;
         } else
         {
-            // Set Default DropDown to First Selection because NOT set.
-            //list_properties += setDefault_list_properties;
+            // Set Default DropDown to First Selection because NOT set. (disabled - set visible to false)
+            list_properties += setDefault_list_properties;
+
+            // Set Dropdown with first Option Selected
             //SectionOptions.Text += sListOption1 + sFirstOptionSelected + sListOption2;
             SectionOptions.Text += sListOption1 + sFirstOptionNotSelected + sListOption2;
         }
@@ -519,9 +524,9 @@ public partial class builder3 : System.Web.UI.Page
         var sListOption1 = ""; var sListOption2 = ""; var sListOption3 = "";
         var selectIDX = 0;
         var inputcheck = "";
-        //var checkboxvalue = defaultValue;
-        var checkboxvalue = "";
-        var found = false;
+        var checkboxvalue = defaultValue;
+        //var checkboxvalue = "";
+        Boolean foundOption = false;
         foreach (var select in screenoption.SelectableValues)
         {
             // Dynamically create Literal for Screen Option Selectable Values
@@ -529,7 +534,7 @@ public partial class builder3 : System.Web.UI.Page
             {
                 list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"true\"}";
                 checkboxvalue = select.Value;
-                found = true;
+                foundOption = true;
             }
         }
 
@@ -538,12 +543,20 @@ public partial class builder3 : System.Web.UI.Page
         //if (checkboxvalue == "True")
         //    inputcheck = " checked='checked'";
 
-        if (found)
-            inputcheck = " checked='checked'";
+        if (foundOption)
+        {
+            // Set checked
+            if (checkboxvalue == "True")
+                inputcheck = " checked='checked'";
+        }
+        else
+        {
+            // Set Default Checkbox. (disabled - set visible to false)
+            list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + checkboxvalue + "\", \"visible\" : \"false\"}";
+        }
 
-        sListOption1 = "";
-        sListOption2 = "<input type='checkbox' id='cmn-toggle-" + screenoption.Name + "' class='cmn-toggle cmn-toggle-yes-no'" + inputcheck + " onclick='javascript:onCheckBoxClick(\"" + screenoption.Name + "\");' > ";
-        sListOption3 = "<label for='cmn-toggle-" + screenoption.Name + "' data-on='Yes' data-off='No'></label>";
+        sListOption1 = "<input type='checkbox' id='cmn-toggle-" + screenoption.Name + "' class='cmn-toggle cmn-toggle-yes-no'" + inputcheck + " onclick='javascript:onCheckBoxClick(\"" + screenoption.Name + "\");' > ";
+        sListOption2 = "<label for='cmn-toggle-" + screenoption.Name + "' data-on='Yes' data-off='No'></label>";
 
         SectionOptions.Text += sListOption1 + sListOption2 + sListOption3;
 
@@ -618,7 +631,8 @@ public partial class builder3 : System.Web.UI.Page
                 sFirstOptionNotSelected += "<label for='" + select.Value + "' title='" + select.Caption + "' class=''>" + select.Caption + sOptionPrice + "</label>";
                 sFirstOptionNotSelected += "</li>";
 
-                setDefault_list_properties = ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"true\"}";
+                // Prepare to add first option as selected for the DataSet. (disabled - set visible to false)
+                setDefault_list_properties = ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"false\"}";
             } else {
                 sListOptions += "<li class='part extras radio-option'>";
                 sListOptions += "<input type='radio' id='" + select.Value + "' name='" + screenoption.Name + "' product-id='" + select.Value + "' section-id='" + screenoption.Name + "'" + inputcheck + " onclick='javascript:onRadioClick(\"" + screenoption.Name + "\",\"" + select.Value + "\");'></input>";
@@ -635,8 +649,8 @@ public partial class builder3 : System.Web.UI.Page
         }
         else
         {
-            // Set Default DropDown to First Selection because NOT set.
-            //list_properties += setDefault_list_properties;
+            // Set Default RadioBtn to first selection because NOT set.(disabled - set visible to false)
+            list_properties += setDefault_list_properties;
             //SectionOptions.Text += sFirstOptionSelected + sListOptions;
             SectionOptions.Text += sFirstOptionNotSelected + sListOptions;
         }

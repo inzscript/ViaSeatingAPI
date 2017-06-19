@@ -78,8 +78,9 @@ public partial class complete : System.Web.UI.Page
                 
                 string parmkey = row["name"].ToString();
                 string parmvalue = row["value"].ToString();
+                string parmvisible = row["visible"].ToString();
 
-                sList += "<li><strong>" + parmkey + "</strong> <span>" + parmvalue + "<span></li>";
+                sList += "<li><strong>" + parmkey + "</strong> <span>" + parmvalue + "</span></li>";
             }
             sList += "</ul>";
             Literal1.Text = sList;
