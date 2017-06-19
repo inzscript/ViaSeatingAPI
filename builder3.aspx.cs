@@ -367,7 +367,7 @@ public partial class builder3 : System.Web.UI.Page
             if (numScreens >= 1)
             {
                 // Create JSON data to track current ScreenOption selected values.
-                list_properties = "{\"Options\" : [{\"name\" : \"RULE\", \"value\" : \"" + RuleSet + "\"}";
+                list_properties = "{\"Options\" : [{\"name\" : \"RULE\", \"value\" : \"" + RuleSet + "\", \"visible\" : \"true\"}";
                 foreach (var screen in UiData.Pages[0].Screens)
                 {
                     if (screenIDX > -1 && screen.IsVisible == true)
@@ -438,7 +438,7 @@ public partial class builder3 : System.Web.UI.Page
             // Dynamically create Literal for Screen Option Selectable Values
             if (IsInChairOption(screenoption.Name, select.Value))
             {
-                list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\"}";
+                list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"true\"}";
                 inputSelected = "selected";
                 foundOption = true;
                 //ViaImageURL.Text += "Name:" + screenoption.Name + " Value:" + select.Value + " ";
@@ -466,7 +466,7 @@ public partial class builder3 : System.Web.UI.Page
             {
                 sFirstOptionSelected = "<option value='" + select.Value + ":" + screenoption.Name + "' selected >" + select.Caption + sListOption3 + "</option>";
                 sFirstOptionNotSelected = "<option value='" + select.Value + ":" + screenoption.Name + "' " + inputSelected + ">" + select.Caption + sListOption3 + "</option>";
-                setDefault_list_properties = ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\"}";
+                setDefault_list_properties = ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"true\"}";
             } else { 
                 sListOption2 += "<option value='" + select.Value + ":" + screenoption.Name + "' " + inputSelected + ">" + select.Caption + sListOption3 + "</option>";
             }
@@ -527,14 +527,14 @@ public partial class builder3 : System.Web.UI.Page
             // Dynamically create Literal for Screen Option Selectable Values
             if (IsInChairOption(screenoption.Name, select.Value))
             {
-                list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\"}";
+                list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"true\"}";
                 checkboxvalue = select.Value;
                 found = true;
             }
         }
 
         // Auto select
-        //list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + checkboxvalue + "\"}";
+        //list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + checkboxvalue + "\", \"visible\" : \"true\"}";
         //if (checkboxvalue == "True")
         //    inputcheck = " checked='checked'";
 
@@ -588,7 +588,7 @@ public partial class builder3 : System.Web.UI.Page
             if (IsInChairOption(screenoption.Name, select.Value))
             {
                 inputcheck = " checked='checked'";
-                list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\"}";
+                list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"true\"}";
                 foundOption = true;
             }
 
@@ -618,7 +618,7 @@ public partial class builder3 : System.Web.UI.Page
                 sFirstOptionNotSelected += "<label for='" + select.Value + "' title='" + select.Caption + "' class=''>" + select.Caption + sOptionPrice + "</label>";
                 sFirstOptionNotSelected += "</li>";
 
-                setDefault_list_properties = ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\"}";
+                setDefault_list_properties = ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"true\"}";
             } else {
                 sListOptions += "<li class='part extras radio-option'>";
                 sListOptions += "<input type='radio' id='" + select.Value + "' name='" + screenoption.Name + "' product-id='" + select.Value + "' section-id='" + screenoption.Name + "'" + inputcheck + " onclick='javascript:onRadioClick(\"" + screenoption.Name + "\",\"" + select.Value + "\");'></input>";
