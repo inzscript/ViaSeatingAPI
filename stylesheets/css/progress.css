@@ -180,3 +180,18 @@ ul.checkout-bar a {
 .checkout-section {
     margin: 10px 0 60px;
 }
+
+@media only screen and (max-width: 767px) { 
+    ul.checkout-bar li {
+    display: inline-block;
+    font-size: 12px;
+    padding: 12px 14px 12px 80px;
+    }
+    ul.checkout-bar {
+    /* list-style: disc; */
+    margin: 0 0;
+    }
+    .checkout-section {
+    margin: 0px 0 20px;
+}
+}

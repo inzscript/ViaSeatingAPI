@@ -36,8 +36,9 @@
     <link rel='stylesheet' href='stylesheets/css/rt-css-framework.css?ver=4.7' type='text/css' media='all' />
     <link rel='stylesheet' href='stylesheets/css/style-rttheme18.css?ver=4.7' type='text/css' media='all' />
     <link rel='stylesheet' href='stylesheets/css/animate.css?ver=4.7' type='text/css' media='all' />
-    <link rel='stylesheet' href='stylesheets/css/builder.css?ver=4.7' type='text/css' media='all' />
     <link rel='stylesheet' href='stylesheets/css/progress.css?ver=4.7' type='text/css' media='all' />
+    <link rel='stylesheet' href='stylesheets/css/builder.css?ver=4.7' type='text/css' media='all' />
+    
     <!--[if IE 7]>
     <link rel='stylesheet' href='http://www.viaseating.com/wp-content/themes/rttheme18/css/ie7.css?ver=4.7' type='text/css' media='all' />
     <![endif]-->

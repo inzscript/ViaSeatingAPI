@@ -1125,6 +1125,21 @@ aside.customizer {
     padding-bottom: 100%;
     margin-top: 0;
 }
+/* Mobile up to 767px */
+@media only screen and (max-width: 767px) { 
+  	.apply .preview-wrap {
+    background-size: 40%, 100%;
+    background-position: 50%, 50%;
+    position: relative;
+    width: 100%;
+    height: 120px !important;
+    padding-bottom: 325px;
+    }
+    .sidebar {
+    margin: 0 auto;
+    z-index: -1;
+    }
+} 
 @media screen and (max-width:1044px) {
     .apply.fixed {
     -webkit-transform: translate(0);
