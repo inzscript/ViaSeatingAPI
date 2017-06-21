@@ -5528,6 +5528,12 @@ h2,.single-products .head_text h1, .single-product .head_text h1{
 	font-size: 26px; 	
 }
 
+h3.featured_article_title {
+    /*color: #ff9f37;*/
+    font-size: 22px;
+    font-weight: normal;
+}
+
 h3{
 	font-size: 20px; 
 }
@@ -7565,12 +7571,12 @@ body span.icon{
 	}	
 
 	.responsive .info_bar .heading, .responsive .info_bar .breadcrumb{
-		width: 100%;
-		text-align: left;
+		/*width: 100%;*/
+		text-align: right;
 	}
 
 	.responsive .info_bar .heading{
-		margin-bottom: 10px;
+		margin-bottom: 35px;
 	}
 
 	.responsive #top_bar .social_media li{
@@ -7699,7 +7705,11 @@ body span.icon{
 	}
 
     .responsive .content img {
-        height: 400px;
+        height: auto;
+    }
+
+    .top_content .heading h1 {
+        font-size: 15px;
     }
 	
 }

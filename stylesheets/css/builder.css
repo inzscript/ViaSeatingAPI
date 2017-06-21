@@ -1142,7 +1142,10 @@ aside.customizer {
     margin: 0 auto;
     z-index: -1;
     }
-    section.content.right {    float: none;    width: 100%;    }
+    section.content.right {
+    float: none;
+    width: 100%;
+    }
 
 } 
 @media screen and (max-width:1044px) {

@@ -185,13 +185,26 @@ ul.checkout-bar a {
     ul.checkout-bar li {
     display: inline-block;
     font-size: 12px;
-    padding: 12px 14px 12px 80px;
+    padding: 10px 15px 10px 30px;
     }
-    ul.checkout-bar {
-    /* list-style: disc; */
+    ul.checkout-bar  {
     margin: 0 0;
     }
     .checkout-section {
-    margin: 0px 0 20px;
-}
+    margin: 0 0 20px;
+    }
+    ul.checkout-bar li:before {
+      border: none;
+      font-size: 12px;
+      left: 0px;
+      line-height: 27px;
+      height: 25px;
+      width: 25px;
+    }
+    ul.checkout-bar a {
+    font-size: 14px;
+    }
+    .checkout-wrap {
+        line-height: 100%;
+    }
 }

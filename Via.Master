@@ -35,8 +35,8 @@
     <link rel='stylesheet' href='stylesheets/css/normalize.css?ver=4.7' type='text/css' media='all' />
     <link rel='stylesheet' href='stylesheets/css/rt-css-framework.css?ver=4.7' type='text/css' media='all' />
     <link rel='stylesheet' href='stylesheets/css/style-rttheme18.css?ver=4.7' type='text/css' media='all' />
-    <link rel='stylesheet' href='stylesheets/css/progress.css?ver=4.7' type='text/css' media='all' />
     <link rel='stylesheet' href='stylesheets/css/animate.css?ver=4.7' type='text/css' media='all' />
+    <link rel='stylesheet' href='stylesheets/css/progress.css' type='text/css' media='all' />
     
     <!--[if IE 7]>
     <link rel='stylesheet' href='http://www.viaseating.com/wp-content/themes/rttheme18/css/ie7.css?ver=4.7' type='text/css' media='all' />
@@ -45,7 +45,7 @@
     <link rel='stylesheet' href='http://www.viaseating.com/wp-content/themes/rttheme18/css/before_ie9.css?ver=4.7' type='text/css' media='all' />
     <![endif]-->
 
-    <link href="stylesheets/css/theme_skin_inline.css" rel="stylesheet" type="text/css" />
+    <%--<link href="stylesheets/css/theme_skin_inline.css" rel="stylesheet" type="text/css" />--%>
     <script type='text/javascript' src='http://www.viaseating.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
     <%--<script type='text/javascript' src='http://www.viaseating.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>--%>
     <script type='text/javascript' src='http://www.viaseating.com/wp-content/themes/rttheme18/js/modernizr.min.js?ver=4.7'></script>
