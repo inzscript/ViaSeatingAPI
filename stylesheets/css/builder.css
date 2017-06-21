@@ -1100,7 +1100,7 @@ aside.customizer {
     width: auto;
     min-height: 300px;
     height: 0;
-    padding-bottom: 100%;
+    /*padding-bottom: 100%;*/
     margin-top: 0;
 }
 .apply.fixed {
@@ -1124,6 +1124,7 @@ aside.customizer {
     height: 0;
     padding-bottom: 100%;
     margin-top: 0;
+    border-bottom: 7px solid #3b4141;
 }
 /* Mobile up to 767px */
 @media only screen and (max-width: 767px) { 
@@ -1131,12 +1132,12 @@ aside.customizer {
     padding-bottom: 20px;
   	}
     .apply .preview-wrap {
-    background-size: 40%, 100%;
-    background-position: 40%, 50%;
+    background-size: 26%, 100%;
+    background-position: 22%, 50%;
     position: relative;
     width: 100%;
-    height: 120px !important;
-    padding-bottom: 325px;
+    height: 50px !important;
+    padding-bottom: 300px;
     }
     .sidebar {
     margin: 0 auto;

@@ -94,7 +94,7 @@
 
 	/* Mobile up to 767px */
 	@media only screen and (max-width: 767px) { 
-  		.responsive .sidebar{width:100%;}
+  		.responsive .sidebar{width:95%;}
  		.responsive .sidebar.right.fixed,.responsive .sidebar.left.fixed{position:relative;top: 0 !important;}	
 		.responsive section.content.left,
 		.responsive section.content.right
@@ -513,7 +513,7 @@
 
 		.responsive .row > .box:last-child, .responsive .content_block > section:last-child {margin-bottom:0}
 
-		#container .row, #container .sidebar{margin: 0 auto;}
+		#container .row, #container .sidebar{margin: 10px 10px; width: 95%}
 
 		.top_content > .row {
 			width: 90%;  
