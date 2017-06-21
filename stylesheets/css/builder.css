@@ -1126,6 +1126,16 @@ aside.customizer {
     margin-top: 0;
     border-bottom: 7px solid #3b4141;
 }
+.image-options {
+    float: right;
+    margin-right: 20px;
+    min-width: 650px;
+}
+@media screen and (max-width:1058px) {
+    .image-options {
+    margin-right: 5px;
+    }
+}
 /* Mobile up to 767px */
 @media only screen and (max-width: 767px) { 
   	.apply {
@@ -1147,7 +1157,11 @@ aside.customizer {
     float: none;
     width: 100%;
     }
-
+    .image-options {
+        margin: 0px auto !important;
+        float: none;
+        min-width: unset;
+    }
 } 
 @media screen and (max-width:1044px) {
     .apply.fixed {
@@ -1208,16 +1222,7 @@ aside.customizer {
     vertical-align: text-bottom;
     height: 20px;
 }
-.image-options {
-    float: right;
-    margin-right: 20px;
-    min-width: 650px;
-}
-@media screen and (max-width:1058px) {
-    .image-options {
-    margin-right: 5px;
-    }
-}
+
 .image-options ul {
     margin: 0;
 }

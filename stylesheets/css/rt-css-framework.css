@@ -513,7 +513,7 @@
 
 		.responsive .row > .box:last-child, .responsive .content_block > section:last-child {margin-bottom:0}
 
-		#container .row, #container .sidebar{margin: 10px 10px; width: 95%}
+		#container .row, #container .sidebar{margin: 25px 10px; width: 95%}
 
 		.top_content > .row {
 			width: 90%;  
