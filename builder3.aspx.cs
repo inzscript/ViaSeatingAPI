@@ -11,6 +11,11 @@ using System.IO;
 using System.Data;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.html;
+
+
 
 public partial class builder3 : System.Web.UI.Page
 {
@@ -253,12 +258,14 @@ public partial class builder3 : System.Web.UI.Page
 
                             CurrentID = getScreenSelection(configUiClient, sessionId, "", "", parmvalue);
 
-                            Literal2.Text = "Rebuiling in Progress...";
+                            Literal1.Text = "Rebuiling in Progress...";
 
                             if (CurrentID != "NotFound")
                             {
                                 CurrentID = getScreenSelection(configUiClient, sessionId, CurrentID, parmvalue, parmvalue);
                             }
+
+                            ViaImageURL.Text += UpdatedChairSelect.Value + "<br><br>";
                         }
                     }
                     vidx++;
@@ -430,8 +437,7 @@ public partial class builder3 : System.Web.UI.Page
                             if (select.Value == SearchValue)
                             {
                                 screenOptionID = screenoption.ID;
-                                //Literal2.Text += SessionID + " : " + screenOptionID + " : " + SearchValue + "<br />";
-
+                                ViaImageURL.Text += SessionID + " : " + screenOptionID + " : " + SearchValue + "<br />";
                                 selectionFound = true;
                                 exitloop = true;
                                 break;
@@ -926,6 +932,207 @@ public partial class builder3 : System.Web.UI.Page
         //Regex rgx = new Regex(pattern);
         //string result = rgx.Replace(UpdatedChairSelect.Value, replacement);
         //UpdatedChairSelect.Value = result;
+    }
+
+    protected void btnGeneratePDF_Click(object sender, EventArgs e)
+    {
+        Literal1.Text += "</br> Hello </br>";
+        try
+        {
+            string LOGOURL = Server.MapPath(".") + "/images/via-logo-with-sweet-spot-tagline.gif";
+            string CHAIRURL = ImageURL;
+
+            iTextSharp.text.Font bodyFont = FontFactory.GetFont("Arial", 8, iTextSharp.text.Font.NORMAL);
+            iTextSharp.text.Font bodyBoldFont = FontFactory.GetFont("Arial", 8, iTextSharp.text.Font.BOLD);
+            iTextSharp.text.Font headBoldFont = FontFactory.GetFont("Arial", 8, iTextSharp.text.Font.BOLD);
+
+            BaseColor primary = new BaseColor(255, 175, 88); // color: #FFAF58
+            BaseColor light1 = new BaseColor(255, 249, 243); // color: #FFF9F3
+            BaseColor light2 = new BaseColor(255, 207, 154); // color: #FFCF9A
+            BaseColor dark1 = new BaseColor(255, 145, 25); // color: #FF9119
+            BaseColor dark2 = new BaseColor(255, 133, 0); // color: #FF8500
+            BaseColor white = new BaseColor(255, 255, 255); // color: #FFF
+
+            Document pdfDoc = new Document(PageSize.LETTER, 25, 25, 25, 25);
+            PdfWriter pdfWriter = PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
+
+            pdfDoc.Open();
+
+            iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(LOGOURL);
+            logo.ScaleToFit(140f, 120f);
+            logo.SpacingBefore = 10f;
+            logo.SpacingAfter = 30f;
+            logo.Alignment = Element.ALIGN_CENTER;
+            pdfDoc.Add(logo);
+
+            iTextSharp.text.Image chair = iTextSharp.text.Image.GetInstance(CHAIRURL);
+            chair.ScaleToFit(130f, 130f);
+            chair.SpacingBefore = 10f;
+            chair.SpacingAfter = 10f;
+            chair.Alignment = Element.ALIGN_CENTER;
+            pdfDoc.Add(chair);
+
+            Paragraph header = new Paragraph("Brisbane");
+            header.Alignment = Element.ALIGN_CENTER;
+            pdfDoc.Add(header);            
+
+            PdfPTable table = new PdfPTable(5);
+            table.DefaultCell.Border = 0;
+            table.TotalWidth = 400f;
+            table.SpacingBefore = 5f;
+            table.SpacingAfter = 5f;
+
+            float[] widths = new float[] { 95f, 95f, 20f, 95f, 95f };
+            table.SetWidths(widths);
+            table.HorizontalAlignment = Element.ALIGN_CENTER;
+
+            //PdfPCell cell = new PdfPCell(new Phrase("Specification Sheet", bodyBoldFont));
+            //cell.BackgroundColor = white;
+            //cell.Colspan = 5;
+            //cell.Border = 0;
+            //cell.FixedHeight = 40f;
+            //cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            //cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            //table.AddCell(cell);
+
+            PdfPCell cell = new PdfPCell(new Phrase("ROW2COL1", headBoldFont));
+            cell.BackgroundColor = light1;
+            cell.Border = 0;
+            cell.FixedHeight = 40f;
+            cell.PaddingLeft = 2f;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            table.AddCell(cell);
+            cell = new PdfPCell(new Phrase("Row2, col2", bodyFont));
+            cell.BackgroundColor = light1;
+            cell.Border = 0;
+            cell.FixedHeight = 40f;
+            cell.PaddingLeft = 2f;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            table.AddCell(cell);
+            cell = new PdfPCell(new Phrase(" "));
+            cell.BackgroundColor = white;
+            cell.Border = 0;
+            cell.FixedHeight = 40f;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            table.AddCell(cell);
+            cell = new PdfPCell(new Phrase("ROW2COL4", headBoldFont));
+            cell.BackgroundColor = light1;
+            cell.Border = 0;
+            cell.FixedHeight = 40f;
+            cell.PaddingLeft = 2f;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            table.AddCell(cell);
+            cell = new PdfPCell(new Phrase("Row2, col5", bodyFont));
+            cell.BackgroundColor = light1;
+            cell.Border = 0;
+            cell.FixedHeight = 40f;
+            cell.PaddingLeft = 2f;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("ROW3COL1", headBoldFont));
+            cell.BackgroundColor = white;
+            cell.Border = 0;
+            cell.FixedHeight = 40f;
+            cell.PaddingLeft = 2f;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            table.AddCell(cell);
+            cell = new PdfPCell(new Phrase("Row3, col2", bodyFont));
+            cell.BackgroundColor = white;
+            cell.Border = 0;
+            cell.FixedHeight = 40f;
+            cell.PaddingLeft = 2f;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            table.AddCell(cell);
+            cell = new PdfPCell(new Phrase(" "));
+            cell.BackgroundColor = white;
+            cell.Border = 0;
+            cell.FixedHeight = 40f;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            table.AddCell(cell);
+            cell = new PdfPCell(new Phrase("ROW2COL4", headBoldFont));
+            cell.BackgroundColor = white;
+            cell.Border = 0;
+            cell.FixedHeight = 40f;
+            cell.PaddingLeft = 2f;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            table.AddCell(cell);
+            cell = new PdfPCell(new Phrase("Row3, col5", bodyFont));
+            cell.BackgroundColor = white;
+            cell.Border = 0;
+            cell.FixedHeight = 40f;
+            cell.PaddingLeft = 2f;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("ROW4COL1", headBoldFont));
+            cell.BackgroundColor = light1;
+            cell.Border = 0;
+            cell.FixedHeight = 40f;
+            cell.PaddingLeft = 2f;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            table.AddCell(cell);
+            cell = new PdfPCell(new Phrase("Row4, col2", bodyFont));
+            cell.BackgroundColor = light1;
+            cell.Border = 0;
+            cell.FixedHeight = 40f;
+            cell.PaddingLeft = 2f;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            table.AddCell(cell);
+            cell = new PdfPCell(new Phrase(" "));
+            cell.BackgroundColor = white;
+            cell.Border = 0;
+            cell.FixedHeight = 40f;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            table.AddCell(cell);
+            cell = new PdfPCell(new Phrase("ROW4COL4", headBoldFont));
+            cell.BackgroundColor = light1;
+            cell.Border = 0;
+            cell.FixedHeight = 40f;
+            cell.PaddingLeft = 2f;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            table.AddCell(cell);
+            cell = new PdfPCell(new Phrase("Row4, col5", bodyFont));
+            cell.BackgroundColor = light1;
+            cell.Border = 0;
+            cell.FixedHeight = 40f;
+            cell.PaddingLeft = 2f;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            table.AddCell(cell);
+
+            
+            pdfDoc.Add(table);
+
+            pdfWriter.CloseStream = false;
+            pdfDoc.Close();
+
+            Response.Buffer = true;
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("content-disposition", "attachment;filename=Spec-Sheet.pdf");
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Write(pdfDoc);
+            Response.End();
+
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
     }
 
     protected void btnPostFinal_Click(object send, EventArgs e)
