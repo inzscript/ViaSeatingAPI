@@ -304,7 +304,7 @@ public partial class selector : System.Web.UI.Page
     {
         // Call server.transfer on ajax enabled postback click and saved code from page request Manager exception
         Literal2.Text = "Hello, world - this is a fresh message from ASP.NET AJAX! The time right now is: " + DateTime.Now.ToLongTimeString();
-        Server.Transfer("builder3.aspx", false);
+        Server.Transfer("builder.aspx", false);
     }
 
 }

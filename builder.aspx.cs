@@ -17,13 +17,14 @@ using iTextSharp.text.html;
 
 
 
-public partial class builder3 : System.Web.UI.Page
+public partial class builder : System.Web.UI.Page
 {
     // Define Global Variable
     public string gSessionID = "";
     public string ImageURL = "";
     public string RuleSet = "";
     public string list_properties = "";
+    public string list_selection_summary = "";
     public string error_timeout = "<h2>Chair Builder Session Timed Out</h2><p>Please start your session over.</p><p><a href='/' class='button'>View all chairs</a></p>";
 
     // Define Global DataSet for JSON Data
@@ -161,7 +162,7 @@ public partial class builder3 : System.Web.UI.Page
 
                 showScreenSelection(configUiClient, sessionId);
 
-                updateChairRebuild("");
+                //updateChairRebuild("");
             }
             catch (Exception ex)
             {
@@ -369,6 +370,7 @@ public partial class builder3 : System.Web.UI.Page
                     vidx++;
                 }
 
+                saveSelectionSummary(configUiClient, sessionId);
                 showScreenSelection(configUiClient, sessionId);
             }
             catch (Exception ex)
@@ -437,7 +439,7 @@ public partial class builder3 : System.Web.UI.Page
                             if (select.Value == SearchValue)
                             {
                                 screenOptionID = screenoption.ID;
-                                ViaImageURL.Text += SessionID + " : " + screenOptionID + " : " + SearchValue + "<br />";
+                                //ViaImageURL.Text += SessionID + " : " + screenOptionID + " : " + SearchValue + "<br />";
                                 selectionFound = true;
                                 exitloop = true;
                                 break;
@@ -516,6 +518,38 @@ public partial class builder3 : System.Web.UI.Page
                 list_properties += "] }";
                 UpdatedChairSelect.Value = list_properties;
             }
+        }
+    }
+
+    protected void saveSelectionSummary(ProdConfigUI.ProductConfiguratorUIServiceProxyClient UIClient, string SessionID)
+    {
+        // Setup API Call: Configure( SessionID, OptionSelection(ID, Value))
+        var selections = new ProdConfigUI.OptionSelection[0];
+        var UiData = UIClient.Configure(SessionID, selections);
+        var numSummary = UiData.Pages.Length;
+        Boolean isFirstSelection = true;
+
+        if (numSummary >= 1)
+        {
+            // Create JSON data to track current SummarySelection values.
+            list_selection_summary = "{\"Selections\" : [";
+            foreach (var detail in UiData.SelectionSummary)
+            {
+                // Skip SelectionSummary.Detail.Type Screen since it has no value.
+                if ((detail.Type.ToString() != "Screen") && (detail.Caption != "Page 1"))
+                {
+                    if (isFirstSelection)
+                    {
+                        list_selection_summary += "{\"caption\" : \"" + detail.Caption + "\", \"value\" : \"" + detail.Value + "\"}";
+                        isFirstSelection = false;
+                    }
+                    else
+                        list_selection_summary += ", {\"caption\" : \"" + detail.Caption + "\", \"value\" : \"" + detail.Value + "\"}";
+                }
+            }
+            // Store the current selected values as JSON data in HiddenField used for PostBack.
+            list_selection_summary += "] }";
+            SelectionSummary.Value = list_selection_summary;
         }
     }
 
@@ -936,9 +970,13 @@ public partial class builder3 : System.Web.UI.Page
 
     protected void btnGeneratePDF_Click(object sender, EventArgs e)
     {
-        Literal1.Text += "</br> Hello </br>";
         try
         {
+            // Get current SummarySelection and convert to Json Data
+            DataSet summaryDataset = JsonConvert.DeserializeObject<DataSet>(SelectionSummary.Value);
+            DataTable summaryTable = summaryDataset.Tables["Selections"];
+
+            // Initialize VIA logo, Fonts and Colors Scheme
             string LOGOURL = Server.MapPath(".") + "/images/via-logo-with-sweet-spot-tagline.gif";
             string CHAIRURL = ImageURL;
 
@@ -958,6 +996,7 @@ public partial class builder3 : System.Web.UI.Page
 
             pdfDoc.Open();
 
+            // Write VIA Logo to PDF
             iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(LOGOURL);
             logo.ScaleToFit(140f, 120f);
             logo.SpacingBefore = 10f;
@@ -965,52 +1004,77 @@ public partial class builder3 : System.Web.UI.Page
             logo.Alignment = Element.ALIGN_CENTER;
             pdfDoc.Add(logo);
 
+            // Write current selected chair image url to PDF
             iTextSharp.text.Image chair = iTextSharp.text.Image.GetInstance(CHAIRURL);
-            chair.ScaleToFit(130f, 130f);
+            chair.ScaleToFit(150f, 150f);
             chair.SpacingBefore = 10f;
             chair.SpacingAfter = 10f;
             chair.Alignment = Element.ALIGN_CENTER;
             pdfDoc.Add(chair);
 
-            Paragraph header = new Paragraph("Brisbane");
-            header.Alignment = Element.ALIGN_CENTER;
-            pdfDoc.Add(header);            
+            // Write type to header
+            //Paragraph header = new Paragraph("Brisbane");
+            //header.Alignment = Element.ALIGN_CENTER;
+            //pdfDoc.Add(header);
 
+            // Create Table with option selection for Specification Sheet
             PdfPTable table = new PdfPTable(5);
             table.DefaultCell.Border = 0;
             table.TotalWidth = 400f;
             table.SpacingBefore = 5f;
             table.SpacingAfter = 5f;
 
-            float[] widths = new float[] { 95f, 95f, 20f, 95f, 95f };
+            float[] widths = new float[] { 95f, 95f, 10f, 95f, 95f };
             table.SetWidths(widths);
             table.HorizontalAlignment = Element.ALIGN_CENTER;
 
-            //PdfPCell cell = new PdfPCell(new Phrase("Specification Sheet", bodyBoldFont));
-            //cell.BackgroundColor = white;
-            //cell.Colspan = 5;
-            //cell.Border = 0;
-            //cell.FixedHeight = 40f;
-            //cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            //cell.HorizontalAlignment = Element.ALIGN_CENTER;
-            //table.AddCell(cell);
+            var rowIDX = 1;
+            var cellIDX = 1;
+            PdfPCell cell;
 
-            PdfPCell cell = new PdfPCell(new Phrase("ROW2COL1", headBoldFont));
-            cell.BackgroundColor = light1;
-            cell.Border = 0;
-            cell.FixedHeight = 40f;
-            cell.PaddingLeft = 2f;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            table.AddCell(cell);
-            cell = new PdfPCell(new Phrase("Row2, col2", bodyFont));
-            cell.BackgroundColor = light1;
-            cell.Border = 0;
-            cell.FixedHeight = 40f;
-            cell.PaddingLeft = 2f;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            table.AddCell(cell);
+            foreach (DataRow row in summaryTable.Rows)
+            {
+
+                cell = new PdfPCell(new Phrase(row["caption"].ToString(), bodyBoldFont));
+
+                if (((rowIDX % 4) == 0) || (((rowIDX+1) % 4) == 0))
+                    cell.BackgroundColor = white;
+                else
+                    cell.BackgroundColor = light1;
+
+                cell.Border = 0;
+                cell.FixedHeight = 40f;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                table.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase(row["value"].ToString(), bodyFont));
+
+                if (((rowIDX % 4) == 0) || (((rowIDX+1) % 4) == 0))
+                    cell.BackgroundColor = white;
+                else
+                    cell.BackgroundColor = light1;
+
+                cell.Border = 0;
+                cell.FixedHeight = 40f;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                table.AddCell(cell);
+
+                if (!((rowIDX % 2) == 0))
+                {
+                    cell = new PdfPCell(new Phrase(" "));
+                    cell.BackgroundColor = white;
+                    cell.Border = 0;
+                    cell.FixedHeight = 40f;
+                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cell);
+                }
+                    rowIDX++;
+            }
+
+            // Add filler cells to complete 5 cells per row, won't display if less than 5
             cell = new PdfPCell(new Phrase(" "));
             cell.BackgroundColor = white;
             cell.Border = 0;
@@ -1018,40 +1082,7 @@ public partial class builder3 : System.Web.UI.Page
             cell.VerticalAlignment = Element.ALIGN_MIDDLE;
             cell.HorizontalAlignment = Element.ALIGN_LEFT;
             table.AddCell(cell);
-            cell = new PdfPCell(new Phrase("ROW2COL4", headBoldFont));
-            cell.BackgroundColor = light1;
-            cell.Border = 0;
-            cell.FixedHeight = 40f;
-            cell.PaddingLeft = 2f;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            table.AddCell(cell);
-            cell = new PdfPCell(new Phrase("Row2, col5", bodyFont));
-            cell.BackgroundColor = light1;
-            cell.Border = 0;
-            cell.FixedHeight = 40f;
-            cell.PaddingLeft = 2f;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            table.AddCell(cell);
 
-
-            cell = new PdfPCell(new Phrase("ROW3COL1", headBoldFont));
-            cell.BackgroundColor = white;
-            cell.Border = 0;
-            cell.FixedHeight = 40f;
-            cell.PaddingLeft = 2f;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            table.AddCell(cell);
-            cell = new PdfPCell(new Phrase("Row3, col2", bodyFont));
-            cell.BackgroundColor = white;
-            cell.Border = 0;
-            cell.FixedHeight = 40f;
-            cell.PaddingLeft = 2f;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            table.AddCell(cell);
             cell = new PdfPCell(new Phrase(" "));
             cell.BackgroundColor = white;
             cell.Border = 0;
@@ -1059,65 +1090,7 @@ public partial class builder3 : System.Web.UI.Page
             cell.VerticalAlignment = Element.ALIGN_MIDDLE;
             cell.HorizontalAlignment = Element.ALIGN_LEFT;
             table.AddCell(cell);
-            cell = new PdfPCell(new Phrase("ROW2COL4", headBoldFont));
-            cell.BackgroundColor = white;
-            cell.Border = 0;
-            cell.FixedHeight = 40f;
-            cell.PaddingLeft = 2f;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            table.AddCell(cell);
-            cell = new PdfPCell(new Phrase("Row3, col5", bodyFont));
-            cell.BackgroundColor = white;
-            cell.Border = 0;
-            cell.FixedHeight = 40f;
-            cell.PaddingLeft = 2f;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            table.AddCell(cell);
 
-
-            cell = new PdfPCell(new Phrase("ROW4COL1", headBoldFont));
-            cell.BackgroundColor = light1;
-            cell.Border = 0;
-            cell.FixedHeight = 40f;
-            cell.PaddingLeft = 2f;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            table.AddCell(cell);
-            cell = new PdfPCell(new Phrase("Row4, col2", bodyFont));
-            cell.BackgroundColor = light1;
-            cell.Border = 0;
-            cell.FixedHeight = 40f;
-            cell.PaddingLeft = 2f;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            table.AddCell(cell);
-            cell = new PdfPCell(new Phrase(" "));
-            cell.BackgroundColor = white;
-            cell.Border = 0;
-            cell.FixedHeight = 40f;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            table.AddCell(cell);
-            cell = new PdfPCell(new Phrase("ROW4COL4", headBoldFont));
-            cell.BackgroundColor = light1;
-            cell.Border = 0;
-            cell.FixedHeight = 40f;
-            cell.PaddingLeft = 2f;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            table.AddCell(cell);
-            cell = new PdfPCell(new Phrase("Row4, col5", bodyFont));
-            cell.BackgroundColor = light1;
-            cell.Border = 0;
-            cell.FixedHeight = 40f;
-            cell.PaddingLeft = 2f;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            table.AddCell(cell);
-
-            
             pdfDoc.Add(table);
 
             pdfWriter.CloseStream = false;
@@ -1125,7 +1098,7 @@ public partial class builder3 : System.Web.UI.Page
 
             Response.Buffer = true;
             Response.ContentType = "application/pdf";
-            Response.AddHeader("content-disposition", "attachment;filename=Spec-Sheet.pdf");
+            Response.AddHeader("content-disposition", "attachment;filename=Via-Specification-Sheet.pdf");
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Write(pdfDoc);
             Response.End();
