@@ -31,6 +31,9 @@ public partial class builder : System.Web.UI.Page
     public DataSet dataset;
     public DataTable dataTable;
 
+    public DataSet summaryDataset;
+    public DataTable summaryTable;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         // Set the current step visual.
@@ -159,6 +162,11 @@ public partial class builder : System.Web.UI.Page
                         CurrentID = getScreenSelection(configUiClient, sessionId, CurrentID, parmvalue, parmvalue);
                     }
                 }
+
+                saveSelectionSummary(configUiClient, sessionId);
+                //Literal1.Text = list_selection_summary;
+                summaryDataset = JsonConvert.DeserializeObject<DataSet>(SelectionSummary.Value);
+                summaryTable = summaryDataset.Tables["Selections"];
 
                 showScreenSelection(configUiClient, sessionId);
 
@@ -371,6 +379,9 @@ public partial class builder : System.Web.UI.Page
                 }
 
                 saveSelectionSummary(configUiClient, sessionId);
+                summaryDataset = JsonConvert.DeserializeObject<DataSet>(SelectionSummary.Value);
+                summaryTable = summaryDataset.Tables["Selections"];
+
                 showScreenSelection(configUiClient, sessionId);
             }
             catch (Exception ex)
@@ -587,7 +598,8 @@ public partial class builder : System.Web.UI.Page
         {
             var inputSelected = "";
             // Dynamically create Literal for Screen Option Selectable Values
-            if (IsInChairOption(screenoption.Name, select.Value))
+            //if (IsInChairOption(screenoption.Name, select.Value))
+            if (IsInSummarySelection(screenoption.Caption, select.Caption))
             {
                 list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"true\"}";
                 inputSelected = "selected";
@@ -680,7 +692,8 @@ public partial class builder : System.Web.UI.Page
         foreach (var select in screenoption.SelectableValues)
         {
             // Dynamically create Literal for Screen Option Selectable Values
-            if (IsInChairOption(screenoption.Name, select.Value))
+            //if (IsInChairOption(screenoption.Name, select.Value))
+            if (IsInSummarySelection(screenoption.Caption, select.Caption))
             {
                 list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"true\"}";
                 checkboxvalue = select.Value;
@@ -748,7 +761,8 @@ public partial class builder : System.Web.UI.Page
         {
             // Dynamically create Literal for Screen Option Selectable Values
             var inputcheck = "";
-            if (IsInChairOption(screenoption.Name, select.Value))
+            //if (IsInChairOption(screenoption.Name, select.Value))
+            if (IsInSummarySelection(screenoption.Caption, select.Caption))
             {
                 inputcheck = " checked='checked'";
                 list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"true\"}";
@@ -838,6 +852,29 @@ public partial class builder : System.Web.UI.Page
                 { parmvalue = "False"; }
 
                 if (parmkey == OptionName && parmvalue == OptionValue)
+                {
+                    selectionFound = true;
+                    break;
+                }
+            }
+        }
+        // Return boolean option if found
+        return selectionFound;
+    }
+
+    public bool IsInSummarySelection(string ScreenCaption, string OptionCaption)
+    {
+        bool selectionFound = false;
+
+        if (summaryTable.Rows.Count > 0)
+        {
+            // Check each parameter to see if found
+            foreach (DataRow row in summaryTable.Rows)
+            {
+                string parmkey = row["caption"].ToString();
+                string parmvalue = row["value"].ToString();
+
+                if (parmkey == ScreenCaption && parmvalue == OptionCaption)
                 {
                     selectionFound = true;
                     break;
@@ -973,8 +1010,8 @@ public partial class builder : System.Web.UI.Page
         try
         {
             // Get current SummarySelection and convert to Json Data
-            DataSet summaryDataset = JsonConvert.DeserializeObject<DataSet>(SelectionSummary.Value);
-            DataTable summaryTable = summaryDataset.Tables["Selections"];
+            summaryDataset = JsonConvert.DeserializeObject<DataSet>(SelectionSummary.Value);
+            summaryTable = summaryDataset.Tables["Selections"];
 
             // Initialize VIA logo, Fonts and Colors Scheme
             string LOGOURL = Server.MapPath(".") + "/images/via-logo-with-sweet-spot-tagline.gif";
@@ -1040,7 +1077,7 @@ public partial class builder : System.Web.UI.Page
                 if (((rowIDX % 4) == 0) || (((rowIDX+1) % 4) == 0))
                     cell.BackgroundColor = white;
                 else
-                    cell.BackgroundColor = light1;
+                    cell.BackgroundColor = light2;
 
                 cell.Border = 0;
                 cell.FixedHeight = 40f;
@@ -1053,7 +1090,7 @@ public partial class builder : System.Web.UI.Page
                 if (((rowIDX % 4) == 0) || (((rowIDX+1) % 4) == 0))
                     cell.BackgroundColor = white;
                 else
-                    cell.BackgroundColor = light1;
+                    cell.BackgroundColor = light2;
 
                 cell.Border = 0;
                 cell.FixedHeight = 40f;

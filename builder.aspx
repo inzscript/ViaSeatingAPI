@@ -139,12 +139,12 @@
                                                 <li>
                                                     <button class="small" id="view-spec">SPEC</button>
                                                 </li>
-                                                <li class="border" id="change-event">
+                                                <%--<li class="border" id="change-event">
                                                     <button class="small" id="btnPDF" runat="server" onserverclick="btnGeneratePDF_Click" onclick="return false;"><span class="icon-download"></span>PDF</button>
-                                                </li>
-                                                <li>
+                                                </li>--%>
+                                                <%--<li>
                                                     <button class="final">FINALIZE SPEC</button>
-                                                </li>
+                                                </li>--%>
                                             </ul>
                                         </div>
                                     </div>
@@ -186,7 +186,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
 
-            <asp:Button ID="createPDF" runat="server" OnClick="btnGeneratePDF_Click" CssClass="button" Text="PDF" />
+            <asp:Button ID="createPDF" runat="server" OnClick="btnGeneratePDF_Click" CssClass="button" Text="Save PDF" />
             
 
             <div style="display: none">
