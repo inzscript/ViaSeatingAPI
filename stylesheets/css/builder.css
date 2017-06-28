@@ -1286,6 +1286,9 @@ aside.customizer {
     letter-spacing: 1px;
     margin-top: 2px;
 }
+.button.final {
+    background-color: #4fb1cd;
+} 
 .image-options .final, .image-options button.save {
     background-color: #4fb1cd;
     font-size: 10px;

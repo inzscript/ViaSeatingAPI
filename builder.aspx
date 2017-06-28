@@ -182,7 +182,7 @@
                                     <asp:Button runat="server" ID="btnPostBack" OnClick="btnPostBack_Click" Text="PostBack" />
                                 </div>
                                 <div class="finalize-wrapper">
-                                    <asp:Button runat="server" ID="btnFinalizePostBack" OnClick="btnPostFinal_Click" Text="Finalize" CssClass="button" />
+                                    <asp:Button runat="server" ID="btnFinalizePostBack" OnClick="btnPostFinal_Click" Text="Finalize" CssClass="button final" />
                                 </div>
                             </div>
 
