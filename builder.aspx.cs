@@ -59,6 +59,16 @@ public partial class builder : System.Web.UI.Page
 
             ScriptManager.RegisterStartupScript(UpdatePanel2, GetType(), "Javascript", "javascript: updateChairImage('" + ImageURL + "', '');", true);
             //ScriptManager.RegisterStartupScript(UpdatePanel2, GetType(), "Javascript", "jQuery(function() {document.getElementById('preview-wrap').style.backgroundImage = 'url(" + ImageURL + "), url(/images/background_1.jpg)';jQuery('body').addClass('loaded'); jQuery('.ssticky').sticky({ topSpacing: 0 }); jQuery('.ssticky').sticky('update');}); ", true);
+
+            // Check if F7 - CHAIR IMAGE VIEW to trigger ruleset is complete
+            if ((IsInSummarySelection("CHAIR IMAGE VIEW:", "FRONT")) || (IsInSummarySelection("CHAIR IMAGE VIEW:", "BACK")))
+            { // NOTHING
+            }
+            else
+            {
+                // Hide Finalize Button and display pick options
+                ScriptManager.RegisterStartupScript(UpdatePanel2, GetType(), "Javascript2", "javascript: hideFinalizeBtn();", true);
+            }
         }
 
         // Initialize First Page Load,
@@ -171,116 +181,6 @@ public partial class builder : System.Web.UI.Page
                 showScreenSelection(configUiClient, sessionId);
 
                 //updateChairRebuild("");
-            }
-            catch (Exception ex)
-            {
-                // API Method call failed due to session timeout or undefined series ruleset.
-                Literal2.Text = error_timeout;
-                Literal2.Text = ex.ToString();
-                ScriptManager.RegisterStartupScript(UpdatePanel2, GetType(), "Javascript", "javascript: errorDisplay();", true);
-            }
-        }
-        else
-        {
-            // If it is not existing
-            Literal2.Text = error_timeout;
-            ScriptManager.RegisterStartupScript(UpdatePanel2, GetType(), "Javascript", "javascript: errorDisplay();", true);
-        }
-    }
-
-    protected void updateChairRebuild(string lastParm)
-    {
-        string sRuleSet = "";
-        
-        // Get rebuild DataSet after selection is made
-        dataset = JsonConvert.DeserializeObject<DataSet>(UpdatedChairSelect.Value);
-        dataTable = dataset.Tables["Options"];
-
-        // Check that chair options were found
-        if (dataTable.Rows.Count > 0)
-        {
-            // Locate and store the RuleSet name in Global Variable
-            foreach (DataRow row in dataTable.Rows)
-            {
-                string parmvalue = row["value"].ToString();
-                string parmkey = row["name"].ToString();
-
-                if (parmkey == "RULE")
-                {
-                    sRuleSet = parmvalue;
-                    RuleSet = parmvalue;
-                }
-            }
-
-            string redirectUrl = "http://viaseatingdev.azurewebsites.net/export.aspx";
-            string instance = ConfigurationManager.AppSettings["via_instanceID"];
-            string appId = ConfigurationManager.AppSettings["via_appID"];
-            string endpoint_configuration_name = ConfigurationManager.AppSettings["via_endpoint_configname"];
-            string serviceUrl = ConfigurationManager.AppSettings["via_endpoint_integrationservice"];
-
-            // Step 1: Prepare Host Services Input Parameters
-            var inputParams = new InputParameters
-            {
-                DetailId = Guid.NewGuid().ToString(),
-                HeaderId = Guid.NewGuid().ToString(),
-                PartNamespace = ConfigurationManager.AppSettings["via_partNamespace"],
-                PartNumber = sRuleSet,
-                Profile = ConfigurationManager.AppSettings["via_profile"]
-            };
-            // Set Quantity needed for initialize RuleSet
-            inputParams.IntegrationParameters.Add("Quantity", 1);
-
-            try
-            {
-                // Step 2: Call the PrepareForInteractive Host services methods
-                var hostServices = new HostServices(instance, appId, serviceUrl);
-                var url = hostServices.PrepareForInteractiveConfiguration(inputParams, "Seat Builder", redirectUrl);
-
-                // Step 3: Call the UI Service InitializeConfiguration method :: Defined in Web References
-                var configUiClient = new ProdConfigUI.ProductConfiguratorUIServiceProxyClient(endpoint_configuration_name);
-                //var sessionId = configUiClient.InitializeConfiguration(instance, appId, inputParams.HeaderId, inputParams.DetailId);
-                var CurrentID = "";
-                var sessionId = GlobalSessionID.Value;
-
-
-                string lastparmvalue = SelectedOptionValue.Value;
-                string lastparmkey = SelectedOptionName.Value;
-
-                // Parse the DataSet for ScreenOptionValues
-                var vidx = 1;
-                Boolean beginRebuild = false;
-                foreach (DataRow row in dataTable.Rows)
-                {
-                    string parmvalue = row["value"].ToString();
-                    string parmkey = row["name"].ToString();
-
-                    if (lastparmkey == parmkey)
-                        beginRebuild = true;
-
-                    if (beginRebuild) { 
-                        // Skip the parmkeys that have the RULESET values = RULE and CHAIR_FAMILY
-                        if (parmkey != "RULE" && parmkey != "CHAIR_FAMILY")
-                        {
-                            // Convert TRUE FALSE to Proper Case
-                            if (parmvalue == "TRUE") { parmvalue = "True"; }
-                            if (parmvalue == "FALSE") { parmvalue = "False"; }
-
-                            CurrentID = getScreenSelection(configUiClient, sessionId, "", "", parmvalue);
-
-                            Literal1.Text = "Rebuiling in Progress...";
-
-                            if (CurrentID != "NotFound")
-                            {
-                                CurrentID = getScreenSelection(configUiClient, sessionId, CurrentID, parmvalue, parmvalue);
-                            }
-
-                            ViaImageURL.Text += UpdatedChairSelect.Value + "<br><br>";
-                        }
-                    }
-                    vidx++;
-                }
-
-                showScreenSelection(configUiClient, sessionId);
             }
             catch (Exception ex)
             {
@@ -498,6 +398,7 @@ public partial class builder : System.Web.UI.Page
             {
                 // Create JSON data to track current ScreenOption selected values.
                 list_properties = "{\"Options\" : [{\"name\" : \"RULE\", \"value\" : \"" + RuleSet + "\", \"visible\" : \"true\"}";
+
                 foreach (var screen in UiData.Pages[0].Screens)
                 {
                     if (screenIDX > -1 && screen.IsVisible == true)

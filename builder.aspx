@@ -70,6 +70,10 @@
             __doPostBack(btnName, "");
         }
 
+        function hideFinalizeBtn() {
+            jQuery('.finalize-wrapper').addClass('builder-hidden');
+        }
+
         function errorDisplay() {
             jQuery('.ssticky').unstick();
             jQuery('.preview-wrap').addClass('builder-hidden');
@@ -142,9 +146,12 @@
                                                 <%--<li class="border" id="change-event">
                                                     <button class="small" id="btnPDF" runat="server" onserverclick="btnGeneratePDF_Click" onclick="return false;"><span class="icon-download"></span>PDF</button>
                                                 </li>--%>
-                                                <%--<li>
-                                                    <button class="final">FINALIZE SPEC</button>
-                                                </li>--%>
+                                                <li>
+                                                    <%--<button class="final">FINALIZE SPEC</button>--%>
+                                                    <div class="finalize-wrapper">
+                                                        <asp:Button runat="server" ID="Button1" OnClick="btnPostFinal_Click" Text="Finalize" CssClass="final button" />
+                                                    </div>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -174,7 +181,9 @@
                                 <div style="display: none">
                                     <asp:Button runat="server" ID="btnPostBack" OnClick="btnPostBack_Click" Text="PostBack" />
                                 </div>
-                                <asp:Button runat="server" ID="btnFinalizePostBack" OnClick="btnPostFinal_Click" Text="Finalize" CssClass="button" />
+                                <div class="finalize-wrapper">
+                                    <asp:Button runat="server" ID="btnFinalizePostBack" OnClick="btnPostFinal_Click" Text="Finalize" CssClass="button" />
+                                </div>
                             </div>
 
                         </section>

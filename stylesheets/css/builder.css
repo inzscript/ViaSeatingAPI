@@ -1286,12 +1286,12 @@ aside.customizer {
     letter-spacing: 1px;
     margin-top: 2px;
 }
-.image-options button.final, .image-options button.save {
+.image-options .final, .image-options button.save {
     background-color: #4fb1cd;
     font-size: 10px;
     padding: 11px 15px 14px;
 }
-.image-options button.final:hover, .image-options button.save:hover {
+.image-options .final:hover, .image-options button.save:hover {
     background-color: #3b4141;
 }
 .image-options .button.small, .image-options button.small {
@@ -1314,7 +1314,7 @@ aside.customizer {
     text-align: center;
     text-decoration: none;
     display: block;
-    padding: 8px 15px;
+    padding: 11px 15px 14px;
     font-size: 10px;
     background-color: #4fb1cd;
     border: 0 solid #3295b1;
