@@ -363,7 +363,6 @@ public partial class builder : System.Web.UI.Page
                             if (select.Value == SearchValue)
                             {
                                 screenOptionID = screenoption.ID;
-                                //ViaImageURL.Text += SessionID + " : " + screenOptionID + " : " + SearchValue + "<br />";
                                 selectionFound = true;
                                 exitloop = true;
                                 break;
@@ -376,6 +375,7 @@ public partial class builder : System.Web.UI.Page
             }
             // Set Global Variable ImageURL with the current ScreenOption image link
             ImageURL = UiData.ImageUrl.ToString();
+            ChairImageURL.Value = ImageURL;
             //Literal2.Text += UiData.ImageUrl.ToString() + "<br />";
         }
         
@@ -547,7 +547,6 @@ public partial class builder : System.Web.UI.Page
                 list_properties += ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"true\"}";
                 inputSelected = "selected";
                 foundOption = true;
-                //ViaImageURL.Text += "Name:" + screenoption.Name + " Value:" + select.Value + " ";
             }
 
             var sListOption3 = "";
@@ -939,8 +938,6 @@ public partial class builder : System.Web.UI.Page
     protected void btnPostBack_Click(object sender, EventArgs e)
     {
         // Call server.transfer on ajax enabled postback click and saved code from page request Manager exception
-        //ViaImageURL.Text += "Time(" + DateTime.Now.ToLongTimeString() + ") : " + SelectedOptionValue.Value;
-
         //string pattern = "\"name\" : \"" + SelectedOptionName.Value + "\", \"value\" : \"[^\"]+\"";
         //string replacement = "\"name\" : \"" + SelectedOptionName.Value + "\", \"value\" : \"" + SelectedOptionValue.Value + "\"";
         //Regex rgx = new Regex(pattern);

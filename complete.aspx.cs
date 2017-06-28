@@ -41,14 +41,20 @@ public partial class complete : System.Web.UI.Page
             // Check for JSON Data from Step 2
             if (PreviousPage != null)
             {
+                // Get Data from PreviousPage
                 Control placeHolder = PreviousPage.Controls[0].FindControl("ContentPlaceHolder1");
                 HiddenField SelectionSummaryTextBox = (HiddenField)placeHolder.FindControl("SelectionSummary");
                 HiddenField ConfiguredPriceTextBox = (HiddenField)placeHolder.FindControl("ConfiguredPrice");
                 HiddenField SessionTextBox = (HiddenField)placeHolder.FindControl("GlobalSessionID");
-                if (SelectionSummaryTextBox != null && ConfiguredPriceTextBox != null && SessionTextBox != null)
+                HiddenField ChairImageURLTextBox = (HiddenField)placeHolder.FindControl("ChairImageURL");
+
+                if (SelectionSummaryTextBox != null && ConfiguredPriceTextBox != null && SessionTextBox != null && ChairImageURLTextBox != null)
                 {
                     // Store Previous Page SessionID into Page Global SessionID
                     gSessionID = SessionTextBox.Value;
+
+                    // Save Chair Image URL to ImageURL
+                    ImageURL = ChairImageURLTextBox.Value;
 
                     // Save Selection Summary to DataSet
                     summaryDataset = JsonConvert.DeserializeObject<DataSet>(SelectionSummaryTextBox.Value);
@@ -78,6 +84,9 @@ public partial class complete : System.Web.UI.Page
     protected void initializeChairOptions()
     {
         string  sList = "";
+
+        // Display Chair Image
+        sList += "<img src=\"" + ImageURL + "\" alt=\"Via Chair\" style=\"height=400px;marging:auto;\" > <br/><br/>";
 
         // Check that chair options were found
         if (summaryTable.Rows.Count > 0)

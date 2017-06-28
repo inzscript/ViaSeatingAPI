@@ -174,6 +174,7 @@
                             <asp:HiddenField ID="SelectionSummary" runat="server" Value="" />
                             <asp:HiddenField ID="ConfiguredPrice" runat="server" Value="" />
                             <asp:HiddenField ID="GlobalSessionID" runat="server" Value="" />
+                            <asp:HiddenField ID="ChairImageURL" runat="server" Value="" />
                             <asp:Panel ID="Panel1" runat="server"></asp:Panel>
 
                             <div class="finish">
