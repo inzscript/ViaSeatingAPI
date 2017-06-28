@@ -86,7 +86,7 @@ public partial class complete : System.Web.UI.Page
         string  sList = "";
 
         // Display Chair Image
-        sList += "<img src=\"" + ImageURL + "\" alt=\"Via Chair\" style=\"height=400px;marging:auto;\" > <br/><br/>";
+        sList += "<img src=\"" + ImageURL + "\" alt=\"Via Chair\" style=\"height=400px;margin:auto;\" > <br/><br/>";
 
         // Check that chair options were found
         if (summaryTable.Rows.Count > 0)
