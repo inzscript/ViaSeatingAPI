@@ -1295,7 +1295,7 @@ aside.customizer {
     padding: 11px 15px 14px;
 }
 .image-options .final:hover, .image-options button.save:hover {
-    background-color: #3b4141;
+    background-color: #ff9f37;
 }
 .image-options .button.small, .image-options button.small {
     padding: 11px 15px 14px;
@@ -1303,7 +1303,7 @@ aside.customizer {
     color: #fff;
 }
 .image-options .button:focus, .image-options .button:hover, .image-options button:focus, .image-options button:hover {
-    background-color: #3295b1;
+    background-color: #ff9f37;
     color: #fff;
 }
 .image-options .button, .image-options button {
