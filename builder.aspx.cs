@@ -25,6 +25,7 @@ public partial class builder : System.Web.UI.Page
     public string RuleSet = "";
     public string list_properties = "";
     public string list_selection_summary = "";
+    public string list_configured_price = "";
     public string error_timeout = "<h2>Chair Builder Session Timed Out</h2><p>Please start your session over.</p><p><a href='/' class='button'>View all chairs</a></p>";
 
     // Define Global DataSet for JSON Data
@@ -33,6 +34,9 @@ public partial class builder : System.Web.UI.Page
 
     public DataSet summaryDataset;
     public DataTable summaryTable;
+
+    public DataSet configuredDataset;
+    public DataTable configuredTable;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -173,14 +177,17 @@ public partial class builder : System.Web.UI.Page
                     }
                 }
 
+                // Save Selection Summary to DataSet
                 saveSelectionSummary(configUiClient, sessionId);
-                //Literal1.Text = list_selection_summary;
                 summaryDataset = JsonConvert.DeserializeObject<DataSet>(SelectionSummary.Value);
                 summaryTable = summaryDataset.Tables["Selections"];
 
-                showScreenSelection(configUiClient, sessionId);
+                // Save Configured Price to DataSet
+                saveConfiguredPrice(configUiClient, sessionId);
+                configuredDataset = JsonConvert.DeserializeObject<DataSet>(ConfiguredPrice.Value);
+                configuredTable = configuredDataset.Tables["Details"];
 
-                //updateChairRebuild("");
+                showScreenSelection(configUiClient, sessionId);
             }
             catch (Exception ex)
             {
@@ -278,9 +285,15 @@ public partial class builder : System.Web.UI.Page
                     vidx++;
                 }
 
+                // Save Selection Summary to DataSet
                 saveSelectionSummary(configUiClient, sessionId);
                 summaryDataset = JsonConvert.DeserializeObject<DataSet>(SelectionSummary.Value);
                 summaryTable = summaryDataset.Tables["Selections"];
+
+                // Save Configured Price to DataSet
+                saveConfiguredPrice(configUiClient, sessionId);
+                configuredDataset = JsonConvert.DeserializeObject<DataSet>(ConfiguredPrice.Value);
+                configuredTable = configuredDataset.Tables["Details"];
 
                 showScreenSelection(configUiClient, sessionId);
             }
@@ -438,7 +451,7 @@ public partial class builder : System.Web.UI.Page
         // Setup API Call: Configure( SessionID, OptionSelection(ID, Value))
         var selections = new ProdConfigUI.OptionSelection[0];
         var UiData = UIClient.Configure(SessionID, selections);
-        var numSummary = UiData.Pages.Length;
+        var numSummary = UiData.SelectionSummary.Length;
         Boolean isFirstSelection = true;
 
         if (numSummary >= 1)
@@ -462,6 +475,35 @@ public partial class builder : System.Web.UI.Page
             // Store the current selected values as JSON data in HiddenField used for PostBack.
             list_selection_summary += "] }";
             SelectionSummary.Value = list_selection_summary;
+        }
+    }
+
+    protected void saveConfiguredPrice(ProdConfigUI.ProductConfiguratorUIServiceProxyClient UIClient, string SessionID)
+    {
+        // Setup API Call: Configure( SessionID, OptionSelection(ID, Value))
+        var selections = new ProdConfigUI.OptionSelection[0];
+        var UiData = UIClient.Configure(SessionID, selections);
+        var numDetails = UiData.Details.Length;
+        Boolean isFirstSelection = true;
+
+        if (numDetails >= 1)
+        {
+            // Create JSON data to track current SummarySelection values.
+            list_configured_price = "{\"Details\" : [";
+            foreach (var detail in UiData.Details)
+            {
+                // Get Detail Caption, Type and Value fields
+                if (isFirstSelection)
+                {
+                    list_configured_price += "{\"caption\" : \"" + detail.Caption + "\", \"value\" : \"" + detail.Value + "\", \"type\" : \"" + detail.Type + "\"}";
+                    isFirstSelection = false;
+                }
+                else
+                    list_configured_price += ", {\"caption\" : \"" + detail.Caption + "\", \"value\" : \"" + detail.Value + "\", \"type\" : \"" + detail.Type + "\"}";
+            }
+            // Store the current selected values as JSON data in HiddenField used for PostBack.
+            list_configured_price += "] }";
+            ConfiguredPrice.Value = list_configured_price;
         }
     }
 
