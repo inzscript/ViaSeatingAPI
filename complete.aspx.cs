@@ -25,6 +25,12 @@ public partial class complete : System.Web.UI.Page
     public DataSet dataset;
     public DataTable dataTable;
 
+    public DataSet summaryDataset;
+    public DataTable summaryTable;
+
+    public DataSet configuredDataset;
+    public DataTable configuredTable;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -36,15 +42,21 @@ public partial class complete : System.Web.UI.Page
             if (PreviousPage != null)
             {
                 Control placeHolder = PreviousPage.Controls[0].FindControl("ContentPlaceHolder1");
-                HiddenField SourceTextBox = (HiddenField)placeHolder.FindControl("UpdatedChairSelect");
+                HiddenField SelectionSummaryTextBox = (HiddenField)placeHolder.FindControl("SelectionSummary");
+                HiddenField ConfiguredPriceTextBox = (HiddenField)placeHolder.FindControl("ConfiguredPrice");
                 HiddenField SessionTextBox = (HiddenField)placeHolder.FindControl("GlobalSessionID");
-                if (SourceTextBox != null && SessionTextBox != null)
+                if (SelectionSummaryTextBox != null && ConfiguredPriceTextBox != null && SessionTextBox != null)
                 {
                     // Store Previous Page SessionID into Page Global SessionID
                     gSessionID = SessionTextBox.Value;
-                    // Store the JSON data from Step 2 into Global DataSet
-                    dataset = JsonConvert.DeserializeObject<DataSet>(SourceTextBox.Value);
-                    dataTable = dataset.Tables["Options"];
+
+                    // Save Selection Summary to DataSet
+                    summaryDataset = JsonConvert.DeserializeObject<DataSet>(SelectionSummaryTextBox.Value);
+                    summaryTable = summaryDataset.Tables["Selections"];
+
+                    // Save Configured Price to DataSet
+                    configuredDataset = JsonConvert.DeserializeObject<DataSet>(ConfiguredPriceTextBox.Value);
+                    configuredTable = configuredDataset.Tables["Details"];
 
                     initializeChairOptions();
                     finalizeChairOptions();
@@ -66,23 +78,35 @@ public partial class complete : System.Web.UI.Page
     protected void initializeChairOptions()
     {
         string  sList = "";
-        string sRuleSet = "";
 
         // Check that chair options were found
-        if (dataTable.Rows.Count > 0)
+        if (summaryTable.Rows.Count > 0)
         {
-            sList = "<ul class='order double'>";
-            // Locate and store the RuleSet name in Global Variable
-            foreach (DataRow row in dataTable.Rows)
+            // Output Selection Summary
+            sList += "<ul class='order double'>";
+            foreach (DataRow row in summaryTable.Rows)
             {
-                
-                string parmkey = row["name"].ToString();
+                // Output variable fields: Caption and Value
+                string parmkey = row["caption"].ToString();
                 string parmvalue = row["value"].ToString();
-                string parmvisible = row["visible"].ToString();
 
                 sList += "<li><strong>" + parmkey + "</strong> <span>" + parmvalue + "</span></li>";
             }
-            sList += "</ul>";
+            sList += "</ul> <br /><br />";
+
+            // Output Configured Price
+            sList += "<ul class='order double'>";
+            foreach (DataRow row in configuredTable.Rows)
+            {
+                // Output variable fields: Caption, Value and Type
+                string parmkey = row["caption"].ToString();
+                string parmvalue = row["value"].ToString();
+                string parmvisible = row["type"].ToString();
+
+                sList += "<li><strong>" + parmkey + "</strong> <span>" + parmvalue + "</span></li>";
+            }
+            sList += "</ul> <br /><br />";
+
             Literal1.Text = sList;
         }
         else
