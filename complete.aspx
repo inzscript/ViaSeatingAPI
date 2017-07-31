@@ -21,25 +21,31 @@
         <div class="content_second_background">
             <div class="content_area clearfix">
 
-                <div id="row-664892-1" class="content_block_background template_builder "> 
-            <section class="content_block clearfix">
-                <section id="row-664892-1-content" class="content full  clearfix">
-                    <div class="row clearfix">
-                        <div id="products-707941-54923" class="product_holder product-showcase clearfix">
-                            <%--<div class="product_boxes" data-rt-animation-group="group">--%>
+                <div id="row-664892-1" class="content_block_background template_builder ">
+                    <section class="content_block clearfix">
+                        <section id="row-664892-1-content" class="content full  clearfix">
+                            <div class="row clearfix">
+                                <div id="products-707941-54923" class="product_holder product-showcase clearfix">
+                                    <%--<div class="product_boxes" data-rt-animation-group="group">--%>
 
-                                <asp:Literal ID="Literal1" runat="server"></asp:Literal>
-                                
-                            <%--</div>--%>
-                        </div>
-                    </div>
-                </section>
-            </section>
-            </div>
+                                    <asp:Button ID="createPDF" runat="server" OnClick="btnGeneratePDF_Click" CssClass="button" Text="Save PDF" />
+
+                                    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+
+                                    <%--</div>--%>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                </div>
 
             </div>
 
             <asp:Literal ID="Literal2" runat="server"></asp:Literal>
+
+            <asp:HiddenField ID="SelectionSummary" runat="server" Value="" />
+            <asp:HiddenField ID="ConfiguredPrice" runat="server" Value="" />
+            <asp:HiddenField ID="ChairImageURL" runat="server" Value="" />
 
             <uc1:FooterContent runat="server" ID="FooterContent" />
 

@@ -166,10 +166,11 @@
                         <section id="row-sidebar" class="sidebar left">
 
                             <asp:Literal ID="Literal1" runat="server"></asp:Literal>
-                            <asp:Literal ID="ViaImageURL" runat="server"></asp:Literal>
+                            <asp:Literal ID="Debug" runat="server"></asp:Literal>
                             <asp:Literal ID="SectionOptions" runat="server"></asp:Literal>
                             <asp:HiddenField ID="SelectedOptionValue" runat="server" Value="" />
                             <asp:HiddenField ID="SelectedOptionName" runat="server" Value="" />
+                            <asp:HiddenField ID="SelectedOptionCaption" runat="server" Value="" />
                             <asp:HiddenField ID="UpdatedChairSelect" runat="server" Value="" />
                             <asp:HiddenField ID="SelectionSummary" runat="server" Value="" />
                             <asp:HiddenField ID="ConfiguredPrice" runat="server" Value="" />

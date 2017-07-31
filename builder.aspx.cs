@@ -158,6 +158,7 @@ public partial class builder : System.Web.UI.Page
                 var CurrentID = "";
                 var sessionId = GlobalSessionID.Value;
 
+                //Debug.Text = "SessionID=" + sessionId.ToString() + "<br>";
 
                 string parmvalue = SelectedOptionValue.Value;
                 string parmkey = SelectedOptionName.Value;
@@ -169,13 +170,15 @@ public partial class builder : System.Web.UI.Page
                     if (parmvalue == "TRUE") { parmvalue = "True"; }
                     if (parmvalue == "FALSE") { parmvalue = "False"; }
 
-                    CurrentID = getScreenSelection(configUiClient, sessionId, "", "", parmvalue);
+                    CurrentID = getScreenSelection(configUiClient, sessionId, "", "", parmvalue, parmkey);
 
                     if (CurrentID != "NotFound")
                     {
-                        CurrentID = getScreenSelection(configUiClient, sessionId, CurrentID, parmvalue, parmvalue);
+                        CurrentID = getScreenSelection(configUiClient, sessionId, CurrentID, parmvalue, parmvalue,parmkey);
                     }
                 }
+
+                //Debug.Text += "ID=" + CurrentID.ToString() + "<br>";
 
                 // Save Selection Summary to DataSet
                 saveSelectionSummary(configUiClient, sessionId);
@@ -261,6 +264,8 @@ public partial class builder : System.Web.UI.Page
                 var CurrentID = "";
                 GlobalSessionID.Value = sessionId;
 
+                //Debug.Text = "SessionID=" + sessionId.ToString() + "<br>";
+
                 // Parse the DataSet for ScreenOptionValues
                 var vidx = 1;
                 foreach (DataRow row in dataTable.Rows)
@@ -275,11 +280,12 @@ public partial class builder : System.Web.UI.Page
                         if (parmvalue == "TRUE") { parmvalue = "True"; }
                         if (parmvalue == "FALSE") { parmvalue = "False"; }
 
-                        CurrentID = getScreenSelection(configUiClient, sessionId, "", "", parmvalue);
+                        CurrentID = getScreenSelection(configUiClient, sessionId, "", "", parmvalue, parmkey);
 
                         if (CurrentID != "NotFound")
                         {
-                            CurrentID = getScreenSelection(configUiClient, sessionId, CurrentID, parmvalue, parmvalue);
+                            CurrentID = getScreenSelection(configUiClient, sessionId, CurrentID, parmvalue, parmvalue, parmkey);
+                            //Debug.Text += "ID=" + CurrentID.ToString() + "<br>";
                         }
                     }
                     vidx++;
@@ -325,7 +331,7 @@ public partial class builder : System.Web.UI.Page
     /// <param name="OptSelectValue"></param>
     /// <param name="SearchValue"></param>
     /// <returns>ScreenOption ID</returns>
-    protected string getScreenSelection(ProdConfigUI.ProductConfiguratorUIServiceProxyClient UIClient, string SessionID, string OptSelectID, string OptSelectValue, string SearchValue)
+    protected string getScreenSelection(ProdConfigUI.ProductConfiguratorUIServiceProxyClient UIClient, string SessionID, string OptSelectID, string OptSelectValue, string SearchValue, string CaptionValue)
     {
         // Setup selections for ScreenOptions
         var selections = new ProdConfigUI.OptionSelection[0];
@@ -341,6 +347,7 @@ public partial class builder : System.Web.UI.Page
             selections = new[] { optionSelections };
         }
 
+        //Debug.Text = ((selections != null) && selections.Any()) ? selections[0].ID + ":  " + selections[0].Value : string.Empty;
         var UiData = UIClient.Configure(SessionID, selections);
         var numPages = UiData.Pages.Length;
         var numScreens = UiData.Pages[0].Screens.Length;
@@ -348,6 +355,12 @@ public partial class builder : System.Web.UI.Page
         bool selectionFound = false;
         bool exitloop = false;
 
+        //Debug.Text += UiData.Messages.FirstOrDefault()==null ? string.Empty : UiData.Messages.FirstOrDefault().Value;
+        //var allScreens = UiData.Pages.SelectMany(p => p.Screens);
+        //var allScreenOptions = allScreens.SelectMany(sc => sc.ScreenOptions);
+
+        //var opt = allScreenOptions.Any(op => op.Caption == "PETITE SEAT OPTION");
+        //Debug.Text = opt ? "Have data past back upolstery" : string.Empty;
         if (numPages >= 1)
         {
             if (numScreens >= 1)
@@ -360,7 +373,7 @@ public partial class builder : System.Web.UI.Page
                         foreach (var select in screenoption.SelectableValues)
                         {
                             // Find the ScreenOption Value  
-                            if (select.Value == SearchValue)
+                            if ((select.Value == SearchValue) && (screenoption.Name == CaptionValue))
                             {
                                 screenOptionID = screenoption.ID;
                                 selectionFound = true;

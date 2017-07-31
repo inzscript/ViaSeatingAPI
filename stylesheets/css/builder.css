@@ -1117,7 +1117,8 @@ aside.customizer {
 }
 .preview-wrap {
     background-repeat: no-repeat, no-repeat;
-    background-size: 75%, 120%;
+    /* background-size: 75%, 120%; */
+    background-size: auto, auto;
     background-position: 50%, 50%;
     position: relative;
     width: 100%;
