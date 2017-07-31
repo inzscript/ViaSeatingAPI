@@ -155,6 +155,24 @@ div.cs-skin-border {
 	background: #898d8d;
 }
 
+.cs-skin-border .cs-options li.icon-color span:hover,
+.cs-skin-border .cs-options li.cs-focus span,
+.cs-skin-border .cs-options .cs-selected span,
+.cs-skin-border li.cs-focus span {
+	background: #898d8d;
+	background-repeat: no-repeat;
+	background-position: 1.5em 50%;
+	background-size: 2em auto;
+	padding: 0.8em 1em 0.8em 4em;
+}
+
+.cs-skin-border .cs-options .icon-color span {
+	background-repeat: no-repeat;
+	background-position: 1.5em 50%;
+	background-size: 2em auto;
+	padding: 0.8em 1em 0.8em 4em;
+}
+
 /* ============================================================
   COMMON SELECT
 ============================================================ */

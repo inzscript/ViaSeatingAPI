@@ -107,15 +107,21 @@
 				classes += el.getAttribute( 'data-class' );
 			}
 			// link options
-			if( el.getAttribute( 'data-link' ) ) {
-				link = 'data-link=' + el.getAttribute( 'data-link' );
+			//if( el.getAttribute( 'data-link' ) ) {
+			//	link = 'data-link=' + el.getAttribute( 'data-link' );
+			//}
+
+		    // link options
+			if (el.getAttribute('data-link')) {
+			    link = 'style=' + '"background-image: url(' + el.getAttribute('data-link') + ')"';
 			}
 
 			if( classes !== '' ) {
 				optclass = 'class="' + classes + '" ';
 			}
 
-			return '<li ' + optclass + link + ' data-option data-value="' + el.value + '"><span>' + el.textContent + '</span></li>';
+			//return '<li ' + optclass + link + ' data-option data-value="' + el.value + '"><span>' + el.textContent + '</span></li>';
+			return '<li ' + optclass + ' data-option data-value="' + el.value + '"><span ' + link + '>' + el.textContent + '</span></li>';
 		};
 
 		[].slice.call( this.el.children ).forEach( function(el) {

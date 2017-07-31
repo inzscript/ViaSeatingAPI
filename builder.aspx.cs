@@ -546,10 +546,12 @@ public partial class builder : System.Web.UI.Page
         var sListOption1 = ""; var sListOption2 = "";
         var sFirstOptionSelected = ""; var sFirstOptionNotSelected = "";
         var setDefault_list_properties = "";
+        var color_option = "";
         var checkboxvalue = defaultValue;
         Boolean foundOption = false;
         var selectIDX = 0;
         sListOption1 = "<option value='' disabled>" + screenoption.Caption + "</option>";
+
         foreach (var select in screenoption.SelectableValues)
         {
             var inputSelected = "";
@@ -579,16 +581,22 @@ public partial class builder : System.Web.UI.Page
                 }
             }
 
+            // Check if dropdown is color selection
+            if ((screenoption.Name == "BACKINSTOCKUPHOLSTERY") || (screenoption.Name == "SEATINSTOCKUPHOLSTERY") || (screenoption.Name == "CHAIRINSTOCKUPHOLSTERY"))
+            {
+                color_option = " data-class=\"icon-color\" data-link=\"" + select.ImageLink + "\" ";
+            }
+
             // Prepare first option in loop
             if (selectIDX == 0)
             {
-                sFirstOptionSelected = "<option value='" + select.Value + ":" + screenoption.Name + "' selected >" + select.Caption + sListOption3 + "</option>";
+                sFirstOptionSelected = "<option value='" + select.Value + ":" + screenoption.Name + "' selected "+ color_option + ">" + select.Caption + sListOption3 + "</option>";
 
                 // Prepare to add first option as selected both on the form and DataSet. (disabled - set visible to false)
-                sFirstOptionNotSelected = "<option value='" + select.Value + ":" + screenoption.Name + "' " + inputSelected + ">" + select.Caption + sListOption3 + "</option>";
+                sFirstOptionNotSelected = "<option value='" + select.Value + ":" + screenoption.Name + "' " + inputSelected + color_option + ">" + select.Caption + sListOption3 + "</option>";
                 setDefault_list_properties = ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"false\"}";
             } else { 
-                sListOption2 += "<option value='" + select.Value + ":" + screenoption.Name + "' " + inputSelected + ">" + select.Caption + sListOption3 + "</option>";
+                sListOption2 += "<option value='" + select.Value + ":" + screenoption.Name + "' " + inputSelected + color_option + ">" + select.Caption + sListOption3 + "</option>";
             }
             selectIDX++;
         }
