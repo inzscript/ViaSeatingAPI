@@ -31,6 +31,10 @@ public partial class selector : System.Web.UI.Page
         
     }
 
+    /// <summary>
+    ///  Initialize the Method calls to Configure to get product Chair Category then Chair Family for the RuleSet = All_CHAIRS.
+    ///  Finally call function showChairOption and display the predefined ScreenOption Name = GOOD_BETTER_BEST to display Chair Family list.
+    /// </summary>
     protected void initializeChairOptions()
     {
 
@@ -100,6 +104,15 @@ public partial class selector : System.Web.UI.Page
 
     }
 
+    /// <summary>
+    /// Call Infor Method Customize with SessionID, OptionSelectionID and Value. Search OptionSelection for specified SearchValue and if found return the Option Selection ID.
+    /// </summary>
+    /// <param name="UIClient"></param>
+    /// <param name="SessionID"></param>
+    /// <param name="OptSelectID"></param>
+    /// <param name="OptSelectValue"></param>
+    /// <param name="SearchValue"></param>
+    /// <returns> Returns the OptionsSelection ID from the method API call. </returns>
     protected string getScreenSelection(ProdConfigUI.ProductConfiguratorUIServiceProxyClient UIClient, string SessionID, string OptSelectID, string OptSelectValue, string SearchValue)
     {
         // Setup selections for ScreenOptions
@@ -116,6 +129,7 @@ public partial class selector : System.Web.UI.Page
             selections = new[] { optionSelections };
         }
 
+        // Initialize API call to method Configure
         var UiData = UIClient.Configure(SessionID, selections);
         var numPages = UiData.Pages.Length;
         var numScreens = UiData.Pages[0].Screens.Length;
@@ -162,9 +176,23 @@ public partial class selector : System.Web.UI.Page
         }
     }
 
+    /// <summary>
+    /// Show Chair Family series defined by GOOd_BETTER_BEST.
+    /// </summary>
+    /// <remarks>
+    /// Creates dynamic buttons for each Chair Family. Usually consist of three option: Good, Better and Best. 
+    /// The buttons will pass predefined Infor data selections ruleset. These selections will used on Step 3 to build Chair Builder page with these selection.
+    /// Note: This ruleset are created with Infor.
+    /// </remarks>
+    /// <param name="UIClient"></param>
+    /// <param name="SessionID"></param>
+    /// <param name="OptSelectID"></param>
+    /// <param name="OptSelectValue"></param>
+    /// <param name="SearchValue"></param>
     protected void showChairOptions(ProdConfigUI.ProductConfiguratorUIServiceProxyClient UIClient, string SessionID, string OptSelectID, string OptSelectValue, string SearchValue)
     {
         // Setup selections for ScreenOptions
+        // Initialize API call to method Configure
         var selections = new ProdConfigUI.OptionSelection[0];
         var UiData = UIClient.Configure(SessionID, selections);
         var numPages = UiData.Pages.Length;

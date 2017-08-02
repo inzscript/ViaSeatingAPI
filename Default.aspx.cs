@@ -14,6 +14,11 @@ public partial class _Default : Page
     public string gSeriesList = "";
     public int gCount = 0;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     protected void Page_Load(object sender, EventArgs e)
     {
         // Set the current step visual.

@@ -162,15 +162,15 @@ div.cs-skin-border {
 	background: #898d8d;
 	background-repeat: no-repeat;
 	background-position: 1.5em 50%;
-	background-size: 2em auto;
-	padding: 0.8em 1em 0.8em 4em;
+	background-size: 3em auto;
+	padding: 0.8em 1em 0.8em 6em;
 }
 
 .cs-skin-border .cs-options .icon-color span {
 	background-repeat: no-repeat;
 	background-position: 1.5em 50%;
-	background-size: 2em auto;
-	padding: 0.8em 1em 0.8em 4em;
+	background-size: 3em auto;
+	padding: 0.8em 1em 0.8em 6em;
 }
 
 /* ============================================================

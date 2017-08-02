@@ -121,7 +121,8 @@ public partial class builder : System.Web.UI.Page
                 string parmvalue = row["value"].ToString();
                 string parmkey = row["name"].ToString();
 
-                if (parmkey == "RULE")
+                //if (parmkey == "RULE")
+                if(parmkey == "CHAIR_FAMILY")
                 {
                     sRuleSet = parmvalue;
                     RuleSet = parmvalue;
@@ -227,7 +228,8 @@ public partial class builder : System.Web.UI.Page
                 string parmvalue = row["value"].ToString();
                 string parmkey = row["name"].ToString();
 
-                if (parmkey == "RULE")
+                //if (parmkey == "RULE")
+                if (parmkey == "CHAIR_FAMILY")
                 {
                     sRuleSet = parmvalue;
                     RuleSet = parmvalue;
