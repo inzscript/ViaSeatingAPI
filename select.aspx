@@ -52,7 +52,7 @@
 
             </div><!-- / end div .content_area -->
             
-            <asp:HiddenField ID="ChairSelect" runat="server" Value="Initialize" />
+            <asp:HiddenField ID="ChairSelect" runat="server" Value="" />
             <asp:Literal ID="Literal2" runat="server"></asp:Literal>
 
             </ContentTemplate>

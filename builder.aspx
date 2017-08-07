@@ -149,7 +149,7 @@
                                                 <li>
                                                     <%--<button class="final">FINALIZE SPEC</button>--%>
                                                     <div class="finalize-wrapper">
-                                                        <asp:Button runat="server" ID="Button1" OnClick="btnPostFinal_Click" Text="Finalize" CssClass="final button" />
+                                                        <asp:Button runat="server" ID="btnFinalizeUtilityBar" OnClick="btnPostFinal_Click" Text="Finalize" CssClass="final button" />
                                                     </div>
                                                 </li>
                                             </ul>
@@ -198,7 +198,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
 
-            <asp:Button ID="createPDF" runat="server" OnClick="btnGeneratePDF_Click" CssClass="button" Text="Save PDF" />
+            <%--<asp:Button ID="createPDF" runat="server" OnClick="btnGeneratePDF_Click" CssClass="button" Text="Save PDF" />--%>
             
 
             <div style="display: none">

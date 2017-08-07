@@ -324,8 +324,10 @@ public partial class selector : System.Web.UI.Page
         // put 2 buttons one inside update panel and another outside of update panel so when inside update panel button's click event will 
         // fire then it will do database operations and after successful db operations it will call a java script function from server side
 
+        ChairSelect.Value = "";
         ChairSelect.Value = chairparms;
-        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "displayNote", "   <script language='JavaScript'>onAsyncPostclick();</script>", false);
+        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "displayNote", "<script language='JavaScript'>onAsyncPostclick();</script>", false);
+        //Literal2.Text = chairparms;
     }
 
     protected void btnHelloWorld_Click(object sender, EventArgs e)

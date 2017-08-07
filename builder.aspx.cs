@@ -83,7 +83,7 @@ public partial class builder : System.Web.UI.Page
             {
                 Control placeHolder = PreviousPage.Controls[0].FindControl("ContentPlaceHolder1");
                 HiddenField SourceTextBox = (HiddenField)placeHolder.FindControl("ChairSelect");
-                if (SourceTextBox != null)
+                if (SourceTextBox.Value != null || SourceTextBox.Value != "")
                 {
                     // Store the JSON data from Step 2 into Global DataSet
                     dataset = JsonConvert.DeserializeObject<DataSet>(SourceTextBox.Value);
@@ -418,6 +418,10 @@ public partial class builder : System.Web.UI.Page
         var screenIDX = 0;
         var screenOptIDX = 0;
 
+        // Set the Finalize button visibile as false until all selection option load.
+        btnFinalizeUtilityBar.Visible = false;
+        btnFinalizeUtilityBar.Visible = false;
+
         SectionOptions.Text = "";
 
         if (numPages >= 1)
@@ -700,33 +704,45 @@ public partial class builder : System.Web.UI.Page
     /// Create Display Type RadioButton form element
     /// </summary>
     /// <remarks>
-    /// 1. If initial value in JSON
-    /// 2. If no intial JSON value is set retreived XML data default value
-    /// 3. If the above is not found set default value to the first value defined in XML data.
+    /// For default radio button selection depends on the dataset retrieved in the SelectionSummary (Rollback Data).
+    /// If the Screen -> ScreenOption Value is matched with the Selection summary this radio button selection is set as checked.
+    /// Second, if the Radio Button is the CHAIR IMAGE VIEW screen then enable the Finialize button.
     /// </remarks>
     /// <param name="screenIndex"></param>
     /// <param name="screenoption"></param>
     public void create_RadioBtn_Group(int screenIndex, ProdConfigUI.ScreenOption screenoption)
     {
+        // Step 0 - Check if ScreenOption is CHAIR IMAGE VIEW, this indicates the last option is set and
+        // the display of all chair options is complete and the chair image is available.
+        // Set the Fininalize button as visiable.
+        if (screenoption.Name == "CHAIR_IMAGE_VIEW") {
+            btnFinalizeUtilityBar.Visible = true;
+            btnFinalizeUtilityBar.Visible = true;
+        }
+        
+        // Step 1 - Dynamically create Chair Options ListBox
         if (screenIndex == 0)
         {
-            // Dynamically create Chair Options ListBox
+            // Intialize the first option
             SectionOptions.Text += "<section class='" + screenoption.Name + "' id='" + screenoption.Name + "'>";
             SectionOptions.Text += "<div class='heading'><h4>" + screenoption.Caption + "</h4></div>";
             SectionOptions.Text += "<ul class='options unstyled'>";
         }
 
-        // Reset Section Option List
-        var sListOptions = ""; var sListOption2 = ""; var sListOption3 = ""; var sListOption4 = "";
+        // Step 2 - Initialize Section Option List Variables
+        var sListOptions = "";
+        // var sListOption2 = ""; var sListOption3 = ""; var sListOption4 = "";
         var sFirstOptionSelected = ""; var sFirstOptionNotSelected = "";
         var setDefault_list_properties = "";
         Boolean foundOption = false;
         var selectIDX = 0;
+
         foreach (var select in screenoption.SelectableValues)
         {
-            // Dynamically create Literal for Screen Option Selectable Values
+            // Step 3 - Dynamically create Literal for Screen Option Selectable Values
             var inputcheck = "";
-            //if (IsInChairOption(screenoption.Name, select.Value))
+            
+            // Check if Screen -> ScreenOption Caption is in SelectionSummary (Rollback Data) and set option as selected if found.
             if (IsInSummarySelection(screenoption.Caption, select.Caption))
             {
                 inputcheck = " checked='checked'";
@@ -734,10 +750,10 @@ public partial class builder : System.Web.UI.Page
                 foundOption = true;
             }
 
+            // Check if Selection has CustomProperties for Price set and display if found
             var sOptionPrice = "";
             foreach (var property in select.CustomProperties)
             {
-                // Check Custom Properties for price and display if found
                 if (property.Name == "Price" || property.Name == "PRICE")
                 {
                     if (property.Value != "0" && property.Value != null && property.Value != "")
@@ -770,6 +786,7 @@ public partial class builder : System.Web.UI.Page
             }
             selectIDX++;
         }
+
         // Build Section Option Output
         if (foundOption)
         {
@@ -780,11 +797,8 @@ public partial class builder : System.Web.UI.Page
         {
             // Set Default RadioBtn to first selection because NOT set.(disabled - set visible to false)
             list_properties += setDefault_list_properties;
-            //SectionOptions.Text += sFirstOptionSelected + sListOptions;
             SectionOptions.Text += sFirstOptionNotSelected + sListOptions;
         }
-
-        //SectionOptions.Text += sListOption1 + sListOption2 + sListOption3 + sListOption4;
 
         if (screenIndex == 0)
         {
