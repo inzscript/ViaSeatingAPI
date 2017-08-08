@@ -151,13 +151,14 @@ div.cs-skin-border {
 }
 
 .cs-skin-border .cs-options li span:hover,
+.cs-skin-border .cs-options li.cs-selected span,
 .cs-skin-border li.cs-focus span {
 	background: #898d8d;
 }
 
 .cs-skin-border .cs-options li.icon-color span:hover,
 .cs-skin-border .cs-options li.cs-focus span,
-.cs-skin-border .cs-options .cs-selected span,
+.cs-skin-border .cs-options li.icon-color.cs-selected span,
 .cs-skin-border li.cs-focus span {
 	background: #898d8d;
 	background-repeat: no-repeat;
@@ -165,6 +166,7 @@ div.cs-skin-border {
 	background-size: 3em auto;
 	padding: 0.8em 1em 0.8em 6em;
 }
+
 
 .cs-skin-border .cs-options .icon-color span {
 	background-repeat: no-repeat;
@@ -239,6 +241,7 @@ div.cs-select:focus {
 .cs-select .cs-selected span::after {
 	content: '\2713';
 	margin-left: 1em;
+    padding: 1em;
 }
 
 .cs-select.cs-active > span::after {

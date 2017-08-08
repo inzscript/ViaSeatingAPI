@@ -106,6 +106,11 @@
 			if( el.getAttribute( 'data-class' ) ) {
 				classes += el.getAttribute( 'data-class' );
 			}
+
+			if (el.selected == true) {
+			    classes += ' cs-selected';
+			}
+
 			// link options
 			//if( el.getAttribute( 'data-link' ) ) {
 			//	link = 'data-link=' + el.getAttribute( 'data-link' );

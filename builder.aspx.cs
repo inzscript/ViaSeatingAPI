@@ -419,7 +419,7 @@ public partial class builder : System.Web.UI.Page
         var screenOptIDX = 0;
 
         // Set the Finalize button visibile as false until all selection option load.
-        btnFinalizeUtilityBar.Visible = false;
+        btnFinalizePostBack.Visible = false;
         btnFinalizeUtilityBar.Visible = false;
 
         SectionOptions.Text = "";
@@ -716,7 +716,7 @@ public partial class builder : System.Web.UI.Page
         // the display of all chair options is complete and the chair image is available.
         // Set the Fininalize button as visiable.
         if (screenoption.Name == "CHAIR_IMAGE_VIEW") {
-            btnFinalizeUtilityBar.Visible = true;
+            btnFinalizePostBack.Visible = true;
             btnFinalizeUtilityBar.Visible = true;
         }
         
