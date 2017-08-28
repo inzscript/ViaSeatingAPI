@@ -123,7 +123,7 @@
                     <div class="content_area clearfix">
 
 
-                        <section id="row-content" class="content right">
+                        <section id="row-content" class="content left">
 
                             <!-- Image Area -->
                             <div class="apply ssticky">
@@ -166,7 +166,7 @@
 
                         </section>
 
-                        <section id="row-sidebar" class="sidebar left">
+                        <section id="row-sidebar" class="sidebar right">
 
                             <asp:Literal ID="Literal1" runat="server"></asp:Literal>
                             <asp:Literal ID="Debug" runat="server"></asp:Literal>

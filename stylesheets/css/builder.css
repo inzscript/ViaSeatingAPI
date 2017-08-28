@@ -1038,7 +1038,7 @@ ul.unstyled {
 }
 .options li.extras input[type=radio]+label {
     position: relative;
-    width: 90%;
+    /*width: 90%;*/
     margin-bottom: 8px;
     padding: 8px 0 8px 43px;
     -webkit-appearance: none;
