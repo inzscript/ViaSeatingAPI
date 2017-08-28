@@ -31,6 +31,9 @@
         <div class="content_second_background">
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
+
+            <asp:HiddenField ID="ChairSelect" runat="server" Value="" />
+
             <div class="content_area clearfix">
                 <div id="row-664892-1" class="content_block_background template_builder "> 
                     <section class="content_block clearfix">
@@ -52,14 +55,13 @@
 
             </div><!-- / end div .content_area -->
             
-            <asp:HiddenField ID="ChairSelect" runat="server" Value="" />
             <asp:Literal ID="Literal2" runat="server"></asp:Literal>
 
             </ContentTemplate>
             </asp:UpdatePanel>
 
             <div style="display:none">
-            <asp:Button runat="server" ID="btnPostBack" OnClick="btnHelloWorld_Click" Text="PostBack"  />
+            <asp:Button runat="server" ID="btnPostBack" OnClick="btnPostBack_Click" Text="PostBack"  />
             </div>
 
             <uc1:FooterContent runat="server" ID="FooterContent" />

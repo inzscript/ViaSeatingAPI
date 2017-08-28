@@ -83,7 +83,8 @@
 
         function updateChairImage(chairImg, backgroundImg) {
             var number = 1 + Math.floor(Math.random() * 200);
-            document.getElementById('preview-wrap').style.backgroundImage = 'url(' + chairImg + '?v=' + number + '), url(/images/background_1.jpg)';
+            //document.getElementById('preview-wrap').style.backgroundImage = 'url(' + chairImg + '?v=' + number + '), url(/images/background_1.jpg)';
+            document.getElementById('preview-wrap').style.backgroundImage = 'url(' + chairImg + '?v=' + number + ')';
             jQuery('body').addClass('loaded');
             jQuery('.ssticky').sticky({ topSpacing: 0 });
             jQuery('.ssticky').sticky('update');
@@ -95,7 +96,8 @@
         }
 
         function initializeChairImage(chairImg, backgroundImg) {
-            document.getElementById('preview-wrap').style.backgroundImage = 'url(' + chairImg + '), url(/images/background_1.jpg)';
+            //document.getElementById('preview-wrap').style.backgroundImage = 'url(' + chairImg + '), url(/images/background_1.jpg)';
+            document.getElementById('preview-wrap').style.backgroundImage = 'url(' + chairImg + ')';
             jQuery('body').addClass('loaded');
             jQuery('.ssticky').sticky({ topSpacing: 0 });
             jQuery('.ssticky').sticky('update');
@@ -125,7 +127,8 @@
 
                             <!-- Image Area -->
                             <div class="apply ssticky">
-                                <div class="preview-wrap" id="preview-wrap" style="background-color: #ffffff; background-image: url('/images/brisbane720_720.png'), url('/images/background_1.jpg');">
+                                <%--<div class="preview-wrap" id="preview-wrap" style="background-color: #ffffff; background-image: url('/images/brisbane720_720.png'), url('/images/background_1.jpg');">--%>
+                                <div class="preview-wrap" id="preview-wrap" style="background-color: #ffffff; background-image: url('/images/brisbane720_720.png')">
 
                                     <div class="image-options">
                                         <div class="utility-bar">

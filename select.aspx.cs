@@ -14,8 +14,9 @@ public partial class selector : System.Web.UI.Page
     public string gSessionID = "";
     public string error_timeout = "<h2>Chair Builder Session Timed Out</h2><p>Please start your session over.</p><p><a href='/' class='button'>View all chairs</a></p>";
 
-    protected void Page_Init(object sender, EventArgs e)
+    protected void Page_Load(object sender, EventArgs e)
     {
+        
         // Set the current step visual.
         NavProgress1.CurrentStepDisplay = "step2";
 
@@ -282,10 +283,10 @@ public partial class selector : System.Web.UI.Page
                                 b.Text = btn_name;
                                 b.CssClass = "button";
                                 //b.PostBackUrl = "~/builder2.aspx";
-                                b.CommandArgument = list_properties;
+                                //b.CommandArgument = list_properties;
                                 //b.OnClientClick = "b_Click";
                                 //b.Click += new EventHandler(b_Click);
-                                b.Click += (se, ev) => b_Click(se, ev, list_properties);
+                                b.Click += (se, ev) => b_Click(se, ev, list_properties.ToString());
                                 //b.Click += (se, ev) => b_Click(se, ev);
 
                                 //Create Hidden Chair Properties (Options)
@@ -330,11 +331,11 @@ public partial class selector : System.Web.UI.Page
         //Literal2.Text = chairparms;
     }
 
-    protected void btnHelloWorld_Click(object sender, EventArgs e)
+    protected void btnPostBack_Click(object sender, EventArgs e)
     {
         // Call server.transfer on ajax enabled postback click and saved code from page request Manager exception
-        Literal2.Text = "Hello, world - this is a fresh message from ASP.NET AJAX! The time right now is: " + DateTime.Now.ToLongTimeString();
-        Server.Transfer("builder.aspx", false);
+        // Literal2.Text = "Hello, world - this is a fresh message from ASP.NET AJAX! The time right now is: " + DateTime.Now.ToLongTimeString();
+        Server.Transfer("builder.aspx", true);
     }
 
 }
