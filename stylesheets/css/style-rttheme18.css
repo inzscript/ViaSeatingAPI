@@ -1193,6 +1193,13 @@ html .boxed-body .nav_shadow.stuck{
     .responsive .three .row h2 
     { min-height: 80px;}
 
+    .responsive .four .row h2 
+    { min-height: 80px;}
+
+    .responsive .content .four img {
+        height: 250px;
+    }
+
     .responsive .content img {
         height: 309px;
     }

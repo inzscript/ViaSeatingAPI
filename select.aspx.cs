@@ -245,12 +245,12 @@ public partial class selector : System.Web.UI.Page
                                 list_properties += "] }";
                                 count += 1;
                                 // Check if for the first item in a row.
-                                if ((count - 1 % 3) == 0)
+                                if ((count - 1 % 4) == 0)
                                 {
                                     selectTop = "<div class='row clearfix'>";
                                 }
 
-                                selectTop += "<div class='box three'>";
+                                selectTop += "<div class='box four'>";
                                 selectTop += "<div class='featured_image img_loaded'>";
                                 selectTop += "<img src='" + select.ImageLink + "' alt='" + select.Caption + "'>";
                                 selectTop += "</div>";
@@ -266,7 +266,7 @@ public partial class selector : System.Web.UI.Page
                                 selectBottom += "</div>";
 
                                 // Close div if the item was third.
-                                if (((count % 3) == 0))
+                                if (((count % 4) == 0))
                                 {
                                     selectBottom += "</div><br />";
                                 }
@@ -308,7 +308,7 @@ public partial class selector : System.Web.UI.Page
                             }
 
                             // Close div when row contains less than three items.
-                            if (((count % 3) != 0))
+                            if (((count % 4) != 0))
                             {
                                 Literal1.Text += "</div><br />";
                             }

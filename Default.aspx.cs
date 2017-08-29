@@ -129,7 +129,7 @@ public partial class _Default : Page
                             {
                                 count += 1;
                                 //gSeriesList += "<p>Chair: " + select.Value + "</p>";
-                                gSeriesList += "<div class='box three'>";
+                                gSeriesList += "<div class='box four'>";
                                 gSeriesList += "<div class='featured_image img_loaded'>";
                                 gSeriesList += "<img src='" + select.ImageLink + "' alt='" + select.Value + "' />";
                                 gSeriesList += "</div>";
@@ -140,7 +140,7 @@ public partial class _Default : Page
                                 gSeriesList += "</div></div>";
                                 gSeriesList += "</div>";
                                 //// Close div if the item was third.
-                                if ((count % 3) == 0)
+                                if ((count % 4) == 0)
                                 {
                                     gSeriesList += "</div><br />";
                                     gSeriesList += "<div class='row clearfix'>";

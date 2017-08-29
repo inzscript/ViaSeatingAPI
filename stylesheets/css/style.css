@@ -18,6 +18,22 @@
     margin: 1.25rem 0 0.625rem;
 }
 
+.content_block_background .box.four {
+    padding: 1.25rem 0.625rem;
+    background: #fff;
+    border: #f3f3f3 solid 1px;
+}
+
+.content_block_background .box.four h2 {
+    margin: 1.25rem 0 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.content_block_background .box.four h3 {
+    margin: 1.25rem 0 0.625rem;
+}
+
 .featured_image {
     background-color: #FFF;
     max-width: 25rem;
