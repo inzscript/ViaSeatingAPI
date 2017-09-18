@@ -94,7 +94,8 @@ public partial class builder : System.Web.UI.Page
                     ScriptManager.RegisterStartupScript(UpdatePanel2, GetType(), "Javascript", "javascript: initializeChairImage('" + ImageURL + "', '');", true);
                     //ScriptManager.RegisterStartupScript(UpdatePanel2, GetType(), "Javascript", "jQuery(function() {document.getElementById('preview-wrap').style.backgroundImage = 'url(" + ImageURL + "), url(/images/background_1.jpg)';jQuery('body').addClass('loaded');}); ", true);
                 }
-            } else
+            }
+            else
             {
                 Literal2.Text = error_timeout;
                 ScriptManager.RegisterStartupScript(UpdatePanel2, GetType(), "Javascript", "javascript: errorDisplay();", true);
@@ -122,7 +123,7 @@ public partial class builder : System.Web.UI.Page
                 string parmkey = row["name"].ToString();
 
                 //if (parmkey == "RULE")
-                if(parmkey == "CHAIR_FAMILY")
+                if (parmkey == "CHAIR_FAMILY")
                 {
                     sRuleSet = parmvalue;
                     RuleSet = parmvalue;
@@ -175,7 +176,7 @@ public partial class builder : System.Web.UI.Page
 
                     if (CurrentID != "NotFound")
                     {
-                        CurrentID = getScreenSelection(configUiClient, sessionId, CurrentID, parmvalue, parmvalue,parmkey);
+                        CurrentID = getScreenSelection(configUiClient, sessionId, CurrentID, parmvalue, parmvalue, parmkey);
                     }
                 }
 
@@ -274,7 +275,7 @@ public partial class builder : System.Web.UI.Page
                 {
                     string parmvalue = row["value"].ToString();
                     string parmkey = row["name"].ToString();
-                    
+
                     // Skip the parmkeys that have the RULESET values = RULE and CHAIR_FAMILY
                     if (parmkey != "RULE" && parmkey != "CHAIR_FAMILY")
                     {
@@ -370,7 +371,7 @@ public partial class builder : System.Web.UI.Page
                 foreach (var screen in UiData.Pages[0].Screens)
                 {
                     foreach (var screenoption in screen.ScreenOptions)
-                    { 
+                    {
                         // ScreenOptions is only 1 Dimension Deep [0] - Loop through ScreensOptions/ScreenOption/SelectableValues/
                         foreach (var select in screenoption.SelectableValues)
                         {
@@ -393,11 +394,12 @@ public partial class builder : System.Web.UI.Page
             ChairImageURL.Value = ImageURL;
             //Literal2.Text += UiData.ImageUrl.ToString() + "<br />";
         }
-        
+
         if (selectionFound)
         {
             return screenOptionID;
-        } else
+        }
+        else
         {
             return "NotFound";
         }
@@ -442,9 +444,11 @@ public partial class builder : System.Web.UI.Page
                             {
                                 case "TypeableDropDown":
                                     create_DropDown(screenOptIDX, screenoption, screenoption.Value);
+                                    //create_RadioBtn_Group(screenOptIDX, screenoption);
                                     break;
                                 case "DropDown":
-                                    create_DropDown(screenOptIDX, screenoption, screenoption.Value);
+                                    //create_DropDown(screenOptIDX, screenoption, screenoption.Value);
+                                    create_RadioBtn_Group(screenOptIDX, screenoption);
                                     break;
                                 case "CheckBox":
                                     create_CheckBox(screenOptIDX, screenoption, screenoption.Value);
@@ -543,8 +547,17 @@ public partial class builder : System.Web.UI.Page
         if (screenIndex == 0)
         {
             // Dynamically create Chair Options ListBox
-            SectionOptions.Text += "<section class='" + screenoption.Name + "' id='" + screenoption.Name + "'>";
-            SectionOptions.Text += "<div class='heading'><h4>" + screenoption.Caption + "</h4></div>";
+            //SectionOptions.Text += "<section class='" + screenoption.Name + "' id='" + screenoption.Name + "'>";
+            //SectionOptions.Text += "<div class='heading'><h4>" + screenoption.Caption + "</h4></div>";
+            //SectionOptions.Text += "<select class='cs-select cs-skin-border'>";
+
+            SectionOptions.Text += "<section class='panel panel-default'>";
+            SectionOptions.Text += "<div class='heading panel-heading' role='tab' id='heading" + screenoption.Name + "'>";
+            SectionOptions.Text += "<h4 class='panel-title'>";
+            SectionOptions.Text += "<a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href='#collapse" + screenoption.Name + "' aria-expanded='false' aria-controls='collapse" + screenoption.Name + "'>";
+            SectionOptions.Text += screenoption.Caption + "</a></h4></div>";
+            SectionOptions.Text += "<div id='collapse" + screenoption.Name + "' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading" + screenoption.Name + "'>";
+            SectionOptions.Text += "<div class='panel-body'>";
             SectionOptions.Text += "<select class='cs-select cs-skin-border'>";
         }
 
@@ -596,12 +609,14 @@ public partial class builder : System.Web.UI.Page
             // Prepare first option in loop
             if (selectIDX == 0)
             {
-                sFirstOptionSelected = "<option value='" + select.Value + ":" + screenoption.Name + "' selected "+ color_option + ">" + select.Caption + sListOption3 + "</option>";
+                sFirstOptionSelected = "<option value='" + select.Value + ":" + screenoption.Name + "' selected " + color_option + ">" + select.Caption + sListOption3 + "</option>";
 
                 // Prepare to add first option as selected both on the form and DataSet. (disabled - set visible to false)
                 sFirstOptionNotSelected = "<option value='" + select.Value + ":" + screenoption.Name + "' " + inputSelected + color_option + ">" + select.Caption + sListOption3 + "</option>";
                 setDefault_list_properties = ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"false\"}";
-            } else { 
+            }
+            else
+            {
                 sListOption2 += "<option value='" + select.Value + ":" + screenoption.Name + "' " + inputSelected + color_option + ">" + select.Caption + sListOption3 + "</option>";
             }
             selectIDX++;
@@ -611,7 +626,8 @@ public partial class builder : System.Web.UI.Page
         {
             // Could be selected if found Option is the first selection.
             SectionOptions.Text += sListOption1 + sFirstOptionNotSelected + sListOption2;
-        } else
+        }
+        else
         {
             // Set Default DropDown to First Selection because NOT set. (disabled - set visible to false)
             list_properties += setDefault_list_properties;
@@ -620,11 +636,11 @@ public partial class builder : System.Web.UI.Page
             //SectionOptions.Text += sListOption1 + sFirstOptionSelected + sListOption2;
             SectionOptions.Text += sListOption1 + sFirstOptionNotSelected + sListOption2;
         }
-        
+
         if (screenIndex == 0)
         {
             // End Chair Options List
-            SectionOptions.Text += "</select>";
+            SectionOptions.Text += "</select></div></div>";
             SectionOptions.Text += "</section>";
         }
     }
@@ -646,8 +662,17 @@ public partial class builder : System.Web.UI.Page
         if (screenIndex == 0)
         {
             // Dynamically create Chair Options ListBox
-            SectionOptions.Text += "<section class='" + screenoption.Name + "' id='" + screenoption.Name + "'>";
-            SectionOptions.Text += "<div class='heading'><h4>" + screenoption.Caption + "</h4></div>";
+            //SectionOptions.Text += "<section class='" + screenoption.Name + "' id='" + screenoption.Name + "'>";
+            //SectionOptions.Text += "<div class='heading'><h4>" + screenoption.Caption + "</h4></div>";
+            //SectionOptions.Text += "<div class='switch'>";
+
+            SectionOptions.Text += "<section class='panel panel-default'>";
+            SectionOptions.Text += "<div class='heading panel-heading' role='tab' id='heading" + screenoption.Name + "'>";
+            SectionOptions.Text += "<h4 class='panel-title'>";
+            SectionOptions.Text += "<a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href='#collapse" + screenoption.Name + "' aria-expanded='false' aria-controls='collapse" + screenoption.Name + "'>";
+            SectionOptions.Text += screenoption.Caption + "</a></h4></div>";
+            SectionOptions.Text += "<div id='collapse" + screenoption.Name + "' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading" + screenoption.Name + "'>";
+            SectionOptions.Text += "<div class='panel-body'>";
             SectionOptions.Text += "<div class='switch'>";
         }
 
@@ -695,7 +720,7 @@ public partial class builder : System.Web.UI.Page
         if (screenIndex == 0)
         {
             // End Chair Options List
-            SectionOptions.Text += "</div>";
+            SectionOptions.Text += "</div></div></div>";
             SectionOptions.Text += "</section>";
         }
     }
@@ -715,17 +740,23 @@ public partial class builder : System.Web.UI.Page
         // Step 0 - Check if ScreenOption is CHAIR IMAGE VIEW, this indicates the last option is set and
         // the display of all chair options is complete and the chair image is available.
         // Set the Fininalize button as visiable.
-        if (screenoption.Name == "CHAIR_IMAGE_VIEW") {
+        if (screenoption.Name == "CHAIR_IMAGE_VIEW")
+        {
             btnFinalizePostBack.Visible = true;
             btnFinalizeUtilityBar.Visible = true;
         }
-        
+
         // Step 1 - Dynamically create Chair Options ListBox
         if (screenIndex == 0)
         {
             // Intialize the first option
-            SectionOptions.Text += "<section class='" + screenoption.Name + "' id='" + screenoption.Name + "'>";
-            SectionOptions.Text += "<div class='heading'><h4>" + screenoption.Caption + "</h4></div>";
+            SectionOptions.Text += "<section class='panel panel-default'>";
+            SectionOptions.Text += "<div class='heading panel-heading' role='tab' id='heading" + screenoption.Name + "'>";
+            SectionOptions.Text += "<h4 class='panel-title'>";
+            SectionOptions.Text += "<a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href='#collapse" + screenoption.Name + "' aria-expanded='false' aria-controls='collapse" + screenoption.Name + "'>";
+            SectionOptions.Text += screenoption.Caption + "</a></h4></div>";
+            SectionOptions.Text += "<div id='collapse" + screenoption.Name + "' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading" + screenoption.Name + "'>";
+            SectionOptions.Text += "<div class='panel-body'>";
             SectionOptions.Text += "<ul class='options unstyled'>";
         }
 
@@ -741,7 +772,7 @@ public partial class builder : System.Web.UI.Page
         {
             // Step 3 - Dynamically create Literal for Screen Option Selectable Values
             var inputcheck = "";
-            
+
             // Check if Screen -> ScreenOption Caption is in SelectionSummary (Rollback Data) and set option as selected if found.
             if (IsInSummarySelection(screenoption.Caption, select.Caption))
             {
@@ -757,9 +788,9 @@ public partial class builder : System.Web.UI.Page
                 if (property.Name == "Price" || property.Name == "PRICE")
                 {
                     if (property.Value != "0" && property.Value != null && property.Value != "")
-                        { sOptionPrice = "<span class='price-delta'> [+$" + property.Value + ".00]</span>"; }
+                    { sOptionPrice = "<span class='price-delta'> [+$" + property.Value + ".00]</span>"; }
                     else
-                        { sOptionPrice = ""; }
+                    { sOptionPrice = ""; }
                 }
             }
 
@@ -778,7 +809,9 @@ public partial class builder : System.Web.UI.Page
 
                 // Prepare to add first option as selected for the DataSet. (disabled - set visible to false)
                 setDefault_list_properties = ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"false\"}";
-            } else {
+            }
+            else
+            {
                 sListOptions += "<li class='part extras radio-option'>";
                 sListOptions += "<input type='radio' id='" + select.Value + "' name='" + screenoption.Name + "' product-id='" + select.Value + "' section-id='" + screenoption.Name + "'" + inputcheck + " onclick='javascript:onRadioClick(\"" + screenoption.Name + "\",\"" + select.Value + "\");'></input>";
                 sListOptions += "<label for='" + select.Value + "' title='" + select.Caption + "' class=''>" + select.Caption + sOptionPrice + "</label>";
@@ -803,7 +836,7 @@ public partial class builder : System.Web.UI.Page
         if (screenIndex == 0)
         {
             // End Chair Options List
-            SectionOptions.Text += "</ul>";
+            SectionOptions.Text += "</ul></div></div>";
             SectionOptions.Text += "</section>";
         }
     }
@@ -877,7 +910,7 @@ public partial class builder : System.Web.UI.Page
             foreach (DataRow row in dataTable.Rows)
             {
                 string parmkey = row["name"].ToString();
-                
+
 
                 if (parmkey == OptionName)
                 {
@@ -939,7 +972,7 @@ public partial class builder : System.Web.UI.Page
         }
     }
 
-        /// <summary>
+    /// <summary>
     /// Convert string to Upper Case
     /// </summary>
     /// <param name="s"></param>
@@ -1051,7 +1084,7 @@ public partial class builder : System.Web.UI.Page
 
                 cell = new PdfPCell(new Phrase(row["caption"].ToString(), bodyBoldFont));
 
-                if (((rowIDX % 4) == 0) || (((rowIDX+1) % 4) == 0))
+                if (((rowIDX % 4) == 0) || (((rowIDX + 1) % 4) == 0))
                     cell.BackgroundColor = white;
                 else
                     cell.BackgroundColor = light2;
@@ -1064,7 +1097,7 @@ public partial class builder : System.Web.UI.Page
 
                 cell = new PdfPCell(new Phrase(row["value"].ToString(), bodyFont));
 
-                if (((rowIDX % 4) == 0) || (((rowIDX+1) % 4) == 0))
+                if (((rowIDX % 4) == 0) || (((rowIDX + 1) % 4) == 0))
                     cell.BackgroundColor = white;
                 else
                     cell.BackgroundColor = light2;
@@ -1085,7 +1118,7 @@ public partial class builder : System.Web.UI.Page
                     cell.HorizontalAlignment = Element.ALIGN_LEFT;
                     table.AddCell(cell);
                 }
-                    rowIDX++;
+                rowIDX++;
             }
 
             // Add filler cells to complete 5 cells per row, won't display if less than 5

@@ -38,6 +38,7 @@
     <link rel='stylesheet' href='stylesheets/css/animate.css?ver=4.7' type='text/css' media='all' />
     <link rel='stylesheet' href='stylesheets/css/progress.css?ver=4.7' type='text/css' media='all' />
     <link rel='stylesheet' href='stylesheets/css/builder.css?ver=4.8' type='text/css' media='all' />
+    <link rel="stylesheet" href='stylesheets/css/font-awesome.min.css' type='text/css' media='all'>
     
     <!--[if IE 7]>
     <link rel='stylesheet' href='http://www.viaseating.com/wp-content/themes/rttheme18/css/ie7.css?ver=4.7' type='text/css' media='all' />
@@ -52,6 +53,7 @@
     <script type='text/javascript' src='http://www.viaseating.com/wp-content/themes/rttheme18/js/modernizr.min.js?ver=4.7'></script>
     <script type='text/javascript' src='/Scripts/jquery.sticky.js?ver=4.7'></script>
     <script type='text/javascript' src='/Scripts/script.js?ver=1.0'></script>
+    <script type='text/javascript' src='/Scripts/bootstrap.min.js?ver=3.3.7'></script>
 
     <link href="stylesheets/css/typography.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/css/style.css" rel="stylesheet" type="text/css" />
