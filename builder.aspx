@@ -134,18 +134,19 @@
                                         <div class="utility-bar">
                                             <ul class="unstyled">
                                                 <li>
-                                                    <label>
+                                                    <%--<label>
                                                         <input type="radio" value="Front" name="view" id="front" class="view" checked="checked">
                                                         <span>FRONT</span>
                                                     </label>
                                                     <label>
                                                         <input type="radio" value="Back" name="view" id="back" class="view">
                                                         <span>BACK</span>
-                                                    </label>
+                                                    </label>--%>
+                                                    <asp:Literal ID="SelectionView" runat="server"></asp:Literal>
                                                 </li>
-                                                <li>
+                                                <%--<li>
                                                     <button class="small" id="view-spec">SPEC</button>
-                                                </li>
+                                                </li>--%>
                                                 <%--<li class="border" id="change-event">
                                                     <button class="small" id="btnPDF" runat="server" onserverclick="btnGeneratePDF_Click" onclick="return false;"><span class="icon-download"></span>PDF</button>
                                                 </li>--%>

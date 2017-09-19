@@ -764,6 +764,7 @@ public partial class builder : System.Web.UI.Page
         var sListOptions = "";
         // var sListOption2 = ""; var sListOption3 = ""; var sListOption4 = "";
         var sFirstOptionSelected = ""; var sFirstOptionNotSelected = "";
+        var sFirstViewSelected = ""; var sFirstViewNotSelected = ""; var sViewOptions = "";
         var setDefault_list_properties = "";
         Boolean foundOption = false;
         var selectIDX = 0;
@@ -807,6 +808,20 @@ public partial class builder : System.Web.UI.Page
                 sFirstOptionNotSelected += "<label for='" + select.Value + "' title='" + select.Caption + "' class=''>" + select.Caption + sOptionPrice + "</label>";
                 sFirstOptionNotSelected += "</li>";
 
+                // CHAIR IMVAGE VIEW - Front Back View Buttons
+                if (screenoption.Name == "CHAIR_IMAGE_VIEW")
+                {
+                    sFirstViewSelected = "<label>";
+                    sFirstViewSelected += "<input type='radio' id='" + select.Value + "1' name='" + screenoption.Name + "1' class='view' checked='checked' onclick='javascript:onRadioClick(\"" + screenoption.Name + "\",\"" + select.Value + "\");'></input>";
+                    sFirstViewSelected += "<span>" + select.Caption + "</span>";
+                    sFirstViewSelected += "</label>";
+
+                    sFirstViewNotSelected = "<label>";
+                    sFirstViewNotSelected += "<input type='radio' id='" + select.Value + "1' name='" + screenoption.Name + "1' class='view' onclick='javascript:onRadioClick(\"" + screenoption.Name + "\",\"" + select.Value + "\");'></input>";
+                    sFirstViewNotSelected += "<span>" + select.Caption + "</span>";
+                    sFirstViewNotSelected += "</label>";
+                }
+
                 // Prepare to add first option as selected for the DataSet. (disabled - set visible to false)
                 setDefault_list_properties = ", {\"name\" : \"" + screenoption.Name + "\", \"value\" : \"" + select.Value + "\", \"visible\" : \"false\"}";
             }
@@ -816,6 +831,15 @@ public partial class builder : System.Web.UI.Page
                 sListOptions += "<input type='radio' id='" + select.Value + "' name='" + screenoption.Name + "' product-id='" + select.Value + "' section-id='" + screenoption.Name + "'" + inputcheck + " onclick='javascript:onRadioClick(\"" + screenoption.Name + "\",\"" + select.Value + "\");'></input>";
                 sListOptions += "<label for='" + select.Value + "' title='" + select.Caption + "' class=''>" + select.Caption + sOptionPrice + "</label>";
                 sListOptions += "</li>";
+
+                // CHAIR IMVAGE VIEW - Front Back View Buttons
+                if (screenoption.Name == "CHAIR_IMAGE_VIEW")
+                {
+                    sViewOptions += "<label>";
+                    sViewOptions += "<input type='radio' id='" + select.Value + "1' name='" + screenoption.Name + "1' class='view'" + inputcheck + " onclick='javascript:onRadioClick(\"" + screenoption.Name + "\",\"" + select.Value + "\");'></input>";
+                    sViewOptions += "<span>" + select.Caption + "</span>";
+                    sViewOptions += "</label>";
+                }
             }
             selectIDX++;
         }
@@ -825,12 +849,18 @@ public partial class builder : System.Web.UI.Page
         {
             // Could be selected if foundOption is the first selection.
             SectionOptions.Text += sFirstOptionNotSelected + sListOptions;
+
+            // CHAIR IMVAGE VIEW - Front Back View Buttons
+            SelectionView.Text = sFirstViewSelected + sViewOptions;
         }
         else
         {
             // Set Default RadioBtn to first selection because NOT set.(disabled - set visible to false)
             list_properties += setDefault_list_properties;
             SectionOptions.Text += sFirstOptionNotSelected + sListOptions;
+
+            // CHAIR IMVAGE VIEW - Front Back View Buttons
+            SelectionView.Text = sFirstViewNotSelected + sViewOptions;
         }
 
         if (screenIndex == 0)
