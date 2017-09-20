@@ -153,7 +153,7 @@
                                                 <li>
                                                     <%--<button class="final">FINALIZE SPEC</button>--%>
                                                     <div class="finalize-wrapper">
-                                                        <asp:Button runat="server" ID="btnFinalizeUtilityBar" OnClick="btnPostFinal_Click" Text="Finalize" CssClass="final button" />
+                                                        <asp:Button runat="server" ID="btnFinalizeUtilityBar" OnClick="btnPostFinal_Click" Text="FINALIZE" CssClass="final button" />
                                                     </div>
                                                 </li>
                                             </ul>

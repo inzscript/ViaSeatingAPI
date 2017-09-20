@@ -1,4 +1,13 @@
 ﻿/* ============================================================
+  Overrides
+============================================================ */
+
+section.content.left {
+    margin: 0;
+    min-height: 570px;
+}
+
+/* ============================================================
   DropDown CSS ONLY SELECT
 ============================================================ */
 .control-group {
@@ -1572,13 +1581,12 @@ aside.customizer {
     /*border-bottom: 7px solid #3b4141;*/
 }
 .image-options {
-    float: right;
-    margin-right: 20px;
-    min-width: 650px;
+    float: left;
+    /*min-width: 650px;*/
 }
 @media screen and (max-width:1058px) {
     .image-options {
-    margin-right: 5px;
+    /*margin-right: 5px;*/
     }
 }
 /* Mobile up to 767px */
@@ -1604,7 +1612,7 @@ aside.customizer {
     }
     .image-options {
         margin: 0px auto !important;
-        float: none;
+        /*float: none;*/
         min-width: unset;
     }
     .preview-wrap {
@@ -1687,9 +1695,7 @@ aside.customizer {
 }
 .image-options .utility-bar {
     background-color: #fff;
-    padding: 6px 8px;
-    float: left;
-    margin: 20px 0 0 10px;
+    margin: 10px 0 0 10px;
 }
 .image-options .utility-bar button {
     background-color: #afb5b8;
