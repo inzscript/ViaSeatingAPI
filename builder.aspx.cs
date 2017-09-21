@@ -443,8 +443,8 @@ public partial class builder : System.Web.UI.Page
                             switch (screenoption.DisplayType)
                             {
                                 case "TypeableDropDown":
-                                    create_DropDown(screenOptIDX, screenoption, screenoption.Value);
-                                    //create_RadioBtn_Group(screenOptIDX, screenoption);
+                                    //create_DropDown(screenOptIDX, screenoption, screenoption.Value);
+                                    create_RadioBtn_Group(screenOptIDX, screenoption);
                                     break;
                                 case "DropDown":
                                     //create_DropDown(screenOptIDX, screenoption, screenoption.Value);
@@ -799,13 +799,13 @@ public partial class builder : System.Web.UI.Page
             if (selectIDX == 0)
             {
                 sFirstOptionSelected = "<li class='part extras radio-option'>";
-                sFirstOptionSelected += "<input type='radio' id='" + select.Value + "' name='" + screenoption.Name + "' product-id='" + select.Value + "' section-id='" + screenoption.Name + "' checked='checked' onclick='javascript:onRadioClick(\"" + screenoption.Name + "\",\"" + select.Value + "\");'></input>";
-                sFirstOptionSelected += "<label for='" + select.Value + "' title='" + select.Caption + "' class=''>" + select.Caption + sOptionPrice + "</label>";
+                sFirstOptionSelected += "<input type='radio' id='" + screenoption.Name + select.Value + "' name='" + screenoption.Name + "' product-id='" + select.Value + "' section-id='" + screenoption.Name + "' checked='checked' onclick='javascript:onRadioClick(\"" + screenoption.Name + "\",\"" + select.Value + "\");'></input>";
+                sFirstOptionSelected += "<label for='" + screenoption.Name + select.Value + "' title='" + select.Caption + "' class=''>" + select.Caption + sOptionPrice + "</label>";
                 sFirstOptionSelected += "</li>";
 
                 sFirstOptionNotSelected = "<li class='part extras radio-option'>";
-                sFirstOptionNotSelected += "<input type='radio' id='" + select.Value + "' name='" + screenoption.Name + "' product-id='" + select.Value + "' section-id='" + screenoption.Name + "'" + inputcheck + " onclick='javascript:onRadioClick(\"" + screenoption.Name + "\",\"" + select.Value + "\");'></input>";
-                sFirstOptionNotSelected += "<label for='" + select.Value + "' title='" + select.Caption + "' class=''>" + select.Caption + sOptionPrice + "</label>";
+                sFirstOptionNotSelected += "<input type='radio' id='" + screenoption.Name + select.Value + "' name='" + screenoption.Name + "' product-id='" + select.Value + "' section-id='" + screenoption.Name + "'" + inputcheck + " onclick='javascript:onRadioClick(\"" + screenoption.Name + "\",\"" + select.Value + "\");'></input>";
+                sFirstOptionNotSelected += "<label for='" + screenoption.Name + select.Value + "' title='" + select.Caption + "' class=''>" + select.Caption + sOptionPrice + "</label>";
                 sFirstOptionNotSelected += "</li>";
 
                 // CHAIR IMVAGE VIEW - Front Back View Buttons
@@ -828,8 +828,8 @@ public partial class builder : System.Web.UI.Page
             else
             {
                 sListOptions += "<li class='part extras radio-option'>";
-                sListOptions += "<input type='radio' id='" + select.Value + "' name='" + screenoption.Name + "' product-id='" + select.Value + "' section-id='" + screenoption.Name + "'" + inputcheck + " onclick='javascript:onRadioClick(\"" + screenoption.Name + "\",\"" + select.Value + "\");'></input>";
-                sListOptions += "<label for='" + select.Value + "' title='" + select.Caption + "' class=''>" + select.Caption + sOptionPrice + "</label>";
+                sListOptions += "<input type='radio' id='" + screenoption.Name + select.Value + "' name='" + screenoption.Name + "' product-id='" + select.Value + "' section-id='" + screenoption.Name + "'" + inputcheck + " onclick='javascript:onRadioClick(\"" + screenoption.Name + "\",\"" + select.Value + "\");'></input>";
+                sListOptions += "<label for='" + screenoption.Name + select.Value + "' title='" + select.Caption + "' class=''>" + select.Caption + sOptionPrice + "</label>";
                 sListOptions += "</li>";
 
                 // CHAIR IMVAGE VIEW - Front Back View Buttons
