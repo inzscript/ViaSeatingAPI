@@ -13,7 +13,7 @@
             <section class="info_bar clearfix">
 
                 <uc1:NavigationProgress runat="server" ID="NavProgress1" />
-                <uc1:HeaderContent runat="server" ID="HeaderContent" />
+                <%--<uc1:HeaderContent runat="server" ID="HeaderContent" />--%>
 
             </section>
         </section>
@@ -21,23 +21,13 @@
         <div class="content_second_background">
             <div class="content_area clearfix">
 
-                <div id="row-664892-1" class="content_block_background template_builder ">
-                    <section class="content_block clearfix">
-                        <section id="row-664892-1-content" class="content full  clearfix">
-                            <div class="row clearfix">
-                                <div id="products-707941-54923" class="product_holder product-showcase clearfix">
-                                    <%--<div class="product_boxes" data-rt-animation-group="group">--%>
+                <section id="row-pricelist" class="content title">
+                    <div class="family left triple"><span><asp:Literal ID="lFamily" runat="server"></asp:Literal></span><br /><asp:Literal ID="lSeries" runat="server"></asp:Literal></div>
+                    <div class="price left triple"><span>List Price</span><br /><asp:Literal ID="lListPrice" runat="server"></asp:Literal></div>
+                    <div class="other left triple"><asp:Button ID="createPDF" runat="server" OnClick="btnGeneratePDF_Click" CssClass="button orange" Text="Save PDF" /><br/><a class="icon-back button" href="/" itemprop="url"> Start Over</a></div>
+                </section>
 
-                                    <asp:Button ID="createPDF" runat="server" OnClick="btnGeneratePDF_Click" CssClass="button" Text="Save PDF" />
-
-                                    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
-
-                                    <%--</div>--%>
-                                </div>
-                            </div>
-                        </section>
-                    </section>
-                </div>
+                <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 
             </div>
 
@@ -46,6 +36,7 @@
             <asp:HiddenField ID="SelectionSummary" runat="server" Value="" />
             <asp:HiddenField ID="ConfiguredPrice" runat="server" Value="" />
             <asp:HiddenField ID="ChairImageURL" runat="server" Value="" />
+            <asp:HiddenField ID="ChairSelect" runat="server" Value="" />
 
             <uc1:FooterContent runat="server" ID="FooterContent" />
 

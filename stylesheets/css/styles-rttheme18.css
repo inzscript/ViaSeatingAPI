@@ -5773,7 +5773,7 @@ body .ls-fullwidth .ls-nav-start, body .ls-fullwidth .ls-nav-stop {
 
 /* sections of the info bar */
 .info_bar .heading{
-	width: 35%;
+	width: 50%;
 	float: left;
 }
 
@@ -5782,7 +5782,7 @@ body .ls-fullwidth .ls-nav-start, body .ls-fullwidth .ls-nav-stop {
 }
 
 .info_bar .breadcrumb{
-	width: 65%;
+	width: 50%;
 	float: left;
 }
 
@@ -5823,6 +5823,7 @@ section.content .row .info_bar{
 	line-height: 100%;
 	padding: 0; 
 	color: #888;
+    text-align: left;
 }	
 
 /* ----------------------------------------------------

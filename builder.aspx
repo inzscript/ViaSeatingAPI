@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ViaBuilder.master" AutoEventWireup="true" CodeFile="builder.aspx.cs" Inherits="builder" EnableViewState="true" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ViaBuilder.master" AutoEventWireup="true" CodeFile="builder.aspx.cs" Inherits="builder" EnableViewState="false" ViewStateEncryptionMode="Never" EnableEventValidation="false" %>
 
 <%@ Register Src="~/Control/FooterContent.ascx" TagPrefix="uc1" TagName="FooterContent" %>
 <%@ Register Src="~/Control/NavigationProgress.ascx" TagPrefix="uc1" TagName="NavigationProgress" %>
@@ -13,9 +13,12 @@
     <script type="text/javascript" language="javascript">
 
         //ToDo: Used to call button on which we fire server.transfer
-        function onFinalizePostBack() {
-            var btn1Name = $get("<%=btnFinalize.ClientID%>").name;
+        function onFinalizePostBack(currentRuleSet) {
+
+            document.getElementById("<%=SelectedRuleSet.ClientID %>").value = currentRuleSet;
+
             jQuery('body').removeClass('loaded');
+            var btn1Name = $get("<%=btnFinalize.ClientID%>").name;
             __doPostBack(btn1Name, "");
         }
 
@@ -153,7 +156,7 @@
                                                 <li>
                                                     <%--<button class="final">FINALIZE SPEC</button>--%>
                                                     <div class="finalize-wrapper">
-                                                        <asp:Button runat="server" ID="btnFinalizeUtilityBar" OnClick="btnPostFinal_Click" Text="FINALIZE" CssClass="final button" />
+                                                        <asp:Button runat="server" ID="btnFinalizeUtilityBar" OnClick="btnPostFinal_Click" UseSubmitBehavior="false" Text="FINALIZE" CssClass="final button" />
                                                     </div>
                                                 </li>
                                             </ul>
@@ -179,6 +182,7 @@
                             <asp:HiddenField ID="SelectionSummary" runat="server" Value="" />
                             <asp:HiddenField ID="ConfiguredPrice" runat="server" Value="" />
                             <asp:HiddenField ID="GlobalSessionID" runat="server" Value="" />
+                            <asp:HiddenField ID="SelectedRuleSet" runat="server" Value="" />
                             <asp:HiddenField ID="ChairImageURL" runat="server" Value="" />
                             <asp:Panel ID="Panel1" runat="server"></asp:Panel>
 
@@ -189,7 +193,7 @@
                                     <asp:Button runat="server" ID="btnPostBack" OnClick="btnPostBack_Click" Text="PostBack" />
                                 </div>
                                 <div class="finalize-wrapper">
-                                    <asp:Button runat="server" ID="btnFinalizePostBack" OnClick="btnPostFinal_Click" Text="Finalize" CssClass="button final" />
+                                    <asp:Button runat="server" ID="btnFinalizePostBack" OnClick="btnPostFinal_Click" UseSubmitBehavior="false" Text="Finalize" CssClass="button final" />
                                 </div>
                             </div>
 

@@ -21,6 +21,7 @@ public partial class complete : System.Web.UI.Page
     public string gSessionID = "";
     public string ImageURL = "";
     public string RuleSet = "";
+    public string ListPrice = "";
     public string list_properties = "";
     public string error_timeout = "<h2>Chair Builder Session Timed Out</h2><p>Please start your session over.</p><p><a href='/' class='button'>View all chairs</a></p>";
 
@@ -33,6 +34,9 @@ public partial class complete : System.Web.UI.Page
 
     public DataSet configuredDataset;
     public DataTable configuredTable;
+
+    public DataSet chairselectDataset;
+    public DataTable chairselectTable;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -50,11 +54,15 @@ public partial class complete : System.Web.UI.Page
                 HiddenField ConfiguredPriceTextBox = (HiddenField)placeHolder.FindControl("ConfiguredPrice");
                 HiddenField SessionTextBox = (HiddenField)placeHolder.FindControl("GlobalSessionID");
                 HiddenField ChairImageURLTextBox = (HiddenField)placeHolder.FindControl("ChairImageURL");
+                HiddenField ChairSelectTextBox = (HiddenField)placeHolder.FindControl("UpdatedChairSelect");
+                HiddenField RuleSetTextBox = (HiddenField)placeHolder.FindControl("SelectedRuleSet");
 
                 if (SelectionSummaryTextBox != null && ConfiguredPriceTextBox != null && SessionTextBox != null && ChairImageURLTextBox != null)
                 {
                     // Store Previous Page SessionID into Page Global SessionID
                     gSessionID = SessionTextBox.Value;
+                    RuleSet = RuleSetTextBox.Value;
+                    lFamily.Text = RuleSetTextBox.Value;
 
                     // Save Chair Image URL to ImageURL
                     ChairImageURL.Value = ChairImageURLTextBox.Value;
@@ -69,6 +77,11 @@ public partial class complete : System.Web.UI.Page
                     ConfiguredPrice.Value = ConfiguredPriceTextBox.Value;
                     configuredDataset = JsonConvert.DeserializeObject<DataSet>(ConfiguredPriceTextBox.Value);
                     configuredTable = configuredDataset.Tables["Details"];
+
+                    // Save Configured Price to DataSet
+                    ChairSelect.Value = ChairSelectTextBox.Value;
+                    chairselectDataset = JsonConvert.DeserializeObject<DataSet>(ChairSelectTextBox.Value);
+                    chairselectTable = chairselectDataset.Tables["Options"];
 
                     initializeChairOptions();
                     finalizeChairOptions();
@@ -91,26 +104,48 @@ public partial class complete : System.Web.UI.Page
     {
         string  sList = "";
 
+        // Check that chair select options were found
+        //if (chairselectTable.Rows.Count > 0)
+        //{
+        //    foreach (DataRow row in chairselectTable.Rows)
+        //    {
+        //        // Output variable fields: Caption and Value
+        //        string parmkey = row["name"].ToString();
+        //        string parmvalue = row["value"].ToString();
+
+        //        if (parmkey == "RULE")
+        //        {
+        //            sList += "<p><strong>" + RuleSet + "</strong></p>";
+        //        }
+        //    }
+        //}
+
         // Display Chair Image
-        sList += "<img src=\"" + ImageURL + "\" alt=\"Via Chair\" style=\"height=400px;margin:auto;\" > <br/><br/>";
+        sList += "<section id=\"row-content-complete\" class=\"content complete left\">";
+        sList += "<img src=\"" + ImageURL + "\" alt=\"Via Chair\">";
+        sList += "</section>";
 
         // Check that chair options were found
         if (summaryTable.Rows.Count > 0)
         {
             // Output Selection Summary
-            sList += "<ul class='order double'>";
+            sList += "<section id=\"row-sidebar-complete\" class=\"sidebar complete right\">";
+            sList += "<ul class='order single'>";
             foreach (DataRow row in summaryTable.Rows)
             {
                 // Output variable fields: Caption and Value
                 string parmkey = row["caption"].ToString();
                 string parmvalue = row["value"].ToString();
 
+                if (parmkey == "SERIES")
+                    lSeries.Text = parmvalue;
+
                 sList += "<li><strong>" + parmkey + "</strong> <span>" + parmvalue + "</span></li>";
             }
             sList += "</ul> <br /><br />";
 
             // Output Configured Price
-            sList += "<ul class='order double'>";
+            //sList += "<ul class='order single'>";
             foreach (DataRow row in configuredTable.Rows)
             {
                 // Output variable fields: Caption, Value and Type
@@ -118,9 +153,13 @@ public partial class complete : System.Web.UI.Page
                 string parmvalue = row["value"].ToString();
                 string parmvisible = row["type"].ToString();
 
-                sList += "<li><strong>" + parmkey + "</strong> <span>" + parmvalue + "</span></li>";
+                if (parmkey == "LIST PRICE:")
+                    lListPrice.Text = parmvalue;
+
+                //sList += "<li><strong>" + parmkey + "</strong> <span>" + parmvalue + "</span></li>";
             }
-            sList += "</ul> <br /><br />";
+            //sList += "</ul> <br /><br />";
+            sList += "</section>";
 
             Literal1.Text = sList;
         }

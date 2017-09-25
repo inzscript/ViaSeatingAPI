@@ -67,6 +67,17 @@
     transition: transform .5s ease, -webkit-transform .5s ease;*/
 }
 
+.button.orange {
+    background: #FF9F37;
+    margin-bottom: 5px;
+}
+.button.orange:focus {
+    background: #FF9F37;
+}
+.button.orange:hover, .button.orange:active {
+    background: #c2c2c2;
+}
+
 .button {
     display: inline-block;
     padding: 0.375rem 2.25rem;
@@ -76,6 +87,7 @@
     font-size: .875rem;
     transition: background .3s ease;
     text-decoration: none;
+    line-height: 100%;
 }
 
 .button:focus {
@@ -111,20 +123,81 @@
 }
 
 ul.order {
-	margin:20px 70px;
+	margin:40px 10px;
     text-align:left;
 	overflow:hidden;
-	border-top:1px solid #ccc;
 }
 .order li {
 	line-height:3.5em;
-	border-bottom:1px solid #ccc;
+	border-bottom: 1px solid rgba(0,0,0,0.06);
 	float:left;
 	display:inline;
 }
+.single li { width:100%; }
 .double li	{ width:50%;}
 .triple li	{ width:33.333%; }
 .quad li		{ width:25%; }
 .six li		{ width:16.666%; }
 
+.single { width:100%; }
+.double { width:50%;}
+.triple { width:33.333%; }
+.quad { width:25%; }
+.six { width:16.666%; }
+
+/* ============================================================
+  Complete Step 3 Page CSS
+============================================================ */
+
+section.content.title {
+    padding: 20px 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    display: inline-block;
+}
+
+.family, .price {
+    font-size: 16px;
+}
+.family span, .price span {
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.other {
+    text-align: left;
+}
+.left {
+    float:left;
+    display: inline-block;
+}
+section.content.complete.left {
+    width: 50%;
+    margin: 0;
+    padding: 0;
+}
+section.sidebar.complete.right {
+    width: 50%;
+    margin: 0;
+    padding: 0;
+}
+.content.complete img {
+    margin: 40px auto;
+}
+
+@media only screen and (min-width: 960px) {
+    .responsive .content.complete img {
+        height: 460px;
+    }
+}
+@media only screen and (max-width: 959px) and (min-width: 768px) {
+    .responsive .content.complete img {
+        height: 400px;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .responsive .content.complete img {
+        height: auto;
+        margin-left: 50px;
+    }
+}
 /*# sourceMappingURL=style.css.map */

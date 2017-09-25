@@ -181,7 +181,7 @@ ul.checkout-bar a {
     margin: 10px 0 60px;
 }
 
-@media only screen and (max-width: 767px) { 
+@media only screen and (max-width: 799px) { 
     ul.checkout-bar li {
     display: inline-block;
     font-size: 12px;

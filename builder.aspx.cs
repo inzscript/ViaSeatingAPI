@@ -127,6 +127,7 @@ public partial class builder : System.Web.UI.Page
                 {
                     sRuleSet = parmvalue;
                     RuleSet = parmvalue;
+                    SelectedRuleSet.Value = parmvalue;
                 }
             }
 
@@ -234,6 +235,7 @@ public partial class builder : System.Web.UI.Page
                 {
                     sRuleSet = parmvalue;
                     RuleSet = parmvalue;
+                    SelectedRuleSet.Value = parmvalue;
                 }
             }
 
@@ -1189,7 +1191,9 @@ public partial class builder : System.Web.UI.Page
 
     protected void btnPostFinal_Click(object send, EventArgs e)
     {
-        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "displayNone", "<script language='JavaScript'>onFinalizePostBack();</script>", false);
+        var sScript = "<script language=\"JavaScript\"> onFinalizePostBack(\"" + SelectedRuleSet.Value + "\");</script>";
+        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "displayNone", sScript, false);
+        //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "displayNone", "<script language='JavaScript'>onFinalizePostBack();</script>", false);
         //ScriptManager.RegisterStartupScript(UpdatePanel2, GetType(), "Javascript", "javascript: onFinalizePostBack();", true);
     }
 
