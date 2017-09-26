@@ -38,6 +38,9 @@ public partial class complete : System.Web.UI.Page
     public DataSet chairselectDataset;
     public DataTable chairselectTable;
 
+    public string FamilyRuleSet = "";
+    public string ListPriceValue = "";
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -63,6 +66,7 @@ public partial class complete : System.Web.UI.Page
                     gSessionID = SessionTextBox.Value;
                     RuleSet = RuleSetTextBox.Value;
                     lFamily.Text = RuleSetTextBox.Value;
+                    HRuleset.Value = RuleSetTextBox.Value;
 
                     // Save Chair Image URL to ImageURL
                     ChairImageURL.Value = ChairImageURLTextBox.Value;
@@ -100,7 +104,7 @@ public partial class complete : System.Web.UI.Page
     /// <remarks>
     /// Recursivlely calls API method, Configure() with ScreenOption Name and Value to preload Chair selection options.
     /// </remarks>
-    protected void initializeChairOptions()
+    public void initializeChairOptions()
     {
         string  sList = "";
 
@@ -137,8 +141,11 @@ public partial class complete : System.Web.UI.Page
                 string parmkey = row["caption"].ToString();
                 string parmvalue = row["value"].ToString();
 
-                if (parmkey == "SERIES")
+                if (parmkey == "SERIES:" || parmkey == "SERIES")
+                {
                     lSeries.Text = parmvalue;
+                    HSeries.Value = parmvalue;
+                }
 
                 sList += "<li><strong>" + parmkey + "</strong> <span>" + parmvalue + "</span></li>";
             }
@@ -154,7 +161,11 @@ public partial class complete : System.Web.UI.Page
                 string parmvisible = row["type"].ToString();
 
                 if (parmkey == "LIST PRICE:")
+                {
                     lListPrice.Text = parmvalue;
+                    ListPriceValue = parmvalue;
+                    HPrice.Value = parmvalue;
+                }
 
                 //sList += "<li><strong>" + parmkey + "</strong> <span>" + parmvalue + "</span></li>";
             }
@@ -193,10 +204,14 @@ public partial class complete : System.Web.UI.Page
         }
     }
 
-    protected void btnGeneratePDF_Click(object sender, EventArgs e)
+    public void btnGeneratePDF_Click(object sender, EventArgs e)
     {
         try
         {
+
+            // Local Variables
+            var sPrice = "";
+            var sFamily = "";
 
             //// Get current SummarySelection and convert to Json Data
             summaryDataset = JsonConvert.DeserializeObject<DataSet>(SelectionSummary.Value);
@@ -222,21 +237,23 @@ public partial class complete : System.Web.UI.Page
 
             pdfDoc.Open();
 
-            // Write VIA Logo to PDF
+            // Create VIA Logo to PDF
             iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(LOGOURL);
             logo.ScaleToFit(140f, 120f);
             logo.SpacingBefore = 10f;
             logo.SpacingAfter = 30f;
             logo.Alignment = Element.ALIGN_CENTER;
-            pdfDoc.Add(logo);
+            
 
-            // Write current selected chair image url to PDF
+            
+
+            // Create selected chair image url to PDF
             iTextSharp.text.Image chair = iTextSharp.text.Image.GetInstance(CHAIRURL);
             chair.ScaleToFit(150f, 150f);
             chair.SpacingBefore = 10f;
             chair.SpacingAfter = 10f;
             chair.Alignment = Element.ALIGN_CENTER;
-            pdfDoc.Add(chair);
+            
 
             // Write type to header
             //Paragraph header = new Paragraph("Brisbane");
@@ -244,80 +261,140 @@ public partial class complete : System.Web.UI.Page
             //pdfDoc.Add(header);
 
             // Create Table with option selection for Specification Sheet
-            PdfPTable table = new PdfPTable(5);
+            PdfPTable table = new PdfPTable(1);
             table.DefaultCell.Border = 0;
-            table.TotalWidth = 400f;
+            table.TotalWidth = 200f;
             table.SpacingBefore = 5f;
             table.SpacingAfter = 5f;
 
-            float[] widths = new float[] { 95f, 95f, 10f, 95f, 95f };
+            float[] widths = new float[] { 200f };
             table.SetWidths(widths);
-            table.HorizontalAlignment = Element.ALIGN_CENTER;
+            //table.HorizontalAlignment = Element.ALIGN_CENTER;
 
             var rowIDX = 1;
-            var cellIDX = 1;
             PdfPCell cell;
 
             foreach (DataRow row in summaryTable.Rows)
             {
                 Literal2.Text += row["caption"].ToString() + "<br>";
-                cell = new PdfPCell(new Phrase(row["caption"].ToString(), bodyBoldFont));
-
-                if (((rowIDX % 4) == 0) || (((rowIDX + 1) % 4) == 0))
-                    cell.BackgroundColor = white;
-                else
-                    cell.BackgroundColor = light2;
-
+                cell = new PdfPCell();
+                cell.BackgroundColor = white;
                 cell.Border = 0;
-                cell.FixedHeight = 40f;
+                cell.FixedHeight = 20f;
                 cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                 cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                var phraseSelection = new Phrase();
+                //var phrase1 = new Phrase(row["caption"].ToString(), bodyBoldFont);
+                //var phrase2 = new Phrase(row["value"].ToString(), bodyFont);
+                phraseSelection.Add(new Phrase(row["caption"].ToString(), bodyBoldFont));
+                phraseSelection.Add(new Phrase(" ", bodyFont));
+                phraseSelection.Add(new Phrase(row["value"].ToString(), bodyFont));
+                cell.AddElement(phraseSelection);
+                //cell.AddElement(phrase2);
                 table.AddCell(cell);
 
-                cell = new PdfPCell(new Phrase(row["value"].ToString(), bodyFont));
 
-                if (((rowIDX % 4) == 0) || (((rowIDX + 1) % 4) == 0))
-                    cell.BackgroundColor = white;
-                else
-                    cell.BackgroundColor = light2;
-
-                cell.Border = 0;
-                cell.FixedHeight = 40f;
-                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                cell.HorizontalAlignment = Element.ALIGN_LEFT;
-                table.AddCell(cell);
-
-                if (!((rowIDX % 2) == 0))
-                {
-                    cell = new PdfPCell(new Phrase(" "));
-                    cell.BackgroundColor = white;
-                    cell.Border = 0;
-                    cell.FixedHeight = 40f;
-                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
-                    table.AddCell(cell);
-                }
                 rowIDX++;
             }
 
-            //// Add filler cells to complete 5 cells per row, won't display if less than 5
-            cell = new PdfPCell(new Phrase(" "));
-            cell.BackgroundColor = white;
-            cell.Border = 0;
-            cell.FixedHeight = 40f;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            table.AddCell(cell);
 
-            cell = new PdfPCell(new Phrase(" "));
-            cell.BackgroundColor = white;
-            cell.Border = 0;
-            cell.FixedHeight = 40f;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            table.AddCell(cell);
+            // Create Table with Family and List Price
+            PdfPTable tablePrice = new PdfPTable(3);
+            tablePrice.DefaultCell.Border = 0;
+            tablePrice.TotalWidth = 400f;
+            tablePrice.SpacingBefore = 40f;
+            tablePrice.SpacingAfter = 5f;
+            float[] widthsPrice = new float[] { 190f, 10f, 190f };
+            tablePrice.SetWidths(widthsPrice);
+            tablePrice.HorizontalAlignment = Element.ALIGN_CENTER;
+            PdfPCell cellPrice;
 
-            pdfDoc.Add(table);
+            // First Row - First Column - Add Family Title
+            cellPrice = new PdfPCell(new Phrase(HRuleset.Value.ToString(), bodyBoldFont));
+            cellPrice.BackgroundColor = white;
+            cellPrice.Border = 0;
+            cellPrice.FixedHeight = 15f;
+            cellPrice.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cellPrice.HorizontalAlignment = Element.ALIGN_LEFT;
+            tablePrice.AddCell(cellPrice);
+
+            // First Row - Second Column - Add Column Gap
+            cellPrice = new PdfPCell(new Phrase(" "));
+            cellPrice.BackgroundColor = white;
+            cellPrice.Border = 0;
+            cellPrice.FixedHeight = 15f;
+            cellPrice.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cellPrice.HorizontalAlignment = Element.ALIGN_LEFT;
+            tablePrice.AddCell(cellPrice);
+
+            // First Row - Third Column - Add List Price
+            var sListPrice = "LIST PRICE";
+            cellPrice = new PdfPCell(new Phrase(sListPrice.ToString(), bodyBoldFont));
+            cellPrice.BackgroundColor = white;
+            cellPrice.Border = 0;
+            cellPrice.FixedHeight = 15f;
+            cellPrice.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cellPrice.HorizontalAlignment = Element.ALIGN_RIGHT;
+            tablePrice.AddCell(cellPrice);
+
+            // Second Row - First Column - Add Family Title Value
+            cellPrice = new PdfPCell(new Phrase(HSeries.Value.ToString(), bodyFont));
+            cellPrice.BackgroundColor = white;
+            cellPrice.Border = 0;
+            cellPrice.FixedHeight = 15f;
+            cellPrice.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cellPrice.HorizontalAlignment = Element.ALIGN_LEFT;
+            tablePrice.AddCell(cellPrice);
+
+            // Second Row - Second Column - Add Column Gap
+            cellPrice = new PdfPCell(new Phrase(" "));
+            cellPrice.BackgroundColor = white;
+            cellPrice.Border = 0;
+            cellPrice.FixedHeight = 15f;
+            cellPrice.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cellPrice.HorizontalAlignment = Element.ALIGN_LEFT;
+            tablePrice.AddCell(cellPrice);
+
+            // Second Row - Third Column - Add List Price Value
+            cellPrice = new PdfPCell(new Phrase(HPrice.Value.ToString(), bodyFont));
+            cellPrice.BackgroundColor = white;
+            cellPrice.Border = 0;
+            cellPrice.FixedHeight = 15f;
+            cellPrice.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cellPrice.HorizontalAlignment = Element.ALIGN_RIGHT;
+            tablePrice.AddCell(cellPrice);
+
+
+            // Create Layout Table -
+            PdfPTable tableLayout = new PdfPTable(3);
+            tableLayout.DefaultCell.Border = 0;
+            tableLayout.TotalWidth = 400f;
+            tableLayout.SpacingBefore = 40f;
+            tableLayout.SpacingAfter = 5f;
+            float[] widthsLayout = new float[] { 190f, 10f, 190f };
+            tableLayout.SetWidths(widthsLayout);
+            tableLayout.HorizontalAlignment = Element.ALIGN_CENTER;
+            PdfPCell cellLayout;
+
+            // First Row - First Column - Add Chair Image
+            tableLayout.AddCell(chair);
+
+            // First Row - Second Column - Add Column Gap
+            cellLayout = new PdfPCell(new Phrase(" "));
+            cellLayout.BackgroundColor = white;
+            cellLayout.Border = 0;
+            cellLayout.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cellLayout.HorizontalAlignment = Element.ALIGN_LEFT;
+            tableLayout.AddCell(cellLayout);
+
+            // First Row - Third Column - Add List
+            tableLayout.AddCell(table);
+
+            pdfDoc.Add(logo);
+            pdfDoc.Add(tablePrice);
+            pdfDoc.Add(tableLayout);
+            //pdfDoc.Add(chair);
+            //pdfDoc.Add(table);
 
             pdfWriter.CloseStream = false;
             pdfDoc.Close();

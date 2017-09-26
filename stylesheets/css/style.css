@@ -70,6 +70,7 @@
 .button.orange {
     background: #FF9F37;
     margin-bottom: 5px;
+    width: 152px;
 }
 .button.orange:focus {
     background: #FF9F37;

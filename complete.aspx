@@ -37,6 +37,9 @@
             <asp:HiddenField ID="ConfiguredPrice" runat="server" Value="" />
             <asp:HiddenField ID="ChairImageURL" runat="server" Value="" />
             <asp:HiddenField ID="ChairSelect" runat="server" Value="" />
+            <asp:HiddenField ID="HRuleset" runat="server" Value="" />
+            <asp:HiddenField ID="HSeries" runat="server" Value="" />
+            <asp:HiddenField ID="HPrice" runat="server" Value="" />
 
             <uc1:FooterContent runat="server" ID="FooterContent" />
 
