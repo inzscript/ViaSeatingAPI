@@ -75,6 +75,8 @@
 
         function hideFinalizeBtn() {
             jQuery('.finalize-wrapper').addClass('builder-hidden');
+            document.getElementById('preview-wrap').style.backgroundImage = 'url(/images/notice-selection-required.png)';
+            jQuery('body').addClass('loaded');
         }
 
         function errorDisplay() {
@@ -131,7 +133,7 @@
                             <!-- Image Area -->
                             <div class="apply ssticky">
                                 <%--<div class="preview-wrap" id="preview-wrap" style="background-color: #ffffff; background-image: url('/images/brisbane720_720.png'), url('/images/background_1.jpg');">--%>
-                                <div class="preview-wrap" id="preview-wrap" style="background-color: #ffffff; background-image: url('/images/brisbane720_720.png')">
+                                <div class="preview-wrap" id="preview-wrap" style="background-color: #ffffff; background-image: url('/images/notice-loading.png')">
 
                                     <div class="image-options">
                                         <div class="utility-bar">

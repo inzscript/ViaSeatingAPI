@@ -61,12 +61,13 @@ public partial class builder : System.Web.UI.Page
 
             updateChairOptions();
 
-            ScriptManager.RegisterStartupScript(UpdatePanel2, GetType(), "Javascript", "javascript: updateChairImage('" + ImageURL + "', '');", true);
+            //ScriptManager.RegisterStartupScript(UpdatePanel2, GetType(), "Javascript", "javascript: updateChairImage('" + ImageURL + "', '');", true);
             //ScriptManager.RegisterStartupScript(UpdatePanel2, GetType(), "Javascript", "jQuery(function() {document.getElementById('preview-wrap').style.backgroundImage = 'url(" + ImageURL + "), url(/images/background_1.jpg)';jQuery('body').addClass('loaded'); jQuery('.ssticky').sticky({ topSpacing: 0 }); jQuery('.ssticky').sticky('update');}); ", true);
 
             // Check if F7 - CHAIR IMAGE VIEW to trigger ruleset is complete
             if ((IsInSummarySelection("CHAIR IMAGE VIEW:", "FRONT")) || (IsInSummarySelection("CHAIR IMAGE VIEW:", "BACK")))
             { // NOTHING
+                ScriptManager.RegisterStartupScript(UpdatePanel2, GetType(), "Javascript", "javascript: updateChairImage('" + ImageURL + "', '');", true);
             }
             else
             {
