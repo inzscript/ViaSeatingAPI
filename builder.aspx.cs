@@ -128,8 +128,13 @@ public partial class builder : System.Web.UI.Page
                     sRuleSet = parmvalue;
                     RuleSet = parmvalue;
                     SelectedRuleSet.Value = parmvalue;
+                    // Add Finalize button to page                    
                 }
             }
+            
+            // Add Finalize button to page
+            btnFinal1.Text = "<input type='button' id='btnfinal1' name='btnfinal1' value='FINALIZE' onclick='javascript:onFinalizePostBack(\"" + SelectedRuleSet.Value + "\");' class='final button'></input>";
+            btnFinal2.Text = "<input type='button' id='btnfinal2' name='btnfinal2' value='Finalize' onclick='javascript:onFinalizePostBack(\"" + SelectedRuleSet.Value + "\");' class='final button'></input>";
 
             string redirectUrl = "http://viaseatingdev.azurewebsites.net/export.aspx";
             string instance = ConfigurationManager.AppSettings["via_instanceID"];
@@ -236,6 +241,10 @@ public partial class builder : System.Web.UI.Page
                     sRuleSet = parmvalue;
                     RuleSet = parmvalue;
                     SelectedRuleSet.Value = parmvalue;
+                    
+                    // Add finalize button to page
+                    btnFinal1.Text = "<input type='button' id='btnfinal1' name='btnfinal1' value='FINALIZE' onclick='javascript:onFinalizePostBack(\"" + SelectedRuleSet.Value + "\");' class='final button'></input>";
+                    btnFinal2.Text = "<input type='button' id='btnfinal2' name='btnfinal2' value='Finalize' onclick='javascript:onFinalizePostBack(\"" + SelectedRuleSet.Value + "\");' class='final button'></input>";
                 }
             }
 
@@ -423,8 +432,8 @@ public partial class builder : System.Web.UI.Page
         var screenOptIDX = 0;
 
         // Set the Finalize button visibile as false until all selection option load.
-        btnFinalizePostBack.Visible = false;
-        btnFinalizeUtilityBar.Visible = false;
+        btnFinal1.Visible = false;
+        btnFinal2.Visible = false;
 
         SectionOptions.Text = "";
 
@@ -744,8 +753,8 @@ public partial class builder : System.Web.UI.Page
         // Set the Fininalize button as visiable.
         if (screenoption.Name == "CHAIR_IMAGE_VIEW")
         {
-            btnFinalizePostBack.Visible = true;
-            btnFinalizeUtilityBar.Visible = true;
+            btnFinal1.Visible = true;
+            btnFinal2.Visible = true;
         }
 
         // Step 1 - Dynamically create Chair Options ListBox
@@ -1192,7 +1201,8 @@ public partial class builder : System.Web.UI.Page
     protected void btnPostFinal_Click(object send, EventArgs e)
     {
         var sScript = "<script language=\"JavaScript\"> onFinalizePostBack(\"" + SelectedRuleSet.Value + "\");</script>";
-        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "displayNone", sScript, false);
+        //ScriptManager.RegisterStartupScript(UpdatePanel2, this.GetType(), "displayNone", sScript, false);
+        ScriptManager.RegisterClientScriptBlock(UpdatePanel2, this.GetType(), "displayNone", sScript, false);
         //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "displayNone", "<script language='JavaScript'>onFinalizePostBack();</script>", false);
         //ScriptManager.RegisterStartupScript(UpdatePanel2, GetType(), "Javascript", "javascript: onFinalizePostBack();", true);
     }

@@ -156,7 +156,8 @@
                                                 <li>
                                                     <%--<button class="final">FINALIZE SPEC</button>--%>
                                                     <div class="finalize-wrapper">
-                                                        <asp:Button runat="server" ID="btnFinalizeUtilityBar" OnClick="btnPostFinal_Click" UseSubmitBehavior="false" Text="FINALIZE" CssClass="final button" />
+                                                        <%--<asp:Button runat="server" ID="btnFinalizeUtilityBar" OnClick="btnPostFinal_Click" UseSubmitBehavior="false" Text="FINALIZE" CssClass="final button" />--%>
+                                                        <asp:Literal runat="server" ID="btnFinal1"></asp:Literal>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -193,7 +194,8 @@
                                     <asp:Button runat="server" ID="btnPostBack" OnClick="btnPostBack_Click" Text="PostBack" />
                                 </div>
                                 <div class="finalize-wrapper">
-                                    <asp:Button runat="server" ID="btnFinalizePostBack" OnClick="btnPostFinal_Click" UseSubmitBehavior="false" Text="Finalize" CssClass="button final" />
+                                    <%--<asp:Button runat="server" ID="btnFinalizePostBack" OnClick="btnPostFinal_Click" UseSubmitBehavior="false" Text="Finalize" CssClass="button final" />--%>
+                                    <asp:Literal runat="server" ID="btnFinal2"></asp:Literal>
                                 </div>
                             </div>
 
@@ -210,7 +212,7 @@
             
 
             <div style="display: none">
-                <asp:Button runat="server" ID="btnFinalize" OnClick="btnFinalize_Click" Text="Finalize PostBack" />
+                <asp:Button runat="server" ID="btnFinalize" OnClick="btnFinalize_Click" UseSubmitBehavior="false" Text="Finalize PostBack" />
             </div>
 
             <script>
