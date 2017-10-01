@@ -28,6 +28,7 @@
     margin: 1.25rem 0 0;
     font-size: 14px;
     font-weight: 400;
+    text-transform: lowercase;
 }
 
 .content_block_background .box.four h3 {
@@ -185,20 +186,46 @@ section.sidebar.complete.right {
     margin: 40px auto;
 }
 
-@media only screen and (min-width: 960px) {
+/* ============================================================
+  Media Query - Definitions
+============================================================ */
+
+/* resolutions bigger than 1200px*/
+@media only screen and (min-width: 1100px)  { 
     .responsive .content.complete img {
         height: 460px;
     }
 }
-@media only screen and (max-width: 959px) and (min-width: 768px) {
+
+/* Large display 960px - 1100px */
+@media only screen and (min-width: 960px) and (max-width: 1099px) {
+    .responsive .content.complete img {
+        height: 460px;
+    }
+}
+
+/* Tablet (Portrait) 	768px */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
     .responsive .content.complete img {
         height: 400px;
     }
 }
+
+/* Tablet (landscape) 1024px */
+@media only screen and (max-width: 1024px) { }
+
+/* Mobile up to 767px */
 @media only screen and (max-width: 767px) {
     .responsive .content.complete img {
         height: auto;
         margin-left: 50px;
+    }
+    .other {
+        padding: 20px 20px 0 20px;
+        width: 100%;
+    }
+    .family, .price {
+        width: 50%;
     }
 }
 /*# sourceMappingURL=style.css.map */

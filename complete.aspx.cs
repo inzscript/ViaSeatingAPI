@@ -140,14 +140,16 @@ public partial class complete : System.Web.UI.Page
                 // Output variable fields: Caption and Value
                 string parmkey = row["caption"].ToString();
                 string parmvalue = row["value"].ToString();
-
-                if (parmkey == "SERIES:" || parmkey == "SERIES")
+                if (parmkey != "CHAIR IMAGE VIEW:")
                 {
-                    lSeries.Text = parmvalue;
-                    HSeries.Value = parmvalue;
-                }
+                    if (parmkey == "SERIES:" || parmkey == "SERIES")
+                    {
+                        lSeries.Text = parmvalue;
+                        HSeries.Value = parmvalue;
+                    }
 
-                sList += "<li><strong>" + parmkey + "</strong> <span>" + parmvalue + "</span></li>";
+                    sList += "<li><strong>" + parmkey + "</strong> <span>" + parmvalue + "</span></li>";
+                }
             }
             sList += "</ul> <br /><br />";
 
@@ -286,12 +288,15 @@ public partial class complete : System.Web.UI.Page
                 var phraseSelection = new Phrase();
                 //var phrase1 = new Phrase(row["caption"].ToString(), bodyBoldFont);
                 //var phrase2 = new Phrase(row["value"].ToString(), bodyFont);
-                phraseSelection.Add(new Phrase(row["caption"].ToString(), bodyBoldFont));
-                phraseSelection.Add(new Phrase(" ", bodyFont));
-                phraseSelection.Add(new Phrase(row["value"].ToString(), bodyFont));
-                cell.AddElement(phraseSelection);
-                //cell.AddElement(phrase2);
-                table.AddCell(cell);
+                if (row["caption"].ToString() != "CHAIR IMAGE VIEW:")
+                {
+                    phraseSelection.Add(new Phrase(row["caption"].ToString(), bodyBoldFont));
+                    phraseSelection.Add(new Phrase(" ", bodyFont));
+                    phraseSelection.Add(new Phrase(row["value"].ToString(), bodyFont));
+                    cell.AddElement(phraseSelection);
+                    //cell.AddElement(phrase2);
+                    table.AddCell(cell);
+                }
 
 
                 rowIDX++;
